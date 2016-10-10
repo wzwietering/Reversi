@@ -17,6 +17,12 @@ namespace Reversi
             InitializeComponent();
         }
 
+        public void StartGame()
+        {
+            Game game = new Game();
+            game.Start();
+        }
+
         /// <summary>
         /// The user can exit the application using the menu
         /// </summary>
