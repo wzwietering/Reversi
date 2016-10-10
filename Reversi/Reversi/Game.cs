@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Reversi
 {
@@ -11,6 +13,7 @@ namespace Reversi
         private List<Player> players { get; set; }
 
         private Player currentPlayer { get; set; }
+        public Graphics Graphics { get; internal set; }
 
         public Game()
         {
@@ -48,7 +51,7 @@ namespace Reversi
 
             foreach (var tile in tiles)
             {
-                tile.Draw();
+                tile.Draw(Graphics);
             }
         }
 

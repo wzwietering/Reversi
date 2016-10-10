@@ -32,23 +32,16 @@ namespace Reversi
         /// <summary>
         /// Creates a tile and an eventhandler to make the tile clickable
         /// </summary>
-        public void Draw()
+        public void Draw(Graphics graphics)
         {
-            Graphics g = this.CreateGraphics();
             this.Size = new Size(Settings.TileSize, Settings.TileSize);
-            this.Location = new Point(x, y);
-            Game game = new Game();
-            this.MouseClick += new MouseEventHandler(game.HandleTileClick);
-            g.DrawRectangle(new Pen(Player.color), new Rectangle(x, y, Settings.TileSize, Settings.TileSize));
+            this.Location = new Point(x * Settings.TileSize, y * Settings.TileSize);
+           
+            this.BackColor = Color.Black;
+            this.Show();
+            //   graphics.DrawRectangle(new Pen(Color.Black), new Rectangle(x, y, Settings.TileSize, Settings.TileSize));
         }
 
-        /// <summary>
-        /// To handle the click on a tile
-        /// </summary>
-        private void handleClick(object sender, EventArgs e)
-        {
-
-        }
         public bool IsOccupiedBy(Player player)
         {
             return occupier == player;
