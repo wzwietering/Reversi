@@ -27,12 +27,18 @@ namespace Reversi
             this.Close();
         }
 
+        /// <summary>
+        /// Shows a settings menu
+        /// </summary>
         private void SettingsMenu(object sender, EventArgs e)
         {
             var settingsGameMenu = new SettingsMenu();
             settingsGameMenu.Show();
         }
 
+        /// <summary>
+        /// Starts a new game
+        /// </summary>
         private void NewGame(object sender, EventArgs e)
         {
             Game game = new Game();
