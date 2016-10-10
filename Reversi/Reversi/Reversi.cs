@@ -23,7 +23,7 @@ namespace Reversi
 
         private void DrawForm(object sender, PaintEventArgs e)
         {
-            currentGame.Draw(e.Graphics);
+            currentGame.Draw(sender, e);
         }
 
         /// <summary>
