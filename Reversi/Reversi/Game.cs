@@ -52,7 +52,7 @@ namespace Reversi
             }
         }
 
-        private void HandleTileClick(object sender, EventArgs e)
+        public void HandleTileClick(object sender, EventArgs e)
         {
             if(((Tile)sender).isOccupied)
             {
