@@ -16,5 +16,11 @@ namespace Reversi
         {
             InitializeComponent();
         }
+
+        public void StartGame()
+        {
+            Game game = new Game();
+            game.Start();
+        }
     }
 }
