@@ -10,20 +10,18 @@ using System.Windows.Forms;
 
 namespace Reversi
 {
-    public partial class NewGame : Form
+    public partial class SettingsMenu : Form
     {
-        public NewGame()
+        public SettingsMenu()
         {
             InitializeComponent();
         }
 
-        private void startNewGameEvent(object sender, EventArgs e)
+        private void saveSettings(object sender, EventArgs e)
         {
             Settings.BoardWidth = (int)widthNUD.Value;
             Settings.BoardHeight = (int)heightNUD.Value;
             this.Close();
-            var form = new Reversi();
-            form.StartGame();
         }
     }
 }
