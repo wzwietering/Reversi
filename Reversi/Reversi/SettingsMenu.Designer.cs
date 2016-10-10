@@ -35,6 +35,8 @@
             this.applySettings = new System.Windows.Forms.Button();
             this.p1Color = new System.Windows.Forms.Label();
             this.p2Color = new System.Windows.Forms.Label();
+            this.colorChoiceP1 = new System.Windows.Forms.Button();
+            this.colorChoiceP2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.widthNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightNUD)).BeginInit();
             this.SuspendLayout();
@@ -59,7 +61,7 @@
             // 
             // widthNUD
             // 
-            this.widthNUD.Location = new System.Drawing.Point(86, 20);
+            this.widthNUD.Location = new System.Drawing.Point(122, 22);
             this.widthNUD.Maximum = new decimal(new int[] {
             10,
             0,
@@ -71,7 +73,7 @@
             0,
             0});
             this.widthNUD.Name = "widthNUD";
-            this.widthNUD.Size = new System.Drawing.Size(54, 20);
+            this.widthNUD.Size = new System.Drawing.Size(75, 20);
             this.widthNUD.TabIndex = 2;
             this.widthNUD.Value = new decimal(new int[] {
             3,
@@ -81,7 +83,7 @@
             // 
             // heightNUD
             // 
-            this.heightNUD.Location = new System.Drawing.Point(86, 48);
+            this.heightNUD.Location = new System.Drawing.Point(122, 46);
             this.heightNUD.Maximum = new decimal(new int[] {
             10,
             0,
@@ -93,7 +95,7 @@
             0,
             0});
             this.heightNUD.Name = "heightNUD";
-            this.heightNUD.Size = new System.Drawing.Size(54, 20);
+            this.heightNUD.Size = new System.Drawing.Size(75, 20);
             this.heightNUD.TabIndex = 3;
             this.heightNUD.Value = new decimal(new int[] {
             3,
@@ -103,7 +105,7 @@
             // 
             // applySettings
             // 
-            this.applySettings.Location = new System.Drawing.Point(105, 149);
+            this.applySettings.Location = new System.Drawing.Point(15, 150);
             this.applySettings.Name = "applySettings";
             this.applySettings.Size = new System.Drawing.Size(75, 23);
             this.applySettings.TabIndex = 4;
@@ -129,11 +131,32 @@
             this.p2Color.TabIndex = 6;
             this.p2Color.Text = "Player 2 Color";
             // 
+            // colorChoiceP1
+            // 
+            this.colorChoiceP1.Location = new System.Drawing.Point(122, 79);
+            this.colorChoiceP1.Name = "colorChoiceP1";
+            this.colorChoiceP1.Size = new System.Drawing.Size(75, 23);
+            this.colorChoiceP1.TabIndex = 7;
+            this.colorChoiceP1.Text = "Choose";
+            this.colorChoiceP1.UseVisualStyleBackColor = true;
+            this.colorChoiceP1.Click += new System.EventHandler(this.chooseColorP1);
+            // 
+            // colorChoiceP2
+            // 
+            this.colorChoiceP2.Location = new System.Drawing.Point(122, 103);
+            this.colorChoiceP2.Name = "colorChoiceP2";
+            this.colorChoiceP2.Size = new System.Drawing.Size(75, 23);
+            this.colorChoiceP2.TabIndex = 8;
+            this.colorChoiceP2.Text = "Choose";
+            this.colorChoiceP2.UseVisualStyleBackColor = true;
+            // 
             // SettingsMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 194);
+            this.Controls.Add(this.colorChoiceP2);
+            this.Controls.Add(this.colorChoiceP1);
             this.Controls.Add(this.p2Color);
             this.Controls.Add(this.p1Color);
             this.Controls.Add(this.applySettings);
@@ -159,5 +182,7 @@
         private System.Windows.Forms.Button applySettings;
         private System.Windows.Forms.Label p1Color;
         private System.Windows.Forms.Label p2Color;
+        private System.Windows.Forms.Button colorChoiceP1;
+        private System.Windows.Forms.Button colorChoiceP2;
     }
 }

@@ -10,7 +10,7 @@ namespace Reversi
     {
         private Tile[,] tiles;
 
-        private List<Player> players { get; set; }
+        public List<Player> players { get; set; }
 
         private Player currentPlayer { get; set; }
         public Graphics Graphics { get; internal set; }

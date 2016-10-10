@@ -16,5 +16,15 @@ namespace Reversi
             Settings.BoardHeight = (int)heightNUD.Value;
             this.Close();
         }
+
+        private void chooseColorP1(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            colorDialog.ShowDialog();
+            if(DialogResult == DialogResult.OK)
+            {
+               
+            }
+        }
     }
 }
