@@ -37,7 +37,8 @@ namespace Reversi
             Graphics g = this.CreateGraphics();
             this.Size = new Size(Settings.TileSize, Settings.TileSize);
             this.Location = new Point(x, y);
-            this.MouseClick += new MouseEventHandler(handleClick);
+            Game game = new Game();
+            this.MouseClick += new MouseEventHandler(game.HandleTileClick);
             g.DrawRectangle(new Pen(Player.color), new Rectangle(x, y, Settings.TileSize, Settings.TileSize));
         }
 
