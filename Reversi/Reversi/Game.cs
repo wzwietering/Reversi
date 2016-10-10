@@ -54,11 +54,43 @@ namespace Reversi
 
         private void HandleTileClick(object sender, EventArgs e)
         {
-            if (((Tile)sender).isOccupied)
+            if(((Tile)sender).isOccupied)
             {
-                return;
+                 ShowInvalidClickMessage();
             }
+            else
+            {
+                var TilesToOccupy = GetTilesToOccupy((Tile)sender);
+                if (TilesToOccupy == null || TilesToOccupy.Count == 0)
+                {
+                    ShowInvalidClickMessage();
+                }
+                else
+                {
+                    foreach (Tile tile in TilesToOccupy)
+                    {
+                        tile.Occupy(currentPlayer);
+                    }
 
+                    EndTurn();
+                }
+            }
+        }
+
+        private void EndTurn()
+        {
+            int currentplayerIndex = players.IndexOf(currentPlayer);
+            currentPlayer = players[currentplayerIndex++];
+        }
+
+        private void ShowInvalidClickMessage()
+        {
+            throw new NotImplementedException();
+        }
+
+        private List<Tile> GetTilesToOccupy(Tile sender)
+        {
+            throw new NotImplementedException();
         }
     }
 }
