@@ -20,5 +20,11 @@ namespace Reversi
             this.isOccupied = true;
             occupier = player;
         }
+
+        internal void SetCoordinates(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
     }
 }
