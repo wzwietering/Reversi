@@ -12,7 +12,7 @@ namespace Reversi
         private int x;
         private int y;
 
-        private bool isOccupied;
+        public bool isOccupied;
 
         private Player occupier;
 
@@ -26,6 +26,11 @@ namespace Reversi
         {
             this.x = x;
             this.y = y;
+        }
+
+        internal void Draw()
+        {
+            throw new NotImplementedException();
         }
     }
 }

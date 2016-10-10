@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Reversi
 {
     class Game
     {
-    //    private List<Tile> tiles { get; set; }
-
         private Tile[,] tiles;
 
         private List<Player> players { get; set; }
+
+        private Player currentPlayer { get; set; }
 
         public Game()
         {
@@ -24,6 +25,8 @@ namespace Reversi
                 players.Add(new Player() { playerName = "player " + i });
             }
 
+            currentPlayer = players.First();
+
             for(int x = 0; x <= Settings.BoardWidth; x++)
             {
                 for (int y = 0; y <= Settings.BoardHeight; y++)
@@ -34,11 +37,28 @@ namespace Reversi
                     tiles[x, y] = tile;
                 }
             }
+
+            var middleX = Settings.BoardWidth / 2;
+            var middleY = Settings.BoardHeight / 2;
+
+            tiles[middleX, middleY].Occupy(players[0]);
+            tiles[middleX + 1, middleY + 1].Occupy(players[0]);
+            tiles[middleX + 1, middleY].Occupy(players[1]);
+            tiles[middleX, middleY + 1].Occupy(players[1]);
+
+            foreach(var tile in tiles)
+            {
+                tile.Draw();
+            }
         }
 
         private void HandleTileClick(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (((Tile)sender).isOccupied)
+            {
+                return;
+            }
+
         }
     }
 }
