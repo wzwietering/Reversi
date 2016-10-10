@@ -33,6 +33,8 @@
             this.widthNUD = new System.Windows.Forms.NumericUpDown();
             this.heightNUD = new System.Windows.Forms.NumericUpDown();
             this.applySettings = new System.Windows.Forms.Button();
+            this.p1Color = new System.Windows.Forms.Label();
+            this.p2Color = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.widthNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightNUD)).BeginInit();
             this.SuspendLayout();
@@ -101,7 +103,7 @@
             // 
             // applySettings
             // 
-            this.applySettings.Location = new System.Drawing.Point(99, 107);
+            this.applySettings.Location = new System.Drawing.Point(105, 149);
             this.applySettings.Name = "applySettings";
             this.applySettings.Size = new System.Drawing.Size(75, 23);
             this.applySettings.TabIndex = 4;
@@ -109,11 +111,31 @@
             this.applySettings.UseVisualStyleBackColor = true;
             this.applySettings.Click += new System.EventHandler(this.saveSettings);
             // 
+            // p1Color
+            // 
+            this.p1Color.AutoSize = true;
+            this.p1Color.Location = new System.Drawing.Point(12, 84);
+            this.p1Color.Name = "p1Color";
+            this.p1Color.Size = new System.Drawing.Size(72, 13);
+            this.p1Color.TabIndex = 5;
+            this.p1Color.Text = "Player 1 Color";
+            // 
+            // p2Color
+            // 
+            this.p2Color.AutoSize = true;
+            this.p2Color.Location = new System.Drawing.Point(12, 108);
+            this.p2Color.Name = "p2Color";
+            this.p2Color.Size = new System.Drawing.Size(72, 13);
+            this.p2Color.TabIndex = 6;
+            this.p2Color.Text = "Player 2 Color";
+            // 
             // SettingsMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 158);
+            this.ClientSize = new System.Drawing.Size(284, 194);
+            this.Controls.Add(this.p2Color);
+            this.Controls.Add(this.p1Color);
             this.Controls.Add(this.applySettings);
             this.Controls.Add(this.heightNUD);
             this.Controls.Add(this.widthNUD);
@@ -135,5 +157,7 @@
         private System.Windows.Forms.NumericUpDown widthNUD;
         private System.Windows.Forms.NumericUpDown heightNUD;
         private System.Windows.Forms.Button applySettings;
+        private System.Windows.Forms.Label p1Color;
+        private System.Windows.Forms.Label p2Color;
     }
 }
