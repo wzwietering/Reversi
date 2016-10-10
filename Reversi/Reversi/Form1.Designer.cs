@@ -1,6 +1,6 @@
 ﻿namespace Reversi
 {
-    partial class Form1
+    partial class Reversi
     {
         /// <summary>
         /// Required designer variable.
@@ -93,7 +93,7 @@
             this.about.Size = new System.Drawing.Size(152, 22);
             this.about.Text = "About";
             // 
-            // Form1
+            // Reversi
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -101,7 +101,7 @@
             this.ClientSize = new System.Drawing.Size(484, 461);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "Reversi";
             this.Text = "Reversi";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

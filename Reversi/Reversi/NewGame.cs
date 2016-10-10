@@ -19,7 +19,11 @@ namespace Reversi
 
         private void startNewGameEvent(object sender, EventArgs e)
         {
+            Settings.BoardWidth = (int)widthNUD.Value;
+            Settings.BoardHeight = (int)heightNUD.Value;
             this.Close();
+            var form = new Reversi();
+            form.StartGame();
         }
     }
 }
