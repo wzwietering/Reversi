@@ -1,6 +1,6 @@
 ﻿namespace Reversi
 {
-    partial class NewGame
+    partial class SettingsMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@
             this.heightLabel = new System.Windows.Forms.Label();
             this.widthNUD = new System.Windows.Forms.NumericUpDown();
             this.heightNUD = new System.Windows.Forms.NumericUpDown();
-            this.startNewGame = new System.Windows.Forms.Button();
+            this.applySettings = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.widthNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightNUD)).BeginInit();
             this.SuspendLayout();
@@ -99,28 +99,28 @@
             0,
             0});
             // 
-            // startNewGame
+            // applySettings
             // 
-            this.startNewGame.Location = new System.Drawing.Point(99, 107);
-            this.startNewGame.Name = "startNewGame";
-            this.startNewGame.Size = new System.Drawing.Size(75, 23);
-            this.startNewGame.TabIndex = 4;
-            this.startNewGame.Text = "Start";
-            this.startNewGame.UseVisualStyleBackColor = true;
-            this.startNewGame.Click += new System.EventHandler(this.startNewGameEvent);
+            this.applySettings.Location = new System.Drawing.Point(99, 107);
+            this.applySettings.Name = "applySettings";
+            this.applySettings.Size = new System.Drawing.Size(75, 23);
+            this.applySettings.TabIndex = 4;
+            this.applySettings.Text = "Apply";
+            this.applySettings.UseVisualStyleBackColor = true;
+            this.applySettings.Click += new System.EventHandler(this.saveSettings);
             // 
-            // NewGame
+            // SettingsMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 158);
-            this.Controls.Add(this.startNewGame);
+            this.Controls.Add(this.applySettings);
             this.Controls.Add(this.heightNUD);
             this.Controls.Add(this.widthNUD);
             this.Controls.Add(this.heightLabel);
             this.Controls.Add(this.widthLabel);
-            this.Name = "NewGame";
-            this.Text = "New Reversi Game";
+            this.Name = "SettingsMenu";
+            this.Text = "Settings";
             ((System.ComponentModel.ISupportInitialize)(this.widthNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightNUD)).EndInit();
             this.ResumeLayout(false);
@@ -134,6 +134,6 @@
         private System.Windows.Forms.Label heightLabel;
         private System.Windows.Forms.NumericUpDown widthNUD;
         private System.Windows.Forms.NumericUpDown heightNUD;
-        private System.Windows.Forms.Button startNewGame;
+        private System.Windows.Forms.Button applySettings;
     }
 }

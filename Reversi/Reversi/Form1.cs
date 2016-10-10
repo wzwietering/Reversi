@@ -8,6 +8,8 @@ namespace Reversi
         public Reversi()
         {
             InitializeComponent();
+            Game game = new Game();
+            game.Start();
         }
 
         public void StartGame()
@@ -25,10 +27,16 @@ namespace Reversi
             this.Close();
         }
 
+        private void SettingsMenu(object sender, EventArgs e)
+        {
+            var settingsGameMenu = new SettingsMenu();
+            settingsGameMenu.Show();
+        }
+
         private void NewGame(object sender, EventArgs e)
         {
-            var newGameMenu = new NewGame();
-            newGameMenu.Show();
+            Game game = new Game();
+            game.Start();
         }
     }
 }
