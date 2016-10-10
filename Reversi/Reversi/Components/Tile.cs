@@ -13,10 +13,21 @@ namespace Reversi
 
         private Player occupier;
 
+        /// <summary>
+        /// Needs to be static so the Reversi class can subscribe to this event without having a tile object.
+        /// </summary>
+        public static event EventHandler AddTile;
+
         public void Occupy(Player player)
         {
             this.isOccupied = true;
             occupier = player;
+            player.points++;
+        }
+
+        public bool IsOccupiedBy(Player player)
+        {
+            return occupier == player;
         }
 
         internal void SetCoordinates(int x, int y)
@@ -38,13 +49,6 @@ namespace Reversi
             this.BorderStyle = BorderStyle.FixedSingle;
 
             AddTile(this, new EventArgs());
-        }
-
-        public static event EventHandler AddTile;
-
-        public bool IsOccupiedBy(Player player)
-        {
-            return occupier == player;
         }
     }
 }

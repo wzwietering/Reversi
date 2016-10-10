@@ -21,6 +21,9 @@ namespace Reversi
             players = new List<Player>();
         }
 
+        /// <summary>
+        /// Setup a new game (create the tiles, players, and startup scenario).
+        /// </summary>
         internal void Start()
         {
             for (int i = 1; i <= Settings.NumberOfPlayers; i++)
@@ -50,6 +53,11 @@ namespace Reversi
             tiles[middleX, middleY + 1].Occupy(players[1]);
         }
 
+        /// <summary>
+        /// Draw the game.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         internal void Draw(object sender, PaintEventArgs e)
         {
             foreach (var tile in tiles)
