@@ -29,7 +29,7 @@ namespace Reversi
 
             for(int x = 0; x <= Settings.BoardWidth; x++)
             {
-                for (int y = 0; y <= Settings.BoardHeight; y++)
+                for (int y = 0; y < Settings.BoardHeight; y++)
                 {
                     var tile = new Tile();
                     tile.SetCoordinates(x, y);
