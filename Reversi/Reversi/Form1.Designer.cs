@@ -63,6 +63,7 @@
             // newGame
             // 
             this.newGame.Name = "newGame";
+            this.newGame.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.newGame.Size = new System.Drawing.Size(152, 22);
             this.newGame.Text = "New";
             this.newGame.Click += new System.EventHandler(this.NewGame);
@@ -93,7 +94,8 @@
             // help
             // 
             this.help.Name = "help";
-            this.help.Size = new System.Drawing.Size(107, 22);
+            this.help.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
+            this.help.Size = new System.Drawing.Size(152, 22);
             this.help.Text = "Help";
             // 
             // about
