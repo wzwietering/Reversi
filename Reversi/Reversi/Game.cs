@@ -50,11 +50,11 @@ namespace Reversi
             tiles[middleX, middleY + 1].Occupy(players[1]);
         }
 
-        internal void Draw(Graphics graphics)
+        internal void Draw(object sender, PaintEventArgs e)
         {
             foreach (var tile in tiles)
             {
-                tile.Draw(graphics);
+                tile.Draw(sender, e);
             }
         }
 

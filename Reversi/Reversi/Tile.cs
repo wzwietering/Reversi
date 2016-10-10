@@ -26,13 +26,17 @@ namespace Reversi
         }
 
         /// <summary>
-        /// Creates a tile and an eventhandler to make the tile clickable
+        /// Creates a tile and throws the addTile event so the form can add the tile to it's controls.
         /// </summary>
-        public void Draw(Graphics graphics)
+        public void Draw(object sender, PaintEventArgs e)
         {
+            int offSetX = (((Form)sender).Width - Settings.TileSize * Settings.BoardWidth) / 2;
+            int offSetY = (((Form)sender).Height - Settings.TileSize * Settings.BoardHeight) / 2;
+
             this.Size = new Size(Settings.TileSize, Settings.TileSize);
-            this.Location = new Point(x * Settings.TileSize, y * Settings.TileSize);
+            this.Location = new Point(x * Settings.TileSize + offSetX, y * Settings.TileSize + offSetY);
             this.BorderStyle = BorderStyle.FixedSingle;
+
             AddTile(this, new EventArgs());
         }
 
