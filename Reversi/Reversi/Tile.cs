@@ -45,14 +45,12 @@ namespace Reversi
         /// To handle the click on a tile
         /// </summary>
         private void handleClick(object sender, EventArgs e)
+        {
+
+        }
         public bool IsOccupiedBy(Player player)
         {
             return occupier == player;
-        }
-
-        internal void Draw()
-        {
-            
         }
     }
 }
