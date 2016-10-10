@@ -14,6 +14,6 @@ namespace Reversi
 
         public static int BoardHeight = 10;
 
-        public static int TileSize = 10;
+        public static int TileSize = 30;
     }
 }

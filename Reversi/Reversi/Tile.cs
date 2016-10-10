@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Reversi
@@ -36,11 +32,11 @@ namespace Reversi
         {
             this.Size = new Size(Settings.TileSize, Settings.TileSize);
             this.Location = new Point(x * Settings.TileSize, y * Settings.TileSize);
-           
-            this.BackColor = Color.Black;
-            this.Show();
-            //   graphics.DrawRectangle(new Pen(Color.Black), new Rectangle(x, y, Settings.TileSize, Settings.TileSize));
+            this.BorderStyle = BorderStyle.FixedSingle;
+            AddTile(this, new EventArgs());
         }
+
+        public static event EventHandler AddTile;
 
         public bool IsOccupiedBy(Player player)
         {

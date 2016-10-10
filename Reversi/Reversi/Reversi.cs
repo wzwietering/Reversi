@@ -5,16 +5,25 @@ namespace Reversi
 {
     public partial class Reversi : Form
     {
+        Game currentGame;
+
         public Reversi()
         {
             InitializeComponent();
+            this.Paint += DrawForm;
+            Tile.AddTile += new EventHandler(AddTile);
+            StartGame();
         }
 
         public void StartGame()
         {
-            Game game = new Game();
-            game.Graphics = this.CreateGraphics();
-            game.Start();
+            currentGame = new Game();
+            currentGame.Start();
+        }
+
+        private void DrawForm(object sender, PaintEventArgs e)
+        {
+            currentGame.Draw(e.Graphics);
         }
 
         /// <summary>
@@ -29,6 +38,11 @@ namespace Reversi
         {
             var newGameMenu = new NewGame();
             newGameMenu.Show();
+        }
+
+        private void AddTile(object sender, EventArgs e)
+        {
+            this.Controls.Add((Tile)sender);
         }
     }
 }

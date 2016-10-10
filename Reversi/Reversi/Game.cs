@@ -48,10 +48,13 @@ namespace Reversi
             tiles[middleX + 1, middleY + 1].Occupy(players[0]);
             tiles[middleX + 1, middleY].Occupy(players[1]);
             tiles[middleX, middleY + 1].Occupy(players[1]);
+        }
 
+        internal void Draw(Graphics graphics)
+        {
             foreach (var tile in tiles)
             {
-                tile.Draw(Graphics);
+                tile.Draw(graphics);
             }
         }
 
@@ -124,7 +127,7 @@ namespace Reversi
                 if (!WithinRange(x, y))
                 {
                     // We are no longer in range of the board, so nothing to flip. return null.
-                    return null;
+                    return new List<Tile>();
                 }
 
                 // This is our next neighbouring tile.
@@ -143,7 +146,7 @@ namespace Reversi
                 // Tile must be unoccupied, so nothing to flip. return null.
                 else
                 {
-                    return null;
+                    return new List<Tile>();
                 }
             }
         }
