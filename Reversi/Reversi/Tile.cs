@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Reversi
 {
-    class Tile
+    class Tile : UserControl
     {
         private int x;
         private int y;
 
         private bool isOccupied;
 
-        private string occupier;
+        private Player occupier;
 
-        public void Occupy(string player)
+        public void Occupy(Player player)
         {
             this.isOccupied = true;
             occupier = player;

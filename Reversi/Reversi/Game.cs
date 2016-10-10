@@ -1,39 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Reversi
 {
     class Game
     {
-        private List<Tile> tiles { get; set; }
+    //    private List<Tile> tiles { get; set; }
+
+        private Tile[,] tiles;
 
         private List<Player> players { get; set; }
 
         public Game()
         {
-            tiles = new List<Tile>();
+            tiles = new Tile[Settings.BoardWidth, Settings.BoardHeight];
             players = new List<Player>();
         }
 
         internal void Start()
         {
-            for(int i = 1; i <= Settings.numberOfPlayers; i++)
+            for(int i = 1; i <= Settings.NumberOfPlayers; i++)
             {
                 players.Add(new Player() { playerName = "player " + i });
             }
 
-            for(int x = 0; x <= Settings.boardWidth; x++)
+            for(int x = 0; x <= Settings.BoardWidth; x++)
             {
-                for (int y = 0; y <= Settings.boardHeight; y++)
+                for (int y = 0; y <= Settings.BoardHeight; y++)
                 {
                     var tile = new Tile();
                     tile.SetCoordinates(x, y);
-                    tiles.Add(tile);
+                    tile.Click += HandleTileClick;
+                    tiles[x, y] = tile;
                 }
             }
+        }
+
+        private void HandleTileClick(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

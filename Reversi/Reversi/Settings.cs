@@ -8,10 +8,12 @@ namespace Reversi
 {
     public static class Settings
     {
-        public static int numberOfPlayers = 2;
+        public static int NumberOfPlayers = 2;
 
-        public static int boardWidth = 10;
+        public static int BoardWidth = 10;
 
-        public static int boardHeight = 10;
+        public static int BoardHeight = 10;
+
+        public static int TileSize = 10;
     }
 }
