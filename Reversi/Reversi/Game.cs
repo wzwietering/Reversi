@@ -27,7 +27,7 @@ namespace Reversi
 
             currentPlayer = players.First();
 
-            for(int x = 0; x <= Settings.BoardWidth; x++)
+            for(int x = 0; x < Settings.BoardWidth; x++)
             {
                 for (int y = 0; y < Settings.BoardHeight; y++)
                 {
