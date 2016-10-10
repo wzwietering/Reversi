@@ -8,5 +8,17 @@ namespace Reversi
 {
     class Tile
     {
+        private int x;
+        private int y;
+
+        private bool isOccupied;
+
+        private string occupier;
+
+        public void Occupy(string player)
+        {
+            this.isOccupied = true;
+            occupier = player;
+        }
     }
 }
