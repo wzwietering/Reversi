@@ -9,8 +9,8 @@ namespace Reversi
 {
     class Tile : UserControl
     {
-        private int x;
-        private int y;
+        public int x;
+        public int y;
 
         public bool isOccupied;
 
@@ -26,6 +26,11 @@ namespace Reversi
         {
             this.x = x;
             this.y = y;
+        }
+
+        public bool IsOccupiedBy(Player player)
+        {
+            return occupier == player;
         }
 
         internal void Draw()

@@ -20,14 +20,14 @@ namespace Reversi
 
         internal void Start()
         {
-            for(int i = 1; i <= Settings.NumberOfPlayers; i++)
+            for (int i = 1; i <= Settings.NumberOfPlayers; i++)
             {
                 players.Add(new Player() { playerName = "player " + i });
             }
 
             currentPlayer = players.First();
 
-            for(int x = 0; x <= Settings.BoardWidth; x++)
+            for (int x = 0; x < Settings.BoardWidth; x++)
             {
                 for (int y = 0; y < Settings.BoardHeight; y++)
                 {
@@ -46,7 +46,7 @@ namespace Reversi
             tiles[middleX + 1, middleY].Occupy(players[1]);
             tiles[middleX, middleY + 1].Occupy(players[1]);
 
-            foreach(var tile in tiles)
+            foreach (var tile in tiles)
             {
                 tile.Draw();
             }
@@ -54,20 +54,20 @@ namespace Reversi
 
         private void HandleTileClick(object sender, EventArgs e)
         {
-            if(((Tile)sender).isOccupied)
+            if (((Tile)sender).isOccupied)
             {
-                 ShowInvalidClickMessage();
+                ShowInvalidClickMessage();
             }
             else
             {
-                var TilesToOccupy = GetTilesToOccupy((Tile)sender);
-                if (TilesToOccupy == null || TilesToOccupy.Count == 0)
+                var TilesToFlip = GetTilesToFlip((Tile)sender);
+                if (TilesToFlip == null || TilesToFlip.Count == 0)
                 {
                     ShowInvalidClickMessage();
                 }
                 else
                 {
-                    foreach (Tile tile in TilesToOccupy)
+                    foreach (Tile tile in TilesToFlip)
                     {
                         tile.Occupy(currentPlayer);
                     }
@@ -88,9 +88,72 @@ namespace Reversi
             throw new NotImplementedException();
         }
 
-        private List<Tile> GetTilesToOccupy(Tile sender)
+        private List<Tile> GetTilesToFlip(Tile tile)
         {
-            throw new NotImplementedException();
+            // Check to see if we can use IndexOf() to eliminate public coordinates in the tile
+            // (and have them set to private only for use in the draw() method)
+
+            List<Tile> flippableTiles = new List<Tile>();
+
+            for (int dX = -1; dX <= 1; dX++)
+            {
+                for (int dY = -1; dY <= 1; dY++)
+                {
+                    if (!(dX == 0 && dY == 0))
+                    {
+                        flippableTiles.AddRange(GetTileRowToFlip(tile.x, tile.y, dX, dY));
+                    }
+                }
+            }
+
+            return flippableTiles;
+        }
+
+        private IEnumerable<Tile> GetTileRowToFlip(int x, int y, int dX, int dY)
+        {
+            var tileList = new List<Tile>();
+
+            while (true)
+            {
+                x = x + dX;
+                y = y + dY;
+
+                if (!WithinRange(x, y))
+                {
+                    // We are no longer in range of the board, so nothing to flip. return null.
+                    return null;
+                }
+
+                // This is our next neighbouring tile.
+                var neighbour = tiles[x, y];
+
+                // Is it occupied by someone else than the current player? Add it to the tile list
+                if (neighbour.isOccupied && !neighbour.IsOccupiedBy(currentPlayer))
+                {
+                    tileList.Add(neighbour);
+                }
+                // Is it occupied by th current player? return the list (which will be emtpy if this was the first tile we encountered.
+                else if (neighbour.IsOccupiedBy(currentPlayer))
+                {
+                    return tileList;
+                }
+                // Tile must be unoccupied, so nothing to flip. return null.
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        private bool WithinRange(int x, int y)
+        {
+            if (x < 0 || x == Settings.BoardWidth || y < 0 || y == Settings.BoardHeight)
+            {
+                // We've met the edge of the board. 
+                return false;
+            }
+            //We are still in range.
+            return true;
         }
     }
 }
