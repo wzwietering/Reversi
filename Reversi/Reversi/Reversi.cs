@@ -12,13 +12,13 @@ namespace Reversi
         public Reversi()
         {
             InitializeComponent();
-            this.Paint += DrawForm;
-            Game.RedrawBoard += RedrawForm;
+            this.Paint += DrawBoard;
+            Game.RedrawBoard += DrawBoard;
 
             StartGame();
         }
 
-        private void RedrawForm(object sender, EventArgs e)
+        private void DrawBoard(object sender, EventArgs e)
         {
             this.Invalidate();
         }
@@ -29,7 +29,7 @@ namespace Reversi
             currentGame.Start();
         }
 
-        private void DrawForm(object sender, PaintEventArgs e)
+        private void DrawBoard(object sender, PaintEventArgs e)
         {
             for(int x = 0; x < currentGame.tiles.GetLength(0); x++)
             {
