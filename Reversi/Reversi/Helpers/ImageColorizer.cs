@@ -16,8 +16,9 @@ namespace Reversi.Helpers
         /// <param name="image">The image to color</param>
         /// <param name="h">The desired hue</param>
         /// <returns></returns>
-        public unsafe Bitmap ColorImage(Image image, float h)
+        public unsafe Bitmap ColorImage(Image image, Color color)
         {
+            float h = color.GetHue() / 360f;
             Bitmap bitmap = new Bitmap(image);
             BitmapData bmd = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
             int bytesPP = Image.GetPixelFormatSize(bitmap.PixelFormat) / 8;
@@ -29,11 +30,10 @@ namespace Reversi.Helpers
             {
                 Parallel.For(0, bitmapW, x =>
                 {
-                    byte* data = address + y * bmd.Stride + x * 2;
+                    byte* data = address + y * bmd.Stride + x * 3;
 
                     Color currentC = Color.FromArgb(data[x + 3], data[x + 2], data[x + 1], data[x]);
-                    Color color;
-                    float s = currentC.GetSaturation();
+                    float s = 1.0f;
                     float l = currentC.GetBrightness();
                     float r, g, b;
 
@@ -44,18 +44,18 @@ namespace Reversi.Helpers
                     else
                     {
                         float d, e;
-                        if(l < 0.5)
+                        if(l < 0.5f)
                         {
-                            d = l * (1 + s);
+                            d = l * (1f + s);
                         }
                         else
                         {
                             d = l + s - l * s;
                         }
                         e = 2 * l - d;
-                        r = HueToRGB(e, d, h + 1 / 3);
+                        r = HueToRGB(e, d, (h + 1f / 3f));
                         g = HueToRGB(e, d, h);
-                        b = HueToRGB(e, d, h - 1 / 3);
+                        b = HueToRGB(e, d, (h - 1f / 3f));
                     }
 
                     data[x] = (byte)Math.Round(b * 255);
@@ -63,6 +63,7 @@ namespace Reversi.Helpers
                     data[x + 2] = (byte)Math.Round(r * 255);
                 });
             });
+            bitmap.UnlockBits(bmd);
             return bitmap;
         }
 
@@ -73,10 +74,10 @@ namespace Reversi.Helpers
         public float HueToRGB(float a, float b, float c)
         {
             if (c < 0) c++;
-            if (c > 1) c--;
-            if (c < 1 / 6) return a + (b - a) * 6 * c;
-            if (c < 0.5) return b;
-            if (c < 2 / 3) return a + (b - a) * (2 / 3 - c) * 6;
+            if (c > 1f) c--;
+            if (c < 1f / 6f) return a + (b - a) * 6f * c;
+            if (c < 0.5f) return b;
+            if (c < 2f / 3f) return a + (b - a) * (2f / 3f - c) * 6f;
             return a;
         }
     }

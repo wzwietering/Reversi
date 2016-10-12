@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Reversi.Helpers;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -22,12 +23,13 @@ namespace Reversi.Components
         public void Occupy(Player player)
         {
             this.BackgroundImageLayout = ImageLayout.Center;
-            this.BackgroundImage = stone;
+            ImageColorizer ic = new ImageColorizer();
+            this.BackgroundImage = ic.ColorImage(stone, player.color);
 
             this.IsOccupied = true;
             Occupier = player;
 
-            this.BackColor = player.color;
+            //this.BackColor = player.color;
         }
 
         public bool IsOccupiedBy(Player player)
