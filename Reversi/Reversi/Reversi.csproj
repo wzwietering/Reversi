@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -48,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Components\CircularList.cs" />
     <Compile Include="Components\MoveHandler.cs" />
+    <Compile Include="Helpers\ImageColorizer.cs" />
     <Compile Include="Reversi.cs">
       <SubType>Form</SubType>
     </Compile>
