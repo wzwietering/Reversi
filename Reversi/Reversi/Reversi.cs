@@ -11,7 +11,7 @@ namespace Reversi
         {
             InitializeComponent();
             this.Paint += DrawForm;
-            Tile.AddTile += new EventHandler(AddTile);
+            Tile.AddTile += AddTile;
             StartGame();
         }
 

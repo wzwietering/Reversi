@@ -20,6 +20,8 @@ namespace Reversi
 
         public void Occupy(Player player)
         {
+            this.occupier.points--;
+
             this.isOccupied = true;
             occupier = player;
             player.points++;

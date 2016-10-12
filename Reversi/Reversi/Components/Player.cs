@@ -6,7 +6,7 @@ namespace Reversi
     {
         public string playerName;
 
-        public static Color color;
+        public Color color;
 
         public int points;
     }
