@@ -20,8 +20,10 @@ namespace Reversi
 
         public void Occupy(Player player)
         {
-            this.occupier.points--;
-
+            if (this.isOccupied)
+            {
+                this.occupier.points--;
+            }
             this.isOccupied = true;
             occupier = player;
             player.points++;
@@ -49,6 +51,11 @@ namespace Reversi
             this.Size = new Size(Settings.TileSize, Settings.TileSize);
             this.Location = new Point(x * Settings.TileSize + offSetX, y * Settings.TileSize + offSetY);
             this.BorderStyle = BorderStyle.FixedSingle;
+
+            if(isOccupied)
+            {
+                this.BackColor = occupier.color;
+            }
 
             AddTile(this, new EventArgs());
         }
