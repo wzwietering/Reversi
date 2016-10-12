@@ -13,12 +13,12 @@ namespace Reversi
         {
             InitializeComponent();
             this.Paint += DrawBoard;
-            Game.RedrawBoard += DrawBoard;
+            Game.RedrawBoard += RedrawBoard;
 
             StartGame();
         }
 
-        private void DrawBoard(object sender, EventArgs e)
+        private void RedrawBoard(object sender, EventArgs e)
         {
             this.Invalidate();
         }
