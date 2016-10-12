@@ -28,7 +28,7 @@ namespace Reversi
         {
             for (int i = 1; i <= Settings.NumberOfPlayers; i++)
             {
-                players.Add(new Player() { playerName = "player " + i, color = i== 1? Color.White : Color.Black });
+                players.Add(new Player() { playerName = "player " + i, color = i== 1? Color.Blue : Color.Red });
             }
 
             currentPlayer = players.First();
