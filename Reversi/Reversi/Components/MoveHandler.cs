@@ -36,7 +36,7 @@ namespace Reversi.Components
         public bool HandleMove(Tile clickedTile, bool flipTilesIfValid = true)
         {
             // Can't click on an occupied tile!
-            if (clickedTile.isOccupied)
+            if (clickedTile.IsOccupied)
             {
                 return false;
             }
@@ -57,9 +57,11 @@ namespace Reversi.Components
                     {
                         foreach (Tile tile in TilesToFlip)
                         {
-                            tile.Occupy(currentPlayer);
-                            (clickedTile).Occupy(currentPlayer);
+                            FlipTile(tile, currentPlayer);
                         }
+
+                        // Don't forget to also put a stone on the newly clicked tile
+                        FlipTile(clickedTile, currentPlayer);
                     }
 
                     return true;
@@ -79,7 +81,7 @@ namespace Reversi.Components
 
             List<Tile> flippableTiles = new List<Tile>();
 
-            Point coordinates = GetTwoDimentionalIndex(tile);
+            Point coordinates = GetTwoDimensionalIndex(tile);
 
             for (int dX = -1; dX <= 1; dX++)
             {
@@ -95,22 +97,13 @@ namespace Reversi.Components
             return flippableTiles;
         }
 
-        private Point GetTwoDimentionalIndex(Tile tile)
-        {
-            for (int x = 0; x < tiles.GetLength(0); ++x)
-            {
-                for (int y = 0; y < tiles.GetLength(1); ++y)
-                {
-                    if (tiles[x, y].Equals(tile))
-                    {
-                        return new Point(x, y);
-                    }
-                }
-            }
-            // Tile wasn't found in the array
-            return new Point(-1, -1);
-        }
-
+        /// <summary>
+        /// Get the row of tiles that can be flipped starting at coordinated x and y and moving along de coordinates
+        /// with x + dX en y + dY (for example going to the right with dX = 1 and dY = 0).
+        /// </summary>
+        /// <returns>
+        /// A list of tiles that can be flipped according to the rules of the game. If no tiles can be flipped; an empty list is returned.
+        /// </returns>
         private IEnumerable<Tile> GetTileRowToFlip(int x, int y, int dX, int dY)
         {
             var tileList = new List<Tile>();
@@ -130,7 +123,7 @@ namespace Reversi.Components
                 var neighbour = this.tiles[x, y];
 
                 // Is it occupied by someone else than the current player? Add it to the tile list
-                if (neighbour.isOccupied && !neighbour.IsOccupiedBy(currentPlayer))
+                if (neighbour.IsOccupied && !neighbour.IsOccupiedBy(currentPlayer))
                 {
                     tileList.Add(neighbour);
                 }
@@ -147,6 +140,26 @@ namespace Reversi.Components
             }
         }
 
+        /// <summary>
+        /// Occupy the given tile by the given player. Substract and add points to players accordingly.
+        /// </summary>
+        /// <param name="tile">The tile to occupy </param>
+        /// <param name="currentPlayer">The player that will occupy this tile. </param>
+        private void FlipTile(Tile tile, Player currentPlayer)
+        {
+            if (tile.IsOccupied)
+            {
+                tile.Occupier.Points--;
+            }
+
+            tile.Occupy(currentPlayer);
+
+            currentPlayer.Points++;
+        }
+
+        /// <summary>
+        /// Check if the given coordinates exist on the board
+        /// </summary>
         private bool WithinRange(int x, int y)
         {
             if (x < 0 || x == Settings.BoardWidth || y < 0 || y == Settings.BoardHeight)
@@ -156,6 +169,27 @@ namespace Reversi.Components
             }
             //We are still in range.
             return true;
+        }
+
+        /// <summary>
+        /// Check the coordinates of a tile in the twodimensional array
+        /// </summary>
+        /// <param name="tile"></param>
+        /// <returns></returns>
+        private Point GetTwoDimensionalIndex(Tile tile)
+        {
+            for (int x = 0; x < tiles.GetLength(0); ++x)
+            {
+                for (int y = 0; y < tiles.GetLength(1); ++y)
+                {
+                    if (tiles[x, y].Equals(tile))
+                    {
+                        return new Point(x, y);
+                    }
+                }
+            }
+            // Tile wasn't found in the array
+            return new Point(-1, -1);
         }
     }
 }

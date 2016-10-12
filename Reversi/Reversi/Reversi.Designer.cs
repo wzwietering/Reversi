@@ -36,6 +36,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.help = new System.Windows.Forms.ToolStripMenuItem();
             this.about = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,14 +98,25 @@
             // 
             this.help.Name = "help";
             this.help.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
-            this.help.Size = new System.Drawing.Size(169, 26);
+            this.help.Size = new System.Drawing.Size(181, 26);
             this.help.Text = "Help";
             // 
             // about
             // 
             this.about.Name = "about";
-            this.about.Size = new System.Drawing.Size(169, 26);
+            this.about.Size = new System.Drawing.Size(181, 26);
             this.about.Text = "About";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(458, 31);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(175, 21);
+            this.checkBox1.TabIndex = 1;
+            this.checkBox1.Text = "display possible moves";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // Reversi
             // 
@@ -113,9 +125,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(645, 567);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Reversi";
             this.Text = "Reversi";
             this.menuStrip1.ResumeLayout(false);
@@ -135,6 +148,7 @@
         private System.Windows.Forms.ToolStripMenuItem help;
         private System.Windows.Forms.ToolStripMenuItem about;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

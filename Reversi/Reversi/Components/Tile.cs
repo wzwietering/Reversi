@@ -6,31 +6,33 @@ namespace Reversi.Components
 {
     public class Tile : UserControl
     {
-        public bool isOccupied { get; private set; }
+        public bool IsOccupied { get; private set; }
 
-        public Player occupier { get; private set; }
+        public Player Occupier { get; private set; }
 
         Image stone = Properties.Resources.reversiStoneLQ;
 
+        public Tile()
+        {
+            this.BorderStyle = BorderStyle.FixedSingle;
+            this.BackColor = Color.AntiqueWhite;
+            this.Size = new Size(Settings.TileSize, Settings.TileSize);
+        }
+
         public void Occupy(Player player)
         {
-            if (this.isOccupied)
-            {
-                this.occupier.Points--;
-            }
             this.BackgroundImageLayout = ImageLayout.Center;
             this.BackgroundImage = stone;
 
-            this.isOccupied = true;
-            occupier = player;
+            this.IsOccupied = true;
+            Occupier = player;
 
             this.BackColor = player.color;
-            player.Points++;
         }
 
         public bool IsOccupiedBy(Player player)
         {
-            return occupier == player;
+            return Occupier == player;
         }
     }
 }
