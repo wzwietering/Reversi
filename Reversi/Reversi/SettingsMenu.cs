@@ -17,7 +17,7 @@ namespace Reversi
             this.Close();
         }
 
-        private void chooseColorP1(object sender, EventArgs e)
+        private void chooseColor(object sender, EventArgs e)
         {
             ColorDialog colorDialog = new ColorDialog();
             colorDialog.ShowDialog();
