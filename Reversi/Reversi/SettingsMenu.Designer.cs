@@ -34,7 +34,6 @@ namespace Reversi
             this.heightLabel = new System.Windows.Forms.Label();
             this.widthNUD = new System.Windows.Forms.NumericUpDown();
             this.heightNUD = new System.Windows.Forms.NumericUpDown();
-            this.applySettings = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.widthNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightNUD)).BeginInit();
             this.SuspendLayout();
@@ -74,10 +73,11 @@ namespace Reversi
             this.widthNUD.Size = new System.Drawing.Size(75, 20);
             this.widthNUD.TabIndex = 2;
             this.widthNUD.Value = new decimal(new int[] {
-            3,
+            10,
             0,
             0,
             0});
+            this.widthNUD.ValueChanged += new System.EventHandler(this.saveSettings);
             // 
             // heightNUD
             // 
@@ -96,38 +96,28 @@ namespace Reversi
             this.heightNUD.Size = new System.Drawing.Size(75, 20);
             this.heightNUD.TabIndex = 3;
             this.heightNUD.Value = new decimal(new int[] {
-            3,
+            10,
             0,
             0,
             0});
-            // 
-            // applySettings
-            // 
-            this.applySettings.Location = new System.Drawing.Point(15, 150);
-            this.applySettings.Name = "applySettings";
-            this.applySettings.Size = new System.Drawing.Size(75, 23);
-            this.applySettings.TabIndex = 4;
-            this.applySettings.Text = "Apply";
-            this.applySettings.UseVisualStyleBackColor = true;
-            this.applySettings.Click += new System.EventHandler(this.saveSettings);
+            this.heightNUD.ValueChanged += new System.EventHandler(this.saveSettings);
             // 
             // SettingsMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 194);
-            this.Controls.Add(this.applySettings);
             this.Controls.Add(this.heightNUD);
             this.Controls.Add(this.widthNUD);
             this.Controls.Add(this.heightLabel);
             this.Controls.Add(this.widthLabel);
-            ColorOptions();
             this.Name = "SettingsMenu";
             this.Text = "Settings";
             ((System.ComponentModel.ISupportInitialize)(this.widthNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightNUD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private void ColorOptions()
@@ -156,6 +146,5 @@ namespace Reversi
         private System.Windows.Forms.Label heightLabel;
         private System.Windows.Forms.NumericUpDown widthNUD;
         private System.Windows.Forms.NumericUpDown heightNUD;
-        private System.Windows.Forms.Button applySettings;
     }
 }

@@ -8,9 +8,11 @@ namespace Reversi
     public partial class SettingsMenu : Form
     {
         public List<Player> players;
+
         public SettingsMenu(List<Player> list)
         {
             players = list;
+            ColorOptions();
             InitializeComponent();
         }
 
@@ -18,7 +20,6 @@ namespace Reversi
         {
             Settings.BoardWidth = (int)widthNUD.Value;
             Settings.BoardHeight = (int)heightNUD.Value;
-            this.Close();
         }
 
         private void chooseColor(object sender, EventArgs e)
