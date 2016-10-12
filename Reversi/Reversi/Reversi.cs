@@ -1,5 +1,6 @@
 ﻿using Reversi.Components;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Reversi
@@ -12,7 +13,6 @@ namespace Reversi
         {
             InitializeComponent();
             this.Paint += DrawForm;
-            Tile.AddTile += AddTile;
             Game.RedrawBoard += RedrawForm;
 
             StartGame();
@@ -31,7 +31,26 @@ namespace Reversi
 
         private void DrawForm(object sender, PaintEventArgs e)
         {
-            currentGame.Draw(sender, e);
+            for(int x = 0; x < currentGame.tiles.GetLength(0); x++)
+            {
+                for (int y = 0; y < currentGame.tiles.GetLength(1); y++)
+                {
+                    var tile = currentGame.tiles[x, y];
+                    int offSetX = (((Form)sender).Width - Settings.TileSize * Settings.BoardWidth) / 2;
+                    int offSetY = (((Form)sender).Height - Settings.TileSize * Settings.BoardHeight) / 2;
+
+                    tile.Size = new Size(Settings.TileSize, Settings.TileSize);
+                    tile.Location = new Point(x * Settings.TileSize + offSetX, y * Settings.TileSize + offSetY);
+                    tile.BorderStyle = BorderStyle.FixedSingle;
+
+                    if (tile.isOccupied)
+                    {
+                        tile.BackColor = tile.occupier.color;
+                    }
+
+                    this.Controls.Add(tile);
+                }
+            }
         }
 
         /// <summary>
@@ -57,11 +76,6 @@ namespace Reversi
         private void NewGame(object sender, EventArgs e)
         {
             StartGame();
-        }
-
-        private void AddTile(object sender, EventArgs e)
-        {
-            this.Controls.Add((Tile)sender);
         }
     }
 }

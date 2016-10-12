@@ -1,5 +1,7 @@
 ﻿using Reversi.Components;
 using System.Collections.Generic;
+using System.Drawing;
+using System;
 
 namespace Reversi.ComponentsB
 {
@@ -77,18 +79,36 @@ namespace Reversi.ComponentsB
 
             List<Tile> flippableTiles = new List<Tile>();
 
+            Point coordinates = GetTwoDimentionalIndex(tile);
+
             for (int dX = -1; dX <= 1; dX++)
             {
                 for (int dY = -1; dY <= 1; dY++)
                 {
                     if (!(dX == 0 && dY == 0))
                     {
-                        flippableTiles.AddRange(GetTileRowToFlip(tile.x, tile.y, dX, dY));
+                        flippableTiles.AddRange(GetTileRowToFlip(coordinates.X, coordinates.Y, dX, dY));
                     }
                 }
             }
 
             return flippableTiles;
+        }
+
+        private Point GetTwoDimentionalIndex(Tile tile)
+        {
+            for (int x = 0; x < tiles.GetLength(0); ++x)
+            {
+                for (int y = 0; y < tiles.GetLength(1); ++y)
+                {
+                    if (tiles[x, y].Equals(tile))
+                    {
+                        return new Point(x, y);
+                    }
+                }
+            }
+            // Tile wasn't found in the array
+            return new Point(-1, -1);
         }
 
         private IEnumerable<Tile> GetTileRowToFlip(int x, int y, int dX, int dY)

@@ -11,7 +11,7 @@ namespace Reversi
 {
     class Game
     {
-        private Tile[,] tiles;
+        internal Tile[,] tiles;
 
         public CircularList<Player> players { get; set; }
 
@@ -53,7 +53,6 @@ namespace Reversi
                 for (int y = 0; y < Settings.BoardHeight; y++)
                 {
                     var tile = new Tile();
-                    tile.SetCoordinates(x, y);
                     tile.Click += HandleTileClick;
                     tiles[x, y] = tile;
                 }
@@ -67,19 +66,6 @@ namespace Reversi
             tiles[middleX - 1, middleY - 1].Occupy(players[0]);
             tiles[middleX - 1, middleY].Occupy(players[1]);
             tiles[middleX, middleY - 1].Occupy(players[1]);
-        }
-
-        /// <summary>
-        /// Draw the game.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        internal void Draw(object sender, PaintEventArgs e)
-        {
-            foreach (var tile in tiles)
-            {
-                tile.Draw(sender, e);
-            }
         }
 
         public void HandleTileClick(object sender, EventArgs e)
