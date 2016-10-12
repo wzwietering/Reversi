@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Reversi.Components;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
