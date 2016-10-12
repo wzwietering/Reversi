@@ -16,8 +16,11 @@ namespace Reversi.Components
             {
                 this.occupier.points--;
             }
+
             this.isOccupied = true;
             occupier = player;
+
+            this.BackColor = player.color;
             player.points++;
         }
 
