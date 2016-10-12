@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\CircularList.cs" />
+    <Compile Include="MoveHandler.cs" />
     <Compile Include="Reversi.cs">
       <SubType>Form</SubType>
     </Compile>

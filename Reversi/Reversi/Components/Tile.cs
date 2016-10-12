@@ -2,9 +2,9 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Reversi
+namespace Reversi.Components
 {
-    class Tile : UserControl
+    public class Tile : UserControl
     {
         public int x;
         public int y;

@@ -1,8 +1,8 @@
 ﻿using System.Drawing;
 
-namespace Reversi
+namespace Reversi.Components
 {
-    class Player
+    public class Player
     {
         public string playerName;
 
