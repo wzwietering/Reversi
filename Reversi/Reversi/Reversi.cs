@@ -8,6 +8,7 @@ namespace Reversi
     public partial class Reversi : Form
     {
         Game currentGame;
+        Image stone = Properties.Resources.reversiStoneLQ;
 
         public Reversi()
         {
@@ -39,7 +40,8 @@ namespace Reversi
 
                     if (tile.isOccupied)
                     {
-                        tile.BackColor = tile.occupier.color;
+                        tile.BackgroundImageLayout = ImageLayout.Center;
+                        tile.BackgroundImage = stone;
                     }
 
                     this.Controls.Add(tile);
