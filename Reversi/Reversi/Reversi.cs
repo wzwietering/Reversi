@@ -13,32 +13,21 @@ namespace Reversi
         public Reversi()
         {
             InitializeComponent();
-            this.Paint += DrawBoard;
-            Game.RedrawBoard += DrawBoard;
+            Game.RedrawBoard += RedrawBoard;
 
             StartGame();
+            DrawBoard();
         }
 
-        private void DrawBoard(object sender, EventArgs e)
+        private void DrawBoard()
         {
-            this.Invalidate();
-        }
-
-        public void StartGame()
-        {
-            currentGame = new Game();
-            currentGame.Start();
-        }
-
-        private void DrawBoard(object sender, PaintEventArgs e)
-        {
-            for(int x = 0; x < currentGame.tiles.GetLength(0); x++)
+            for (int x = 0; x < currentGame.tiles.GetLength(0); x++)
             {
                 for (int y = 0; y < currentGame.tiles.GetLength(1); y++)
                 {
                     var tile = currentGame.tiles[x, y];
-                    int offSetX = (((Form)sender).Width - Settings.TileSize * Settings.BoardWidth) / 2;
-                    int offSetY = (((Form)sender).Height - Settings.TileSize * Settings.BoardHeight) / 2;
+                    int offSetX = (this.Width - Settings.TileSize * Settings.BoardWidth) / 2;
+                    int offSetY = (this.Height - Settings.TileSize * Settings.BoardHeight) / 2;
 
                     tile.Size = new Size(Settings.TileSize, Settings.TileSize);
                     tile.Location = new Point(x * Settings.TileSize + offSetX, y * Settings.TileSize + offSetY);
@@ -53,6 +42,17 @@ namespace Reversi
                     this.Controls.Add(tile);
                 }
             }
+        }
+
+        private void RedrawBoard(object sender, EventArgs e)
+        {
+            this.Invalidate();
+        }
+
+        public void StartGame()
+        {
+            currentGame = new Game();
+            currentGame.Start();
         }
 
         /// <summary>

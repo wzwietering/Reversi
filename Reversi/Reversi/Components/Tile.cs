@@ -6,9 +6,9 @@ namespace Reversi.Components
 {
     public class Tile : UserControl
     {
-        public bool isOccupied;
+        public bool isOccupied { get; private set; }
 
-        public Player occupier;
+        public Player occupier { get; private set; }
 
         public void Occupy(Player player)
         {
@@ -16,8 +16,11 @@ namespace Reversi.Components
             {
                 this.occupier.points--;
             }
+
             this.isOccupied = true;
             occupier = player;
+
+            this.BackColor = player.color;
             player.points++;
         }
 
