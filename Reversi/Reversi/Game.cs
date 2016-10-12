@@ -13,6 +13,7 @@ namespace Reversi
         public CircularList<Player> players { get; set; }
 
         private Player currentPlayer { get; set; }
+        public bool ShowHelp { get; set; }
 
         public Game()
         {
@@ -34,6 +35,7 @@ namespace Reversi
             for (int i = 1; i <= Settings.NumberOfPlayers; i++)
             {
                 var player = new Player();
+                player.Points = 2;
                 player.playerName = "player " + i;
                 player.color = i == 1 ? Color.Blue : Color.Red;
                 player.playerLabel.ForeColor = player.color;
@@ -68,26 +70,55 @@ namespace Reversi
             tiles[middleX, middleY - 1].Occupy(players[1]);
         }
 
+        /// <summary>
+        /// A user clicked a tile. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void HandleTileClick(object sender, EventArgs e)
         {
             var moveHandler = new MoveHandler(this.tiles, this.currentPlayer);
 
             if (moveHandler.HandleMove((Tile)sender))
             {
+                // It was a valid move. Next player's turn.
                 EndTurn();
             }
             else
             {
+                // It was not a valid move.
                 ShowInvalidClickMessage();
             }
         }
 
+        /// <summary>
+        /// Next player's turn. 
+        /// </summary>
         private void EndTurn()
         {
             currentPlayer.playerLabel.Font = new Font(currentPlayer.playerLabel.Font, FontStyle.Regular);
 
             currentPlayer = players.Next(players.IndexOf(currentPlayer));
             currentPlayer.playerLabel.Font = new Font(currentPlayer.playerLabel.Font, FontStyle.Bold);
+
+            // Since the board has changed, we need to recalculate the help for the player who's turn it is now.
+            DoShowHelp();
+        }
+
+        public void DoShowHelp()
+        {
+            var moveHandler = new MoveHandler(this.tiles, this.currentPlayer);
+            foreach (var tile in this.tiles)
+            {
+                if (!tile.IsOccupied && ShowHelp && moveHandler.HandleMove(tile, false))
+                {
+                    tile.BackColor = Color.Gray;
+                }
+                else if(!tile.IsOccupied)
+                {
+                    tile.BackColor = Color.AntiqueWhite;
+                }
+            }
         }
 
         private void ShowInvalidClickMessage()

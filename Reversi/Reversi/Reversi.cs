@@ -37,10 +37,7 @@ namespace Reversi
                 for (int y = 0; y < currentGame.tiles.GetLength(1); y++)
                 {
                     var tile = currentGame.tiles[x, y];
-                  
-                    tile.Size = new Size(Settings.TileSize, Settings.TileSize);
                     tile.Location = new Point(x * Settings.TileSize + offSetX, y * Settings.TileSize + offSetY);
-                    tile.BorderStyle = BorderStyle.FixedSingle;
 
                     this.Controls.Add(tile);
                 }
@@ -81,6 +78,12 @@ namespace Reversi
         private void NewGame(object sender, EventArgs e)
         {
             SetupGame();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            currentGame.ShowHelp = ((CheckBox)sender).Checked;
+            currentGame.DoShowHelp();
         }
     }
 }
