@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Reversi
+namespace Reversi.Components
 {
     public class Player
     {
