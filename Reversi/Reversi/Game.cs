@@ -1,4 +1,5 @@
 ﻿using Reversi.Components;
+using Reversi.ComponentsB;
 using Reversi.Extensions;
 using System;
 using System.Collections.Generic;

@@ -1,7 +1,7 @@
 ﻿using Reversi.Components;
 using System.Collections.Generic;
 
-namespace Reversi
+namespace Reversi.ComponentsB
 {
     public class MoveHandler
     {
