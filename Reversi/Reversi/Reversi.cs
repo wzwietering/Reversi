@@ -20,6 +20,11 @@ namespace Reversi
 
         private void DrawBoard()
         {
+            foreach (var player in currentGame.players)
+            {
+                this.Controls.Add(player.playerLabel);
+            }
+
             for (int x = 0; x < currentGame.tiles.GetLength(0); x++)
             {
                 for (int y = 0; y < currentGame.tiles.GetLength(1); y++)

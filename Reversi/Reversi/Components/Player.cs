@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace Reversi.Components
 {
@@ -8,6 +9,21 @@ namespace Reversi.Components
 
         public Color color;
 
-        public int points;
+        private int points;
+
+        public int Points
+        {
+            get
+            {
+                return points;
+            }
+            set
+            {
+                points = value;
+                playerLabel.Text = playerName + ": " + points + " points";
+            }
+        }
+
+        public Label playerLabel = new Label() { Size = new Size(200, 40)};
     }
 }

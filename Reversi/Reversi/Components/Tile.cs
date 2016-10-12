@@ -14,14 +14,14 @@ namespace Reversi.Components
         {
             if (this.isOccupied)
             {
-                this.occupier.points--;
+                this.occupier.Points--;
             }
 
             this.isOccupied = true;
             occupier = player;
 
             this.BackColor = player.color;
-            player.points++;
+            player.Points++;
         }
 
         public bool IsOccupiedBy(Player player)

@@ -39,7 +39,13 @@ namespace Reversi
         {
             for (int i = 1; i <= Settings.NumberOfPlayers; i++)
             {
-                players.Add(new Player() { playerName = "player " + i, color = i == 1 ? Color.Blue : Color.Red });
+                var player = new Player();
+                player.playerName = "player " + i;
+                player.color = i == 1 ? Color.Blue : Color.Red;
+                player.playerLabel.ForeColor = player.color;
+                player.playerLabel.Location = new Point(20, 30 * i + 40);
+                player.playerLabel.Size = new Size(100, 30);
+                players.Add(player);
             }
 
             currentPlayer = players.First();

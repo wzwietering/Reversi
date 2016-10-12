@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Reversi.Extensions
+namespace Reversi.Components
 {
     public class CircularList<T> : List<T>
     {
