@@ -121,30 +121,29 @@ namespace Reversi
             this.Controls.Add(this.widthNUD);
             this.Controls.Add(this.heightLabel);
             this.Controls.Add(this.widthLabel);
+            ColorOptions();
             this.Name = "SettingsMenu";
             this.Text = "Settings";
             ((System.ComponentModel.ISupportInitialize)(this.widthNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightNUD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         private void ColorOptions()
         {
-            Game game = new Game();
-            int size = game.players.Count;
-            for(int i = 0; i < size; i++)
+            for(int i = 0; i < players.Count; i++)
             {
                 Label playerName = new Label();
-                playerName.Text = "Player " + i + " color";
+                playerName.Text = "Player " + (i + 1) + " color";
                 playerName.Location = new System.Drawing.Point(12, i * 24 + 84);
                 playerName.Name = "player" + i + "Label";
 
                 Button colorChoice = new Button();
                 colorChoice.Text = "Choose";
                 colorChoice.Location = new System.Drawing.Point(122, i * 24 + 79);
-                colorChoice.Name = "player" + i + "ColorButton";
+                colorChoice.Name = i.ToString();
+                colorChoice.Click += new System.EventHandler(chooseColor);
 
                 this.Controls.Add(playerName);
                 this.Controls.Add(colorChoice);

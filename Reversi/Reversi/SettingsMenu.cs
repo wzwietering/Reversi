@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Reversi
 {
     public partial class SettingsMenu : Form
     {
-        public SettingsMenu()
+        public List<Player> players;
+        public SettingsMenu(List<Player> list)
         {
+            players = list;
             InitializeComponent();
         }
 
@@ -20,10 +23,11 @@ namespace Reversi
         private void chooseColor(object sender, EventArgs e)
         {
             ColorDialog colorDialog = new ColorDialog();
-            colorDialog.ShowDialog();
-            if(DialogResult == DialogResult.OK)
+            DialogResult result = colorDialog.ShowDialog();
+            int name = Int32.Parse(((Button)sender).Name);
+            if(result == DialogResult.OK)
             {
-               
+                players[name].color = colorDialog.Color;
             }
         }
     }
