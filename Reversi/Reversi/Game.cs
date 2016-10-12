@@ -15,6 +15,8 @@ namespace Reversi
         private Player currentPlayer { get; set; }
         public Graphics Graphics { get; internal set; }
 
+        public static event EventHandler RedrawBoard;
+
         public Game()
         {
             tiles = new Tile[Settings.BoardWidth, Settings.BoardHeight];
@@ -26,13 +28,23 @@ namespace Reversi
         /// </summary>
         internal void Start()
         {
+            SetupPlayers();
+            SetupTiles();
+        }
+
+        private void SetupPlayers()
+        {
             for (int i = 1; i <= Settings.NumberOfPlayers; i++)
             {
-                players.Add(new Player() { playerName = "player " + i, color = i== 1? Color.Blue : Color.Red });
+                players.Add(new Player() { playerName = "player " + i, color = i == 1 ? Color.Blue : Color.Red });
             }
 
             currentPlayer = players.First();
+        }
 
+        private void SetupTiles()
+        {
+            // Generate a tile for the width and height settings
             for (int x = 0; x < Settings.BoardWidth; x++)
             {
                 for (int y = 0; y < Settings.BoardHeight; y++)
@@ -44,13 +56,14 @@ namespace Reversi
                 }
             }
 
+            // Set the starting positions; players occupy the middle 4 tiles:
             var middleX = Settings.BoardWidth / 2;
             var middleY = Settings.BoardHeight / 2;
 
             tiles[middleX, middleY].Occupy(players[0]);
-            tiles[middleX + 1, middleY + 1].Occupy(players[0]);
-            tiles[middleX + 1, middleY].Occupy(players[1]);
-            tiles[middleX, middleY + 1].Occupy(players[1]);
+            tiles[middleX - 1, middleY - 1].Occupy(players[0]);
+            tiles[middleX - 1, middleY].Occupy(players[1]);
+            tiles[middleX, middleY - 1].Occupy(players[1]);
         }
 
         /// <summary>
@@ -84,6 +97,7 @@ namespace Reversi
                     foreach (Tile tile in TilesToFlip)
                     {
                         tile.Occupy(currentPlayer);
+                        ((Tile)sender).Occupy(currentPlayer);
                     }
 
                     EndTurn();
@@ -94,12 +108,15 @@ namespace Reversi
         private void EndTurn()
         {
             int currentplayerIndex = players.IndexOf(currentPlayer);
-            currentPlayer = players[currentplayerIndex++];
+            currentplayerIndex++;
+            if(currentplayerIndex == players.Count) { currentplayerIndex = 0; }
+            currentPlayer = players[currentplayerIndex];
+            RedrawBoard(this, new EventArgs());
         }
 
         private void ShowInvalidClickMessage()
         {
-            throw new NotImplementedException();
+            MessageBox.Show("This move is not valid!");
         }
 
         private List<Tile> GetTilesToFlip(Tile tile)

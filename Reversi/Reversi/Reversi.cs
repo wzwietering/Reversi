@@ -12,7 +12,14 @@ namespace Reversi
             InitializeComponent();
             this.Paint += DrawForm;
             Tile.AddTile += AddTile;
+            Game.RedrawBoard += RedrawForm;
+
             StartGame();
+        }
+
+        private void RedrawForm(object sender, EventArgs e)
+        {
+            this.Invalidate();
         }
 
         public void StartGame()
@@ -48,8 +55,7 @@ namespace Reversi
         /// </summary>
         private void NewGame(object sender, EventArgs e)
         {
-            Game game = new Game();
-            game.Start();
+            StartGame();
         }
 
         private void AddTile(object sender, EventArgs e)
