@@ -34,9 +34,10 @@ namespace Reversi.Helpers
 
                     Color currentC = Color.FromArgb(data[x + 3], data[x + 2], data[x + 1], data[x]);
                     float s = 1.0f;
-                    float l = currentC.GetBrightness();
+                    float l = currentC.GetBrightness() * 1.2f;
                     float r, g, b;
 
+                    //This part calculates the right rgb values
                     if(s == 0)
                     {
                         r = g = b = l;
