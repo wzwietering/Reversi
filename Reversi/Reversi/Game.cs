@@ -1,8 +1,5 @@
 ﻿using Reversi.Components;
-using Reversi.ComponentsB;
-using Reversi.Extensions;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -17,9 +14,6 @@ namespace Reversi
 
         private Player currentPlayer { get; set; }
 
-
-        public static event EventHandler RedrawBoard;
-
         public Game()
         {
             tiles = new Tile[Settings.BoardWidth, Settings.BoardHeight];
@@ -29,7 +23,7 @@ namespace Reversi
         /// <summary>
         /// Setup a new game (create the tiles, players, and startup scenario).
         /// </summary>
-        internal void Start()
+        internal void Setup()
         {
             SetupPlayers();
             SetupTiles();
@@ -43,12 +37,12 @@ namespace Reversi
                 player.playerName = "player " + i;
                 player.color = i == 1 ? Color.Blue : Color.Red;
                 player.playerLabel.ForeColor = player.color;
-                player.playerLabel.Location = new Point(20, 30 * i + 40);
-                player.playerLabel.Size = new Size(100, 30);
+                player.playerLabel.Location = new Point(20, 30 * i + 10);
                 players.Add(player);
             }
 
             currentPlayer = players.First();
+            currentPlayer.playerLabel.Font = new Font(currentPlayer.playerLabel.Font, FontStyle.Bold);
         }
 
         private void SetupTiles()
@@ -90,8 +84,10 @@ namespace Reversi
 
         private void EndTurn()
         {
+            currentPlayer.playerLabel.Font = new Font(currentPlayer.playerLabel.Font, FontStyle.Regular);
+
             currentPlayer = players.Next(players.IndexOf(currentPlayer));
-            RedrawBoard(this, new EventArgs());
+            currentPlayer.playerLabel.Font = new Font(currentPlayer.playerLabel.Font, FontStyle.Bold);
         }
 
         private void ShowInvalidClickMessage()

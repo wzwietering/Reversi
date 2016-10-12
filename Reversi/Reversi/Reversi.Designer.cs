@@ -41,12 +41,14 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gameToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(484, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(645, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -57,28 +59,28 @@
             this.settingsToolStripMenuItem,
             this.exitGame});
             this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
-            this.gameToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.gameToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
             this.gameToolStripMenuItem.Text = "Game";
             // 
             // newGame
             // 
             this.newGame.Name = "newGame";
             this.newGame.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newGame.Size = new System.Drawing.Size(152, 22);
+            this.newGame.Size = new System.Drawing.Size(167, 26);
             this.newGame.Text = "New";
             this.newGame.Click += new System.EventHandler(this.NewGame);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsMenu);
             // 
             // exitGame
             // 
             this.exitGame.Name = "exitGame";
-            this.exitGame.Size = new System.Drawing.Size(152, 22);
+            this.exitGame.Size = new System.Drawing.Size(167, 26);
             this.exitGame.Text = "Exit";
             this.exitGame.Click += new System.EventHandler(this.ExitGame);
             // 
@@ -88,30 +90,32 @@
             this.help,
             this.about});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // help
             // 
             this.help.Name = "help";
             this.help.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
-            this.help.Size = new System.Drawing.Size(152, 22);
+            this.help.Size = new System.Drawing.Size(169, 26);
             this.help.Text = "Help";
             // 
             // about
             // 
             this.about.Name = "about";
-            this.about.Size = new System.Drawing.Size(107, 22);
+            this.about.Size = new System.Drawing.Size(169, 26);
             this.about.Text = "About";
             // 
             // Reversi
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 461);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(645, 567);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Reversi";
             this.Text = "Reversi";
             this.menuStrip1.ResumeLayout(false);

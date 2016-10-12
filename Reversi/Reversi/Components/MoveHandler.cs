@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System;
 
-namespace Reversi.ComponentsB
+namespace Reversi.Components
 {
     public class MoveHandler
     {
