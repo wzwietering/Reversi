@@ -24,6 +24,6 @@ namespace Reversi.Components
             }
         }
 
-        public Label playerLabel = new Label() { Size = new Size(200, 40)};
+        public Label playerLabel = new Label() { Size = new Size(200, 30)};
     }
 }

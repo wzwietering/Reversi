@@ -8,41 +8,39 @@ namespace Reversi
     public partial class Reversi : Form
     {
         Game currentGame;
-        Image stone = Properties.Resources.reversiStoneLQ;
 
         public Reversi()
         {
             InitializeComponent();
-            Game.RedrawBoard += RedrawBoard;
-
-            StartGame();
+            SetupGame();
             DrawBoard();
         }
 
+        /// <summary>
+        /// Draw all the components for a game of reversi.
+        /// </summary>
         private void DrawBoard()
         {
+            // Show the labels to display the points for each player
             foreach (var player in currentGame.players)
             {
                 this.Controls.Add(player.playerLabel);
             }
 
+            // Calculate offset for the tiles (we want them nicely in the center
+            int offSetX = (this.Width - Settings.TileSize * Settings.BoardWidth) / 2;
+            int offSetY = (this.Height - Settings.TileSize * Settings.BoardHeight) / 2 + (currentGame.players.Count * 30);
+
+            // Now draw all the tiles!
             for (int x = 0; x < currentGame.tiles.GetLength(0); x++)
             {
                 for (int y = 0; y < currentGame.tiles.GetLength(1); y++)
                 {
                     var tile = currentGame.tiles[x, y];
-                    int offSetX = (this.Width - Settings.TileSize * Settings.BoardWidth) / 2;
-                    int offSetY = (this.Height - Settings.TileSize * Settings.BoardHeight) / 2;
-
+                  
                     tile.Size = new Size(Settings.TileSize, Settings.TileSize);
                     tile.Location = new Point(x * Settings.TileSize + offSetX, y * Settings.TileSize + offSetY);
                     tile.BorderStyle = BorderStyle.FixedSingle;
-
-                    if (tile.isOccupied)
-                    {
-                        tile.BackgroundImageLayout = ImageLayout.Center;
-                        tile.BackgroundImage = stone;
-                    }
 
                     this.Controls.Add(tile);
                 }
@@ -54,10 +52,10 @@ namespace Reversi
             this.Invalidate();
         }
 
-        public void StartGame()
+        public void SetupGame()
         {
             currentGame = new Game();
-            currentGame.Start();
+            currentGame.Setup();
         }
 
         /// <summary>
@@ -82,7 +80,7 @@ namespace Reversi
         /// </summary>
         private void NewGame(object sender, EventArgs e)
         {
-            StartGame();
+            SetupGame();
         }
     }
 }
