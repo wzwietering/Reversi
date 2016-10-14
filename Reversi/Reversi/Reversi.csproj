@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="Components\AI.cs" />
     <Compile Include="Components\CircularList.cs" />
+    <Compile Include="Components\MessageEventArgs.cs" />
     <Compile Include="Components\Stone.cs">
       <SubType>UserControl</SubType>
     </Compile>

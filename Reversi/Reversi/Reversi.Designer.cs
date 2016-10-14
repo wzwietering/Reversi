@@ -40,6 +40,7 @@ namespace Reversi
             this.about = new System.Windows.Forms.ToolStripMenuItem();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.currentGameContainer = new System.Windows.Forms.UserControl();
+            this.MessageBox = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -123,18 +124,30 @@ namespace Reversi
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // currentCameContainer
+            // currentGameContainer
             // 
             this.currentGameContainer.AutoSize = true;
+            this.currentGameContainer.BackgroundImage = global::Reversi.Properties.Resources.WhiteMarble;
             this.currentGameContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.currentGameContainer.BackgroundImage = Properties.Resources.WhiteMarble;
-            this.currentGameContainer.Location = new System.Drawing.Point(0, 30);
-            this.currentGameContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.currentGameContainer.Location = new System.Drawing.Point(0, 28);
+            this.currentGameContainer.Margin = new System.Windows.Forms.Padding(4);
+            this.currentGameContainer.Name = "currentGameContainer";
             this.currentGameContainer.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
-            this.currentGameContainer.Name = "currentCameContainer";
             this.currentGameContainer.Size = this.Size;
             this.currentGameContainer.TabIndex = 0;
-            
+            // 
+            // MessageBox
+            // 
+            this.MessageBox.AutoSize = true;
+            this.MessageBox.BackColor = System.Drawing.Color.Transparent;
+            this.MessageBox.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MessageBox.Location = new System.Drawing.Point(456, 49);
+            this.MessageBox.Name = "MessageBox";
+            this.MessageBox.Size = new System.Drawing.Size(177, 21);
+            this.MessageBox.TabIndex = 3;
+            this.MessageBox.Text = "This is not a valid move.";
+            this.MessageBox.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.MessageBox.Visible = false;
             // 
             // Reversi
             // 
@@ -143,11 +156,12 @@ namespace Reversi
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(645, 567);
+            this.Controls.Add(this.MessageBox);
             this.Controls.Add(this.currentGameContainer);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Reversi";
             this.Text = "Reversi";
             this.menuStrip1.ResumeLayout(false);
@@ -169,7 +183,7 @@ namespace Reversi
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.UserControl currentGameContainer;
-        private UserControl board;
+        private Label MessageBox;
     }
 }
 

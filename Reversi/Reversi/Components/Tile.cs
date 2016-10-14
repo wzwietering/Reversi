@@ -52,5 +52,31 @@ namespace Reversi.Components
             ImageColorizer ic = new ImageColorizer();
             reversiStone.BackgroundImage = ic.ColorImage(Properties.Resources.reversiStoneLQ, player.Color);
         }
+
+        public void ToggleHelp(bool showHelp)
+        {
+            if (showHelp)
+            {
+                this.Paint += DrawBorder;
+                Rectangle srcRect = new Rectangle(300, 300, Settings.TileSize, Settings.TileSize);
+                Bitmap cropped = ((Bitmap)Properties.Resources.GreenMarble).Clone(srcRect, Properties.Resources.GreenMarble.PixelFormat);
+                this.BackgroundImage = cropped;
+            }
+            else
+            {
+                this.Paint -= DrawBorder;
+                this.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                this.BackgroundImage = this.originalBackground;
+            }
+        }
+
+        private void DrawBorder(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, 
+                Color.MediumSeaGreen, 2, ButtonBorderStyle.Solid,
+                Color.MediumSeaGreen, 2, ButtonBorderStyle.Solid,
+                Color.MediumSeaGreen, 2, ButtonBorderStyle.Solid,
+                Color.MediumSeaGreen, 2, ButtonBorderStyle.Solid);
+        }
     }
 }
