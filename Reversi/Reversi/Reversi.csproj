@@ -53,6 +53,7 @@
     <Compile Include="AboutBox1.Designer.cs">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\AI.cs" />
     <Compile Include="Components\CircularList.cs" />
     <Compile Include="Components\Stone.cs">
       <SubType>UserControl</SubType>
