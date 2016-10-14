@@ -48,7 +48,7 @@ namespace Reversi.Components
         public void UpdateStone(Player player)
         {
             ImageColorizer ic = new ImageColorizer();
-            reversiStone.BackgroundImage = ic.ColorImage(Properties.Resources.reversiStoneLQ, player.color);
+            reversiStone.BackgroundImage = ic.ColorImage(Properties.Resources.reversiStoneLQ, player.Color);
         }
     }
 }

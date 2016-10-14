@@ -34,7 +34,7 @@ namespace Reversi
             int name = Int32.Parse(((Button)sender).Name);
             if(result == DialogResult.OK)
             {
-                players[name].color = colorDialog.Color;
+                players[name].Color = colorDialog.Color;
                 for(int i = 0; i < tiles.GetLength(0); i++)
                 {
                     for(int j = 0; j < tiles.GetLength(1); j++)
@@ -45,7 +45,7 @@ namespace Reversi
                         }
                     }
                 }
-                players[name].playerLabel.ForeColor = colorDialog.Color;
+                players[name].PlayerLabel.ForeColor = colorDialog.Color;
             }
         }
 

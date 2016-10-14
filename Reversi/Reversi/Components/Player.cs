@@ -5,11 +5,29 @@ namespace Reversi.Components
 {
     public class Player
     {
-        public string playerName;
+        public Player()
+        {
+            setPlayerLabel();
+        }
 
-        public Color color;
-
+        private string playerName;
         private int points;
+
+        public Label PlayerLabel = new Label() { Size = new Size(200, 30) };
+        public Color Color;
+
+        public string PlayerName
+        {
+            get
+            {
+                return playerName;
+            }
+            set
+            {
+                playerName = value;
+                setPlayerLabel();
+            }
+        }
 
         public int Points
         {
@@ -20,10 +38,13 @@ namespace Reversi.Components
             set
             {
                 points = value;
-                playerLabel.Text = playerName + ": " + points + " points";
+                setPlayerLabel();
             }
         }
 
-        public Label playerLabel = new Label() { Size = new Size(200, 30)};
+        private void setPlayerLabel()
+        {
+            PlayerLabel.Text = playerName + ": " + points + " points";
+        }
     }
 }

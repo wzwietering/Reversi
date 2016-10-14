@@ -37,8 +37,15 @@
             this.help = new System.Windows.Forms.ToolStripMenuItem();
             this.about = new System.Windows.Forms.ToolStripMenuItem();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.currentCameContainer = new System.Windows.Forms.UserControl();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
+
+            this.currentCameContainer.BackColor = System.Drawing.Color.Transparent;
+            this.currentCameContainer.AutoSize = true;
+            this.currentCameContainer.Size = this.Size;
+            this.currentCameContainer.Location = new System.Drawing.Point(0, 50);
+            this.Controls.Add(currentCameContainer);
             // 
             // menuStrip1
             // 
@@ -149,6 +156,7 @@
         private System.Windows.Forms.ToolStripMenuItem about;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.UserControl currentCameContainer;
     }
 }
 
