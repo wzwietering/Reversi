@@ -51,7 +51,7 @@ namespace Reversi.Components
         {
             this.BackgroundImageLayout = ImageLayout.Center;
             ImageColorizer ic = new ImageColorizer();
-            this.BackgroundImage = ic.ColorImage(stone, player.color);
+            this.BackgroundImage = ic.ColorImage(Properties.Resources.reversiStoneLQ, player.color);
         }
     }
 }
