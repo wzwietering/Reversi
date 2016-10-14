@@ -39,7 +39,7 @@ namespace Reversi
             this.help = new System.Windows.Forms.ToolStripMenuItem();
             this.about = new System.Windows.Forms.ToolStripMenuItem();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.currentCameContainer = new System.Windows.Forms.UserControl();
+            this.currentGameContainer = new System.Windows.Forms.UserControl();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -125,15 +125,15 @@ namespace Reversi
             // 
             // currentCameContainer
             // 
-            this.currentCameContainer.AutoSize = true;
-            this.currentCameContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.currentCameContainer.BackgroundImage = Properties.Resources.WhiteMarble;
-            this.currentCameContainer.Location = new System.Drawing.Point(0, 30);
-            this.currentCameContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.currentCameContainer.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
-            this.currentCameContainer.Name = "currentCameContainer";
-            this.currentCameContainer.Size = this.Size;
-            this.currentCameContainer.TabIndex = 0;
+            this.currentGameContainer.AutoSize = true;
+            this.currentGameContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.currentGameContainer.BackgroundImage = Properties.Resources.WhiteMarble;
+            this.currentGameContainer.Location = new System.Drawing.Point(0, 30);
+            this.currentGameContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.currentGameContainer.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
+            this.currentGameContainer.Name = "currentCameContainer";
+            this.currentGameContainer.Size = this.Size;
+            this.currentGameContainer.TabIndex = 0;
             
             // 
             // Reversi
@@ -143,7 +143,7 @@ namespace Reversi
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(645, 567);
-            this.Controls.Add(this.currentCameContainer);
+            this.Controls.Add(this.currentGameContainer);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -168,7 +168,7 @@ namespace Reversi
         private System.Windows.Forms.ToolStripMenuItem about;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.UserControl currentCameContainer;
+        private System.Windows.Forms.UserControl currentGameContainer;
         private UserControl board;
     }
 }

@@ -33,7 +33,7 @@ namespace Reversi
 
         private void StartGame()
         {
-            this.currentCameContainer.Controls.Clear();
+            this.currentGameContainer.Controls.Clear();
             currentGame = new Game();
             currentGame.Setup(); ;
             DrawBoard();
@@ -47,7 +47,7 @@ namespace Reversi
             // Show the labels to display the points for each player
             foreach (var player in currentGame.players)
             {
-                this.currentCameContainer.Controls.Add(player.PlayerLabel);
+                this.currentGameContainer.Controls.Add(player.PlayerLabel);
             }
 
             // Calculate offset for the tiles (we want them nicely in the center
@@ -77,7 +77,7 @@ namespace Reversi
                         SetTileBackground(whiteMarble, tile, ref whiteMarbleImageOffset );
                     }
 
-                    this.currentCameContainer.Controls.Add(tile);
+                    this.currentGameContainer.Controls.Add(tile);
                 }
 
                 blackMarbleImageOffset.X += Settings.TileSize;
