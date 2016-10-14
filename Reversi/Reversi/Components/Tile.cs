@@ -11,7 +11,7 @@ namespace Reversi.Components
 
         public Player Occupier { get; private set; }
 
-        private Stone reversiStone { get; set; }
+        private Stone reversiStone;
 
         public Bitmap originalBackground { get; set; }
 
@@ -21,17 +21,19 @@ namespace Reversi.Components
         }
 
         /// <summary>
-        /// Occupies the stone and draws the texture
+        /// Occupies the tile and draws a reversi stone on it
         /// </summary>
         /// <param name="player"></param>
         public void Occupy(Player player)
         {
+            // It hasn't been occupied yet, so we need to instantiate a new stone
             if (!IsOccupied)
             { 
                 reversiStone = new Stone();
                 this.Controls.Add(reversiStone);
             }
             
+            // Now color the stone to the occupiers' color.
             UpdateStone(player);
 
             this.IsOccupied = true;
@@ -44,7 +46,7 @@ namespace Reversi.Components
         }
 
         /// <summary>
-        /// Updates the stone of the tile
+        /// Updates the stone of the tile to the color of the player
         /// </summary>
         /// <param name="player"></param>
         public void UpdateStone(Player player)

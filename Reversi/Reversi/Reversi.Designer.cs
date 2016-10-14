@@ -52,8 +52,8 @@ namespace Reversi
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(645, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 0, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(645, 26);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -129,7 +129,7 @@ namespace Reversi
             this.currentGameContainer.AutoSize = true;
             this.currentGameContainer.BackgroundImage = global::Reversi.Properties.Resources.WhiteMarble;
             this.currentGameContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.currentGameContainer.Location = new System.Drawing.Point(0, 28);
+            this.currentGameContainer.Location = new System.Drawing.Point(0, 26);
             this.currentGameContainer.Margin = new System.Windows.Forms.Padding(4);
             this.currentGameContainer.Name = "currentGameContainer";
             this.currentGameContainer.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
@@ -140,10 +140,12 @@ namespace Reversi
             // 
             this.MessageBox.AutoSize = true;
             this.MessageBox.BackColor = System.Drawing.Color.Transparent;
+            this.MessageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MessageBox.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MessageBox.Location = new System.Drawing.Point(456, 49);
+            this.MessageBox.Location = new System.Drawing.Point(349, 46);
             this.MessageBox.Name = "MessageBox";
-            this.MessageBox.Size = new System.Drawing.Size(177, 21);
+            this.MessageBox.Padding = new System.Windows.Forms.Padding(4);
+            this.MessageBox.Size = new System.Drawing.Size(187, 31);
             this.MessageBox.TabIndex = 3;
             this.MessageBox.Text = "This is not a valid move.";
             this.MessageBox.TextAlign = System.Drawing.ContentAlignment.TopRight;

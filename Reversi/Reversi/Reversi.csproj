@@ -61,6 +61,8 @@
     </Compile>
     <Compile Include="Helpers\MoveHandler.cs" />
     <Compile Include="Helpers\ImageColorizer.cs" />
+    <Compile Include="Helpers\PlayerSetup.cs" />
+    <Compile Include="Helpers\TileSetup.cs" />
     <Compile Include="Reversi.cs">
       <SubType>Form</SubType>
     </Compile>

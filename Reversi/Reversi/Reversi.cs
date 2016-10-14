@@ -37,11 +37,8 @@ namespace Reversi
             this.MessageBox.Visible = ((MessageEventArgs)e).DisplayMessage;
             if (this.MessageBox.Visible)
             {
-                ControlPaint.DrawBorder(this.MessageBox.CreateGraphics(), this.MessageBox.ClientRectangle,
-                Color.DarkRed, ButtonBorderStyle.Solid);
                 this.MessageBox.Text = ((MessageEventArgs)e).Message;
                 this.MessageBox.ForeColor = ((MessageEventArgs)e).IsError ? Color.DarkRed : Color.Black;
-                this.MessageBox.BackColor = System.Drawing.Color.Transparent;
             }
         }
 
