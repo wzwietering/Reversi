@@ -52,7 +52,7 @@ namespace Reversi
 
             // Calculate offset for the tiles (we want them nicely in the center
             int offSetX = (this.Width - Settings.TileSize * Settings.BoardWidth) / 2;
-            int offSetY = (this.Height - Settings.TileSize * Settings.BoardHeight) / 2 + (currentGame.players.Count * 30);
+            int offSetY = currentGame.players.Count * 30 + 30;
 
             Image blackMarble = Properties.Resources.BlackMarble;
             Image whiteMarble = Properties.Resources.TexturesCom_MarbleWhite0023_M;

@@ -13,7 +13,7 @@ namespace Reversi.Components
         private string playerName;
         private int points;
 
-        public Label PlayerLabel = new Label() { Size = new Size(200, 30) };
+        public Label PlayerLabel = new Label() { Size = new Size(200, 25), BackColor = Color.Transparent };
         public Color Color;
 
         public string PlayerName
