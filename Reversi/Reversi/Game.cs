@@ -114,7 +114,7 @@ namespace Reversi
                 {
                     tile.BackColor = Color.Gray;
                 }
-                else if(!tile.IsOccupied)
+                else
                 {
                     tile.BackColor = Color.AntiqueWhite;
                 }
