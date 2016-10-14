@@ -58,7 +58,7 @@ namespace Reversi
         /// <summary>
         /// Next player's turn. 
         /// </summary>
-        private void EndTurn()
+        public void EndTurn()
         {
             currentPlayer = players.Next(players.IndexOf(currentPlayer));
             currentPlayer.PlayerLabel.Text = '\u2022' + " " + currentPlayer.PlayerLabel.Text;
@@ -108,7 +108,6 @@ namespace Reversi
             if (validMoves == false && ShowHelp)
             {
                 ShowNoMovesClickMessage(true);
-                EndTurn();
             }
         }
 

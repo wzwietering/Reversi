@@ -41,6 +41,7 @@ namespace Reversi
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.currentGameContainer = new System.Windows.Forms.UserControl();
             this.MessageBox = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,7 +117,7 @@ namespace Reversi
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(344, 6);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(135, 17);
             this.checkBox1.TabIndex = 1;
@@ -144,12 +145,22 @@ namespace Reversi
             this.MessageBox.Location = new System.Drawing.Point(262, 37);
             this.MessageBox.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.MessageBox.Name = "MessageBox";
-            this.MessageBox.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.MessageBox.Padding = new System.Windows.Forms.Padding(3);
             this.MessageBox.Size = new System.Drawing.Size(148, 25);
             this.MessageBox.TabIndex = 3;
             this.MessageBox.Text = "This is not a valid move.";
             this.MessageBox.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.MessageBox.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(397, 79);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Pass";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.PassTurn);
             // 
             // Reversi
             // 
@@ -158,6 +169,7 @@ namespace Reversi
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(484, 461);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.MessageBox);
             this.Controls.Add(this.currentGameContainer);
             this.Controls.Add(this.checkBox1);
@@ -185,6 +197,7 @@ namespace Reversi
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.UserControl currentGameContainer;
         private Label MessageBox;
+        private Button button1;
     }
 }
 

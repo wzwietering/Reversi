@@ -48,7 +48,7 @@ namespace Reversi.Components
             }
         }
 
-        private void setPlayerLabel()
+        public void setPlayerLabel()
         {
             PlayerLabel.Text = playerName + ": " + points + " points";
         }

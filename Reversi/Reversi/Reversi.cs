@@ -105,5 +105,11 @@ namespace Reversi
             AboutForm ab = new AboutForm();
             ab.Show();
         }
+
+        private void PassTurn(object sender, EventArgs e)
+        {
+            currentGame.currentPlayer.setPlayerLabel();
+            currentGame.EndTurn();
+        }
     }
 }

@@ -39,7 +39,7 @@ namespace Reversi.Helpers
 
                     float l;
 
-                    //When choosing black, the luminosity becomes zero. This makes the stone a black disc, which looks terrible. The following code prevents this
+                    //When choosing black, the luminosity becomes zero. This makes the stone a black disc, which looks terrible. The following code prevents this.
                     if (currentC.GetBrightness() * color.GetBrightness() == 0)
                     {
                         l = (currentC.GetBrightness() + 0.15f) * (color.GetBrightness() + 0.15f) * 2.1f;
