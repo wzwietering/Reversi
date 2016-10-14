@@ -55,7 +55,7 @@ namespace Reversi
             int offSetY = (this.Height - Settings.TileSize * Settings.BoardHeight) / 2 + (currentGame.players.Count * 30);
 
             Image blackMarble = Properties.Resources.BlackMarble;
-            Image whiteMarble = Properties.Resources.WhiteMarble;
+            Image whiteMarble = Properties.Resources.TexturesCom_MarbleWhite0023_M;
 
             Point blackMarbleImageOffset = new Point(0, 0);
             Point whiteMarbleImageOffset = new Point(0, 0);
@@ -120,6 +120,12 @@ namespace Reversi
         {
             currentGame.ShowHelp = ((CheckBox)sender).Checked;
             currentGame.DoShowHelp();
+        }
+
+        private void aboutMenu(object sender, EventArgs e)
+        {
+            AboutBox1 ab = new AboutBox1();
+            ab.Show();
         }
     }
 }

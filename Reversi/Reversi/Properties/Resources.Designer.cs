@@ -93,6 +93,16 @@ namespace Reversi.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap TexturesCom_MarbleWhite0023_M {
+            get {
+                object obj = ResourceManager.GetObject("TexturesCom_MarbleWhite0023_M", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap WhiteMarble {
             get {
                 object obj = ResourceManager.GetObject("WhiteMarble", resourceCulture);
