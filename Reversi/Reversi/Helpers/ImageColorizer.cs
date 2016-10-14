@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Reversi.Helpers
@@ -25,7 +22,7 @@ namespace Reversi.Helpers
             int bitmapH = bmd.Height;
             int bitmapW = bmd.Width;
             byte* address = (byte*)bmd.Scan0;
-
+            
             Parallel.For(0, bitmapH, y =>
             {
                 Parallel.For(0, bitmapW, x =>
@@ -38,26 +35,19 @@ namespace Reversi.Helpers
                     float r, g, b;
 
                     //This part calculates the right rgb values
-                    if(s == 0)
+                    float d, e;
+                    if (l < 0.5f)
                     {
-                        r = g = b = l;
+                        d = l * (1f + s);
                     }
                     else
                     {
-                        float d, e;
-                        if(l < 0.5f)
-                        {
-                            d = l * (1f + s);
-                        }
-                        else
-                        {
-                            d = l + s - l * s;
-                        }
-                        e = 2 * l - d;
-                        r = HueToRGB(e, d, (h + 1f / 3f));
-                        g = HueToRGB(e, d, h);
-                        b = HueToRGB(e, d, (h - 1f / 3f));
+                        d = l + s - l * s;
                     }
+                    e = 2 * l - d;
+                    r = HueToRGB(e, d, (h + 1f / 3f));
+                    g = HueToRGB(e, d, h);
+                    b = HueToRGB(e, d, (h - 1f / 3f));
 
                     data[x] = (byte)Math.Round(b * 255);
                     data[x + 1] = (byte)Math.Round(g * 255);

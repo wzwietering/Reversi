@@ -48,7 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\CircularList.cs" />
-    <Compile Include="Components\MoveHandler.cs" />
+    <Compile Include="Components\Stone.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Helpers\MoveHandler.cs" />
     <Compile Include="Helpers\ImageColorizer.cs" />
     <Compile Include="Reversi.cs">
       <SubType>Form</SubType>
@@ -100,7 +103,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\BlackMarble.jpg" />
+    <None Include="Resources\GreenMarble.jpg" />
     <None Include="Resources\reversiStoneLQ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhiteMarble.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

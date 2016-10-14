@@ -11,25 +11,26 @@ namespace Reversi.Components
 
         public Player Occupier { get; private set; }
 
-        Image stone = Properties.Resources.reversiStoneLQ;
+        private Stone reversiStone { get; set; }
 
         public Tile()
         {
-            this.BorderStyle = BorderStyle.FixedSingle;
-            this.BackColor = Color.AntiqueWhite;
             this.Size = new Size(Settings.TileSize, Settings.TileSize);
         }
 
         public void Occupy(Player player)
         {
-            this.BackgroundImageLayout = ImageLayout.Center;
+            if (!IsOccupied)
+            { 
+                reversiStone = new Stone();
+                this.Controls.Add(reversiStone);
+            }
+
             ImageColorizer ic = new ImageColorizer();
-            this.BackgroundImage = ic.ColorImage(stone, player.color);
+            reversiStone.BackgroundImage = ic.ColorImage(Properties.Resources.reversiStoneLQ, player.color);
 
             this.IsOccupied = true;
             Occupier = player;
-
-            //this.BackColor = player.color;
         }
 
         public bool IsOccupiedBy(Player player)
