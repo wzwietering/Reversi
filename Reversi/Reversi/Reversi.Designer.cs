@@ -52,8 +52,8 @@ namespace Reversi
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 0, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(645, 26);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 0, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(484, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -64,28 +64,28 @@ namespace Reversi
             this.settingsToolStripMenuItem,
             this.exitGame});
             this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
-            this.gameToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
+            this.gameToolStripMenuItem.Size = new System.Drawing.Size(50, 22);
             this.gameToolStripMenuItem.Text = "Game";
             // 
             // newGame
             // 
             this.newGame.Name = "newGame";
             this.newGame.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newGame.Size = new System.Drawing.Size(167, 26);
+            this.newGame.Size = new System.Drawing.Size(141, 22);
             this.newGame.Text = "New";
             this.newGame.Click += new System.EventHandler(this.NewGame);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsMenu);
             // 
             // exitGame
             // 
             this.exitGame.Name = "exitGame";
-            this.exitGame.Size = new System.Drawing.Size(167, 26);
+            this.exitGame.Size = new System.Drawing.Size(141, 22);
             this.exitGame.Text = "Exit";
             this.exitGame.Click += new System.EventHandler(this.ExitGame);
             // 
@@ -95,32 +95,32 @@ namespace Reversi
             this.help,
             this.about});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // help
             // 
             this.help.Name = "help";
             this.help.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
-            this.help.Size = new System.Drawing.Size(169, 26);
+            this.help.Size = new System.Drawing.Size(142, 22);
             this.help.Text = "Help";
             // 
             // about
             // 
             this.about.Name = "about";
-            this.about.Size = new System.Drawing.Size(169, 26);
+            this.about.Size = new System.Drawing.Size(142, 22);
             this.about.Text = "About";
             this.about.Click += new System.EventHandler(this.aboutMenu);
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(458, 7);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkBox1.Location = new System.Drawing.Point(344, 6);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(175, 21);
+            this.checkBox1.Size = new System.Drawing.Size(135, 17);
             this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "display possible moves";
+            this.checkBox1.Text = "Display possible moves";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -129,10 +129,9 @@ namespace Reversi
             this.currentGameContainer.AutoSize = true;
             this.currentGameContainer.BackgroundImage = global::Reversi.Properties.Resources.WhiteMarble;
             this.currentGameContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.currentGameContainer.Location = new System.Drawing.Point(0, 26);
-            this.currentGameContainer.Margin = new System.Windows.Forms.Padding(4);
+            this.currentGameContainer.Location = new System.Drawing.Point(0, 24);
             this.currentGameContainer.Name = "currentGameContainer";
-            this.currentGameContainer.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
+            this.currentGameContainer.Padding = new System.Windows.Forms.Padding(0, 0, 0, 16);
             this.currentGameContainer.Size = this.Size;
             this.currentGameContainer.TabIndex = 0;
             // 
@@ -142,10 +141,11 @@ namespace Reversi
             this.MessageBox.BackColor = System.Drawing.Color.Transparent;
             this.MessageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MessageBox.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MessageBox.Location = new System.Drawing.Point(349, 46);
+            this.MessageBox.Location = new System.Drawing.Point(262, 37);
+            this.MessageBox.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.MessageBox.Name = "MessageBox";
-            this.MessageBox.Padding = new System.Windows.Forms.Padding(4);
-            this.MessageBox.Size = new System.Drawing.Size(187, 31);
+            this.MessageBox.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.MessageBox.Size = new System.Drawing.Size(148, 25);
             this.MessageBox.TabIndex = 3;
             this.MessageBox.Text = "This is not a valid move.";
             this.MessageBox.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -154,16 +154,15 @@ namespace Reversi
             // Reversi
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(645, 567);
+            this.ClientSize = new System.Drawing.Size(484, 461);
             this.Controls.Add(this.MessageBox);
             this.Controls.Add(this.currentGameContainer);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Reversi";
             this.Text = "Reversi";
             this.menuStrip1.ResumeLayout(false);

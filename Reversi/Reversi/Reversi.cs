@@ -102,7 +102,7 @@ namespace Reversi
 
         private void aboutMenu(object sender, EventArgs e)
         {
-            AboutBox1 ab = new AboutBox1();
+            AboutForm ab = new AboutForm();
             ab.Show();
         }
     }

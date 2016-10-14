@@ -42,27 +42,24 @@ namespace Reversi
             // widthLabel
             // 
             this.widthLabel.AutoSize = true;
-            this.widthLabel.Location = new System.Drawing.Point(16, 27);
-            this.widthLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.widthLabel.Location = new System.Drawing.Point(12, 22);
             this.widthLabel.Name = "widthLabel";
-            this.widthLabel.Size = new System.Drawing.Size(44, 17);
+            this.widthLabel.Size = new System.Drawing.Size(35, 13);
             this.widthLabel.TabIndex = 0;
             this.widthLabel.Text = "Width";
             // 
             // heightLabel
             // 
             this.heightLabel.AutoSize = true;
-            this.heightLabel.Location = new System.Drawing.Point(16, 59);
-            this.heightLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.heightLabel.Location = new System.Drawing.Point(12, 48);
             this.heightLabel.Name = "heightLabel";
-            this.heightLabel.Size = new System.Drawing.Size(49, 17);
+            this.heightLabel.Size = new System.Drawing.Size(38, 13);
             this.heightLabel.TabIndex = 1;
             this.heightLabel.Text = "Height";
             // 
             // widthNUD
             // 
-            this.widthNUD.Location = new System.Drawing.Point(163, 27);
-            this.widthNUD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.widthNUD.Location = new System.Drawing.Point(122, 22);
             this.widthNUD.Maximum = new decimal(new int[] {
             10,
             0,
@@ -74,7 +71,7 @@ namespace Reversi
             0,
             0});
             this.widthNUD.Name = "widthNUD";
-            this.widthNUD.Size = new System.Drawing.Size(100, 22);
+            this.widthNUD.Size = new System.Drawing.Size(75, 20);
             this.widthNUD.TabIndex = 2;
             this.widthNUD.Value = new decimal(new int[] {
             10,
@@ -85,8 +82,7 @@ namespace Reversi
             // 
             // heightNUD
             // 
-            this.heightNUD.Location = new System.Drawing.Point(163, 57);
-            this.heightNUD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.heightNUD.Location = new System.Drawing.Point(122, 46);
             this.heightNUD.Maximum = new decimal(new int[] {
             10,
             0,
@@ -98,7 +94,7 @@ namespace Reversi
             0,
             0});
             this.heightNUD.Name = "heightNUD";
-            this.heightNUD.Size = new System.Drawing.Size(100, 22);
+            this.heightNUD.Size = new System.Drawing.Size(75, 20);
             this.heightNUD.TabIndex = 3;
             this.heightNUD.Value = new decimal(new int[] {
             10,
@@ -107,27 +103,27 @@ namespace Reversi
             0});
             this.heightNUD.ValueChanged += new System.EventHandler(this.SaveSettings);
             // 
-            // button1
+            // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(314, 201);
-            this.okButton.Name = "button1";
-            this.okButton.Size = new System.Drawing.Size(53, 26);
+            this.okButton.Location = new System.Drawing.Point(236, 163);
+            this.okButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(40, 21);
             this.okButton.TabIndex = 4;
-            this.okButton.Text = "ok";
+            this.okButton.Text = "Ok";
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // SettingsMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 239);
+            this.ClientSize = new System.Drawing.Size(284, 194);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.heightNUD);
             this.Controls.Add(this.widthNUD);
             this.Controls.Add(this.heightLabel);
             this.Controls.Add(this.widthLabel);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SettingsMenu";
             this.Text = "Settings";
             ((System.ComponentModel.ISupportInitialize)(this.widthNUD)).EndInit();

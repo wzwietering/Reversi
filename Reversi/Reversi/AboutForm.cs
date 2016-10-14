@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Reversi
 {
-    partial class AboutBox1 : Form
+    partial class AboutForm : Form
     {
-        public AboutBox1()
+        public AboutForm()
         {
             InitializeComponent();
             this.Text = String.Format("About {0}", AssemblyTitle);
