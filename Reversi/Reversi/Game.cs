@@ -3,7 +3,6 @@ using Reversi.Helpers;
 using System;
 using System.Drawing;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace Reversi
 {
@@ -37,15 +36,15 @@ namespace Reversi
             {
                 var player = new Player();
                 player.Points = 2;
-                player.playerName = "player " + i;
-                player.color = i == 1 ? Color.Blue : Color.Red;
-                player.playerLabel.ForeColor = player.color;
-                player.playerLabel.Location = new Point(20, 30 * i + 10);
+                player.PlayerName = "player " + i;
+                player.Color = i == 1 ? Color.Blue : Color.Red;
+                player.PlayerLabel.ForeColor = player.Color;
+                player.PlayerLabel.Location = new Point(20, 30 * i);
                 players.Add(player);
             }
 
             currentPlayer = players.First();
-            currentPlayer.playerLabel.Font = new Font(currentPlayer.playerLabel.Font, FontStyle.Bold);
+            currentPlayer.PlayerLabel.Font = new Font(currentPlayer.PlayerLabel.Font, FontStyle.Bold);
         }
 
         private void SetupTiles()
@@ -97,10 +96,10 @@ namespace Reversi
         /// </summary>
         private void EndTurn()
         {
-            currentPlayer.playerLabel.Font = new Font(currentPlayer.playerLabel.Font, FontStyle.Regular);
+            currentPlayer.PlayerLabel.Font = new Font(currentPlayer.PlayerLabel.Font, FontStyle.Regular);
 
             currentPlayer = players.Next(players.IndexOf(currentPlayer));
-            currentPlayer.playerLabel.Font = new Font(currentPlayer.playerLabel.Font, FontStyle.Bold);
+            currentPlayer.PlayerLabel.Font = new Font(currentPlayer.PlayerLabel.Font, FontStyle.Bold);
 
             // Since the board has changed, we need to recalculate the help for the player who's turn it is now.
             DoShowHelp();

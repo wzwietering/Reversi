@@ -12,7 +12,30 @@ namespace Reversi
         public Reversi()
         {
             InitializeComponent();
-            SetupGame();
+            StartGame();
+        }
+
+        /// <summary>
+        /// Starts a new game
+        /// </summary>
+        private void NewGame(object sender, EventArgs e)
+        {
+            StartGame();
+        }
+
+        /// <summary>
+        /// The user can exit the application using the menu
+        /// </summary>
+        private void ExitGame(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void StartGame()
+        {
+            this.currentCameContainer.Controls.Clear();
+            currentGame = new Game();
+            currentGame.Setup(); ;
             DrawBoard();
         }
 
@@ -24,7 +47,7 @@ namespace Reversi
             // Show the labels to display the points for each player
             foreach (var player in currentGame.players)
             {
-                this.Controls.Add(player.playerLabel);
+                this.currentCameContainer.Controls.Add(player.PlayerLabel);
             }
 
             // Calculate offset for the tiles (we want them nicely in the center
@@ -52,9 +75,9 @@ namespace Reversi
                     else
                     {
                         SetTileBackground(whiteMarble, tile, ref whiteMarbleImageOffset );
-                    }                   
+                    }
 
-                    this.Controls.Add(tile);
+                    this.currentCameContainer.Controls.Add(tile);
                 }
 
                 blackMarbleImageOffset.X += Settings.TileSize;
@@ -84,25 +107,6 @@ namespace Reversi
             }
         }
 
-        private void RedrawBoard(object sender, EventArgs e)
-        {
-            this.Invalidate();
-        }
-
-        public void SetupGame()
-        {
-            currentGame = new Game();
-            currentGame.Setup();
-        }
-
-        /// <summary>
-        /// The user can exit the application using the menu
-        /// </summary>
-        private void ExitGame(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         /// <summary>
         /// Shows a settings menu
         /// </summary>
@@ -110,14 +114,6 @@ namespace Reversi
         {
             var settingsGameMenu = new SettingsMenu(currentGame.players, currentGame.tiles);
             settingsGameMenu.Show();
-        }
-
-        /// <summary>
-        /// Starts a new game
-        /// </summary>
-        private void NewGame(object sender, EventArgs e)
-        {
-            SetupGame();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
