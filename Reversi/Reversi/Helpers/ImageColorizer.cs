@@ -18,7 +18,10 @@ namespace Reversi.Helpers
         /// <returns></returns>
         public unsafe Bitmap ColorImage(Image image, Color color)
         {
+            //The hue is given in a [0,360] range, it is converted to a [0,1] range
             float h = color.GetHue() / 360f;
+
+            //This part reserves memory for the image and creates some useful variables
             Bitmap bitmap = new Bitmap(image);
             BitmapData bmd = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
             int bytesPP = Image.GetPixelFormatSize(bitmap.PixelFormat) / 8;
@@ -30,8 +33,10 @@ namespace Reversi.Helpers
             {
                 Parallel.For(0, bitmapW, x =>
                 {
+                    //data is the pointer to the ARGB values of a pixel of the image
                     byte* data = address + y * bmd.Stride + x * 3;
 
+                    //The currentC variable holds the color of the image. The saturation is fixed. The luminosity is multiplied to look nicer.
                     Color currentC = Color.FromArgb(data[x + 3], data[x + 2], data[x + 1], data[x]);
                     float s = 1.0f;
                     float l = currentC.GetBrightness() * 1.2f;
@@ -44,6 +49,7 @@ namespace Reversi.Helpers
                     }
                     else
                     {
+                        //e is the chroma, d is a temporary value
                         float d, e;
                         if(l < 0.5f)
                         {
@@ -54,11 +60,14 @@ namespace Reversi.Helpers
                             d = l + s - l * s;
                         }
                         e = 2 * l - d;
+
+                        //The new RGB values are calculated here
                         r = HueToRGB(e, d, (h + 1f / 3f));
                         g = HueToRGB(e, d, h);
                         b = HueToRGB(e, d, (h - 1f / 3f));
                     }
 
+                    //The new RGB values are written to the memory here. The alpha doesn't change, so we don't need to modify the memory.
                     data[x] = (byte)Math.Round(b * 255);
                     data[x + 1] = (byte)Math.Round(g * 255);
                     data[x + 2] = (byte)Math.Round(r * 255);

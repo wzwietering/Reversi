@@ -28,8 +28,6 @@ namespace Reversi.Components
 
             this.IsOccupied = true;
             Occupier = player;
-
-            //this.BackColor = player.color;
         }
 
         public bool IsOccupiedBy(Player player)
