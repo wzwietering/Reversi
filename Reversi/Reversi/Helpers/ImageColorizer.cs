@@ -36,7 +36,7 @@ namespace Reversi.Helpers
                     //The currentC variable holds the color of the image. The luminosity of the texture is multiplied to look nicer.
                     Color currentC = Color.FromArgb(data[x + 3], data[x + 2], data[x + 1], data[x]);
                     float s = color.GetSaturation();
-                    float l = (2 * currentC.GetBrightness() + color.GetBrightness()) / 3f;
+                    float l = currentC.GetBrightness() * color.GetBrightness() * 2.1f;
                     float r, g, b;
 
                     //This part calculates the right rgb values
