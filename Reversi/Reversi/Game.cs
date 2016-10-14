@@ -1,4 +1,5 @@
 ﻿using Reversi.Components;
+using Reversi.Helpers;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -112,18 +113,18 @@ namespace Reversi
             {
                 if (!tile.IsOccupied && ShowHelp && moveHandler.HandleMove(tile, false))
                 {
-                    tile.BackColor = Color.Gray;
+                //    tile.BackColor = Color.Gray;
                 }
                 else
                 {
-                    tile.BackColor = Color.AntiqueWhite;
+                //    tile.BackColor = Color.AntiqueWhite;
                 }
             }
         }
 
         private void ShowInvalidClickMessage()
         {
-            MessageBox.Show("This move is not valid!");
+          //  MessageBox.Show("This move is not valid!");
         }
     }
 }

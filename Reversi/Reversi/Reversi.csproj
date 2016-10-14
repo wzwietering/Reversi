@@ -54,7 +54,10 @@
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\CircularList.cs" />
-    <Compile Include="Components\MoveHandler.cs" />
+    <Compile Include="Components\Stone.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Helpers\MoveHandler.cs" />
     <Compile Include="Helpers\ImageColorizer.cs" />
     <Compile Include="Reversi.cs">
       <SubType>Form</SubType>
@@ -109,22 +112,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\BlackMarble.jpg" />
+    <None Include="Resources\GreenMarble.jpg" />
     <None Include="Resources\reversiStoneLQ.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\TexturesCom_MarbleGreen0001_1_seamless_S.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\TexturesCom_MarbleWhite0023_M.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\TexturesCom_MarbleWhite0063_1_M.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\TexturesCom_MarbleWhite0064_1_M.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\reversiStone.png" />
+    <None Include="Resources\WhiteMarble.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

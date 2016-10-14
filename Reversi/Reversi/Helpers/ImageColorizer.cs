@@ -25,7 +25,7 @@ namespace Reversi.Helpers
             int bitmapH = bmd.Height;
             int bitmapW = bmd.Width;
             byte* address = (byte*)bmd.Scan0;
-
+            
             Parallel.For(0, bitmapH, y =>
             {
                 Parallel.For(0, bitmapW, x =>
@@ -40,29 +40,19 @@ namespace Reversi.Helpers
                     float r, g, b;
 
                     //This part calculates the right rgb values
-                    if(s == 0)
+                    float d, e;
+                    if (l < 0.5f)
                     {
-                        r = g = b = l;
+                        d = l * (1f + s);
                     }
                     else
                     {
-                        //e is the chroma, d is a temporary value
-                        float d, e;
-                        if(l < 0.5f)
-                        {
-                            d = l * (1f + s);
-                        }
-                        else
-                        {
-                            d = l + s - l * s;
-                        }
-                        e = 2 * l - d;
-
-                        //The new RGB values are calculated here
-                        r = HueToRGB(e, d, (h + 1f / 3f));
-                        g = HueToRGB(e, d, h);
-                        b = HueToRGB(e, d, (h - 1f / 3f));
+                        d = l + s - l * s;
                     }
+                    e = 2 * l - d;
+                    r = HueToRGB(e, d, (h + 1f / 3f));
+                    g = HueToRGB(e, d, h);
+                    b = HueToRGB(e, d, (h - 1f / 3f));
 
                     //The new RGB values are written to the memory here. The alpha doesn't change, so we don't need to modify the memory.
                     data[x] = (byte)Math.Round(b * 255);

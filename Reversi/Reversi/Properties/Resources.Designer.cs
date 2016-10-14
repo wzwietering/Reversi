@@ -63,9 +63,39 @@ namespace Reversi.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BlackMarble {
+            get {
+                object obj = ResourceManager.GetObject("BlackMarble", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GreenMarble {
+            get {
+                object obj = ResourceManager.GetObject("GreenMarble", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap reversiStoneLQ {
             get {
                 object obj = ResourceManager.GetObject("reversiStoneLQ", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhiteMarble {
+            get {
+                object obj = ResourceManager.GetObject("WhiteMarble", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

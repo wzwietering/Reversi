@@ -31,6 +31,12 @@ namespace Reversi
             int offSetX = (this.Width - Settings.TileSize * Settings.BoardWidth) / 2;
             int offSetY = (this.Height - Settings.TileSize * Settings.BoardHeight) / 2 + (currentGame.players.Count * 30);
 
+            Image blackMarble = Properties.Resources.BlackMarble;
+            Image whiteMarble = Properties.Resources.WhiteMarble;
+
+            Point blackMarbleImageOffset = new Point(0, 0);
+            Point whiteMarbleImageOffset = new Point(0, 0);
+
             // Now draw all the tiles!
             for (int x = 0; x < currentGame.tiles.GetLength(0); x++)
             {
@@ -39,8 +45,42 @@ namespace Reversi
                     var tile = currentGame.tiles[x, y];
                     tile.Location = new Point(x * Settings.TileSize + offSetX, y * Settings.TileSize + offSetY);
 
+                    if((x % 2 == 0 && y % 2 == 0) || (x % 2 == 1 && y % 2 == 1))
+                    {
+                        SetTileBackground(blackMarble, tile, ref blackMarbleImageOffset );
+                    }
+                    else
+                    {
+                        SetTileBackground(whiteMarble, tile, ref whiteMarbleImageOffset );
+                    }                   
+
                     this.Controls.Add(tile);
                 }
+
+                blackMarbleImageOffset.X += Settings.TileSize;
+                if (blackMarbleImageOffset.X + Settings.TileSize > blackMarble.Width)
+                {
+                    blackMarbleImageOffset.X = 0;
+                }
+
+                whiteMarbleImageOffset.X += Settings.TileSize;
+                if (whiteMarbleImageOffset.X + Settings.TileSize > whiteMarble.Width)
+                {
+                    whiteMarbleImageOffset.X = 0;
+                }
+            }
+        }
+
+        private void SetTileBackground(Image texture, Tile tile, ref Point imageOffset )
+        {
+            Rectangle srcRect = new Rectangle(imageOffset.X, imageOffset.Y, Settings.TileSize, Settings.TileSize);
+            Bitmap cropped = ((Bitmap)texture).Clone(srcRect, texture.PixelFormat);
+            tile.BackgroundImage = cropped;
+
+            imageOffset.Y += Settings.TileSize;
+            if (imageOffset.Y + Settings.TileSize > texture.Height)
+            {
+                imageOffset.Y = 0;
             }
         }
 

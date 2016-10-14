@@ -1,9 +1,8 @@
 ﻿using Reversi.Components;
 using System.Collections.Generic;
 using System.Drawing;
-using System;
 
-namespace Reversi.Components
+namespace Reversi.Helpers
 {
     public class MoveHandler
     {
