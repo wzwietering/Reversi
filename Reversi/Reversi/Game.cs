@@ -124,7 +124,7 @@ namespace Reversi
 
         private void ShowInvalidClickMessage()
         {
-            MessageBox.Show("This move is not valid!");
+          //  MessageBox.Show("This move is not valid!");
         }
     }
 }

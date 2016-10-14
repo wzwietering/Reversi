@@ -29,9 +29,7 @@ namespace Reversi.Components
                 reversiStone = new Stone();
                 this.Controls.Add(reversiStone);
             }
-
-            ImageColorizer ic = new ImageColorizer();
-            reversiStone.BackgroundImage = ic.ColorImage(Properties.Resources.reversiStoneLQ, player.color);
+            
             UpdateStone(player);
 
             this.IsOccupied = true;
@@ -49,9 +47,8 @@ namespace Reversi.Components
         /// <param name="player"></param>
         public void UpdateStone(Player player)
         {
-            this.BackgroundImageLayout = ImageLayout.Center;
             ImageColorizer ic = new ImageColorizer();
-            this.BackgroundImage = ic.ColorImage(Properties.Resources.reversiStoneLQ, player.color);
+            reversiStone.BackgroundImage = ic.ColorImage(Properties.Resources.reversiStoneLQ, player.color);
         }
     }
 }

@@ -48,5 +48,10 @@ namespace Reversi
                 players[name].playerLabel.ForeColor = colorDialog.Color;
             }
         }
+
+        private void okButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
