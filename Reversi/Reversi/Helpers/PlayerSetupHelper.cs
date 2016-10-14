@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Reversi.Helpers
 {
-    public static class PlayerSetup
+    public static class PlayerSetupHelper
     {
         public static void SetupPlayers(Game game)
         {

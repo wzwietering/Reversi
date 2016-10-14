@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Reversi.Helpers
 {
-    public static class TileSetup
+    public static class TileSetupHelper
     {
         public static void SetupTiles(Game game)
         {

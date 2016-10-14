@@ -29,8 +29,8 @@ namespace Reversi
         /// </summary>
         internal void Setup()
         {
-            PlayerSetup.SetupPlayers(this);
-            TileSetup.SetupTiles(this);
+            PlayerSetupHelper.SetupPlayers(this);
+            TileSetupHelper.SetupTiles(this);
         }
 
         /// <summary>
