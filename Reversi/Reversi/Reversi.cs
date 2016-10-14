@@ -31,16 +31,37 @@ namespace Reversi
             this.Close();
         }
 
+
+        private void ShowMessage(object sender, EventArgs e)
+        {
+            this.MessageBox.Visible = ((MessageEventArgs)e).DisplayMessage;
+            if (this.MessageBox.Visible)
+            {
+                ControlPaint.DrawBorder(this.MessageBox.CreateGraphics(), this.MessageBox.ClientRectangle,
+                Color.DarkRed, ButtonBorderStyle.Solid);
+                this.MessageBox.Text = ((MessageEventArgs)e).Message;
+                this.MessageBox.ForeColor = ((MessageEventArgs)e).IsError ? Color.DarkRed : Color.Black;
+                this.MessageBox.BackColor = System.Drawing.Color.Transparent;
+            }
+        }
+
         private void StartGame()
         {
+            // First set visible to false, otherwise you see all controls slowly dissapearing
+            this.currentGameContainer.Visible = false;
             this.currentGameContainer.Controls.Clear();
+
             currentGame = new Game();
-            currentGame.Setup(); ;
+            currentGame.Setup();
             DrawBoard();
+
+            this.currentGameContainer.Visible = true;
+
+            currentGame.ShowMessage += ShowMessage;
         }
 
         /// <summary>
-        /// Draw all the components for a game of reversi.
+        /// Draw the board for a game of reversi.
         /// </summary>
         private void DrawBoard()
         {
@@ -54,12 +75,6 @@ namespace Reversi
             int offSetX = (this.Width - Settings.TileSize * Settings.BoardWidth) / 2;
             int offSetY = currentGame.players.Count * 30 + 30;
 
-            Image blackMarble = Properties.Resources.BlackMarble;
-            Image whiteMarble = Properties.Resources.TexturesCom_MarbleWhite0023_M;
-
-            Point blackMarbleImageOffset = new Point(0, 0);
-            Point whiteMarbleImageOffset = new Point(0, 0);
-
             // Now draw all the tiles!
             for (int x = 0; x < currentGame.tiles.GetLength(0); x++)
             {
@@ -68,42 +83,8 @@ namespace Reversi
                     var tile = currentGame.tiles[x, y];
                     tile.Location = new Point(x * Settings.TileSize + offSetX, y * Settings.TileSize + offSetY);
 
-                    if((x % 2 == 0 && y % 2 == 0) || (x % 2 == 1 && y % 2 == 1))
-                    {
-                        SetTileBackground(blackMarble, tile, ref blackMarbleImageOffset );
-                    }
-                    else
-                    {
-                        SetTileBackground(whiteMarble, tile, ref whiteMarbleImageOffset );
-                    }
-
                     this.currentGameContainer.Controls.Add(tile);
                 }
-
-                blackMarbleImageOffset.X += Settings.TileSize;
-                if (blackMarbleImageOffset.X + Settings.TileSize > blackMarble.Width)
-                {
-                    blackMarbleImageOffset.X = 0;
-                }
-
-                whiteMarbleImageOffset.X += Settings.TileSize;
-                if (whiteMarbleImageOffset.X + Settings.TileSize > whiteMarble.Width)
-                {
-                    whiteMarbleImageOffset.X = 0;
-                }
-            }
-        }
-
-        private void SetTileBackground(Image texture, Tile tile, ref Point imageOffset )
-        {
-            Rectangle srcRect = new Rectangle(imageOffset.X, imageOffset.Y, Settings.TileSize, Settings.TileSize);
-            Bitmap cropped = ((Bitmap)texture).Clone(srcRect, texture.PixelFormat);
-            tile.BackgroundImage = tile.originalBackground = cropped;
-
-            imageOffset.Y += Settings.TileSize;
-            if (imageOffset.Y + Settings.TileSize > texture.Height)
-            {
-                imageOffset.Y = 0;
             }
         }
 
@@ -119,7 +100,7 @@ namespace Reversi
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             currentGame.ShowHelp = ((CheckBox)sender).Checked;
-            currentGame.DoShowHelp();
+            currentGame.DisplayHelp();
         }
 
         private void aboutMenu(object sender, EventArgs e)
