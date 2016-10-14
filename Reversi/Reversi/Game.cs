@@ -9,7 +9,7 @@ namespace Reversi
 {
     class Game
     {
-        internal Tile[,] tiles;
+        public Tile[,] tiles;
 
         public CircularList<Player> players { get; set; }
 

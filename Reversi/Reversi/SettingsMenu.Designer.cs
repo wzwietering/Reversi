@@ -77,7 +77,7 @@ namespace Reversi
             0,
             0,
             0});
-            this.widthNUD.ValueChanged += new System.EventHandler(this.saveSettings);
+            this.widthNUD.ValueChanged += new System.EventHandler(this.SaveSettings);
             // 
             // heightNUD
             // 
@@ -100,7 +100,7 @@ namespace Reversi
             0,
             0,
             0});
-            this.heightNUD.ValueChanged += new System.EventHandler(this.saveSettings);
+            this.heightNUD.ValueChanged += new System.EventHandler(this.SaveSettings);
             // 
             // SettingsMenu
             // 
@@ -133,7 +133,7 @@ namespace Reversi
                 colorChoice.Text = "Choose";
                 colorChoice.Location = new System.Drawing.Point(122, i * 24 + 79);
                 colorChoice.Name = i.ToString();
-                colorChoice.Click += new System.EventHandler(chooseColor);
+                colorChoice.Click += new System.EventHandler(ChooseColor);
 
                 this.Controls.Add(playerName);
                 this.Controls.Add(colorChoice);

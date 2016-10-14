@@ -108,7 +108,7 @@ namespace Reversi
         /// </summary>
         private void SettingsMenu(object sender, EventArgs e)
         {
-            var settingsGameMenu = new SettingsMenu(currentGame.players);
+            var settingsGameMenu = new SettingsMenu(currentGame.players, currentGame.tiles);
             settingsGameMenu.Show();
         }
 

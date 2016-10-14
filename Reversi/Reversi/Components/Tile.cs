@@ -18,6 +18,10 @@ namespace Reversi.Components
             this.Size = new Size(Settings.TileSize, Settings.TileSize);
         }
 
+        /// <summary>
+        /// Occupies the stone and draws the texture
+        /// </summary>
+        /// <param name="player"></param>
         public void Occupy(Player player)
         {
             if (!IsOccupied)
@@ -28,6 +32,7 @@ namespace Reversi.Components
 
             ImageColorizer ic = new ImageColorizer();
             reversiStone.BackgroundImage = ic.ColorImage(Properties.Resources.reversiStoneLQ, player.color);
+            UpdateStone(player);
 
             this.IsOccupied = true;
             Occupier = player;
@@ -36,6 +41,17 @@ namespace Reversi.Components
         public bool IsOccupiedBy(Player player)
         {
             return Occupier == player;
+        }
+
+        /// <summary>
+        /// Updates the stone of the tile
+        /// </summary>
+        /// <param name="player"></param>
+        public void UpdateStone(Player player)
+        {
+            this.BackgroundImageLayout = ImageLayout.Center;
+            ImageColorizer ic = new ImageColorizer();
+            this.BackgroundImage = ic.ColorImage(stone, player.color);
         }
     }
 }
