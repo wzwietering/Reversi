@@ -195,7 +195,7 @@ namespace Reversi
 
         private void ShowNoMovesClickMessage(bool displayMessage)
         {
-            ShowMessage(this, new MessageEventArgs() { Message = "No valid moves", DisplayMessage = displayMessage, IsError = false });
+            ShowMessage(this, new MessageEventArgs() { Message = "No valid moves for " + currentPlayer.PlayerName, DisplayMessage = displayMessage, IsError = false });
         }
     }
 }
