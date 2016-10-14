@@ -33,7 +33,7 @@ namespace Reversi.Helpers
                     //data is the pointer to the ARGB values of a pixel of the image
                     byte* data = address + y * bmd.Stride + x * 3;
 
-                    //The currentC variable holds the color of the image. The saturation is fixed. The luminosity is multiplied to look nicer.
+                    //The currentC variable holds the color of the image. The luminosity of the texture is multiplied to look nicer.
                     Color currentC = Color.FromArgb(data[x + 3], data[x + 2], data[x + 1], data[x]);
                     float s = color.GetSaturation();
                     float l = (2 * currentC.GetBrightness() + color.GetBrightness()) / 3f;
