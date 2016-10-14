@@ -63,6 +63,27 @@ namespace Reversi
             currentPlayer = players.Next(players.IndexOf(currentPlayer));
             currentPlayer.PlayerLabel.Text = '\u2022' + " " + currentPlayer.PlayerLabel.Text;
 
+            bool gameEnd = true;
+            foreach(Tile tile in tiles)
+            {
+                if(tile.IsOccupied == false)
+                {
+                    gameEnd = false;
+                }
+            }
+
+            if (gameEnd)
+            {
+                if(players.First().Points > currentPlayer.Points)
+                {
+                    System.Windows.Forms.MessageBox.Show(players.First().PlayerName + " wins!!!");
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show(currentPlayer.PlayerName + " wins!!!");
+                }
+            }
+
             // Since the board has changed, we need to recalculate the help for the player who's turn it is now.
             DisplayHelp();
         }
