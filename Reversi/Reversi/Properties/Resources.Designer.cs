@@ -69,45 +69,5 @@ namespace Reversi.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap TexturesCom_MarbleGreen0001_1_seamless_S {
-            get {
-                object obj = ResourceManager.GetObject("TexturesCom_MarbleGreen0001_1_seamless_S", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap TexturesCom_MarbleWhite0023_M {
-            get {
-                object obj = ResourceManager.GetObject("TexturesCom_MarbleWhite0023_M", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap TexturesCom_MarbleWhite0063_1_M {
-            get {
-                object obj = ResourceManager.GetObject("TexturesCom_MarbleWhite0063_1_M", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap TexturesCom_MarbleWhite0064_1_M {
-            get {
-                object obj = ResourceManager.GetObject("TexturesCom_MarbleWhite0064_1_M", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

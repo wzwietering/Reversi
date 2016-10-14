@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Reversi.Helpers
@@ -73,6 +70,7 @@ namespace Reversi.Helpers
                     data[x + 2] = (byte)Math.Round(r * 255);
                 });
             });
+            //Makes the memory available
             bitmap.UnlockBits(bmd);
             return bitmap;
         }

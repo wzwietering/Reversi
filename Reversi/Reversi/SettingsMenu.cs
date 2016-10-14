@@ -8,10 +8,12 @@ namespace Reversi
     public partial class SettingsMenu : Form
     {
         public List<Player> players;
+        public Tile[,] tiles;
 
-        public SettingsMenu(List<Player> list)
+        public SettingsMenu(List<Player> list, Tile[,] array)
         {
             players = list;
+            tiles = array;
             ColorOptions();
             InitializeComponent();
         }
@@ -30,6 +32,16 @@ namespace Reversi
             if(result == DialogResult.OK)
             {
                 players[name].color = colorDialog.Color;
+                for(int i = 0; i < tiles.GetLength(0); i++)
+                {
+                    for(int j = 0; j < tiles.GetLength(1); j++)
+                    {
+                        if(tiles[i, j].IsOccupied == true)
+                        {
+                            tiles[i, j].UpdateStone(tiles[i,j].Occupier);
+                        }
+                    }
+                }
             }
         }
     }
