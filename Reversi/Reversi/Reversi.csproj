@@ -102,6 +102,21 @@
   <ItemGroup>
     <None Include="Resources\reversiStoneLQ.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TexturesCom_MarbleGreen0001_1_seamless_S.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TexturesCom_MarbleWhite0023_M.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TexturesCom_MarbleWhite0063_1_M.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TexturesCom_MarbleWhite0064_1_M.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reversiStone.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
