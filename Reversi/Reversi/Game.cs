@@ -167,10 +167,12 @@ namespace Reversi
         public void DisplayHelp()
         {
             var moveHandler = new MoveHandler(this.tiles, this.currentPlayer);
+            bool validMoves = false;
             foreach (var tile in this.tiles)
-            {
+            {                
                 if (!tile.IsOccupied && ShowHelp && moveHandler.HandleMove(tile, false))
                 {
+                    validMoves = true;
                     tile.ToggleHelp(true);
                 }
                 else
@@ -178,11 +180,22 @@ namespace Reversi
                     tile.ToggleHelp(false);
                 }
             }
+
+            if (validMoves == false && ShowHelp)
+            {
+                ShowNoMovesClickMessage(true);
+                EndTurn();
+            }
         }
 
         private void ShowInvalidClickMessage(bool displayMessage)
         {
             ShowMessage(this, new MessageEventArgs() { Message = "This is not a valid move.", DisplayMessage = displayMessage, IsError = true });
+        }
+
+        private void ShowNoMovesClickMessage(bool displayMessage)
+        {
+            ShowMessage(this, new MessageEventArgs() { Message = "No valid moves", DisplayMessage = displayMessage, IsError = false });
         }
     }
 }
