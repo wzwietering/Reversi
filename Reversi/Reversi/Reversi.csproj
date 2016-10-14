@@ -114,7 +114,6 @@
   <ItemGroup>
     <None Include="Resources\BlackMarble.jpg" />
     <None Include="Resources\GreenMarble.jpg" />
-    <None Include="Resources\reversiStoneLQ.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\WhiteMarble.jpg" />
@@ -124,6 +123,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\TexturesCom_MarbleWhite0023_M.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reversiStoneLQ.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

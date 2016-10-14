@@ -36,7 +36,7 @@ namespace Reversi.Helpers
                     //The currentC variable holds the color of the image. The saturation is fixed. The luminosity is multiplied to look nicer.
                     Color currentC = Color.FromArgb(data[x + 3], data[x + 2], data[x + 1], data[x]);
                     float s = 1.0f;
-                    float l = currentC.GetBrightness() * 1.2f;
+                    float l = currentC.GetBrightness() * 1.1f;
                     float r, g, b;
 
                     //This part calculates the right rgb values
