@@ -45,6 +45,7 @@ namespace Reversi
                         }
                     }
                 }
+                players[name].playerLabel.ForeColor = colorDialog.Color;
             }
         }
     }
