@@ -112,11 +112,15 @@ namespace Reversi
             {
                 if (!tile.IsOccupied && ShowHelp && moveHandler.HandleMove(tile, false))
                 {
-                //    tile.BackColor = Color.Gray;
+                    Rectangle srcRect = new Rectangle(300, 300, Settings.TileSize, Settings.TileSize);
+                    Bitmap cropped = ((Bitmap)Properties.Resources.GreenMarble).Clone(srcRect, Properties.Resources.GreenMarble.PixelFormat);
+                    tile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                    tile.BackgroundImage = cropped;
                 }
                 else
                 {
-                //    tile.BackColor = Color.AntiqueWhite;
+                    tile.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                    tile.BackgroundImage = tile.originalBackground;
                 }
             }
         }

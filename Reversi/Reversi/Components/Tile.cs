@@ -13,6 +13,8 @@ namespace Reversi.Components
 
         private Stone reversiStone { get; set; }
 
+        public Bitmap originalBackground { get; set; }
+
         public Tile()
         {
             this.Size = new Size(Settings.TileSize, Settings.TileSize);

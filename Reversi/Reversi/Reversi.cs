@@ -98,7 +98,7 @@ namespace Reversi
         {
             Rectangle srcRect = new Rectangle(imageOffset.X, imageOffset.Y, Settings.TileSize, Settings.TileSize);
             Bitmap cropped = ((Bitmap)texture).Clone(srcRect, texture.PixelFormat);
-            tile.BackgroundImage = cropped;
+            tile.BackgroundImage = tile.originalBackground = cropped;
 
             imageOffset.Y += Settings.TileSize;
             if (imageOffset.Y + Settings.TileSize > texture.Height)
