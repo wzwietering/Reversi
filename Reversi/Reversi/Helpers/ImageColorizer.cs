@@ -36,14 +36,25 @@ namespace Reversi.Helpers
                     //The currentC variable holds the color of the image. The luminosity of the texture is multiplied to look nicer.
                     Color currentC = Color.FromArgb(data[x + 3], data[x + 2], data[x + 1], data[x]);
                     float s = color.GetSaturation();
-                    float l = currentC.GetBrightness() * color.GetBrightness() * 2.1f;
-                    float r, g, b;
+
+                    float l;
+
+                    //When choosing black, the luminosity becomes zero. This makes the stone a black disc, which looks terrible. The following code prevents this
+                    if (currentC.GetBrightness() * color.GetBrightness() == 0)
+                    {
+                        l = (currentC.GetBrightness() + 0.15f) * (color.GetBrightness() + 0.15f) * 2.1f;
+                    }
+                    else
+                    {
+                        l = currentC.GetBrightness() * color.GetBrightness() * 2.1f;
+                    }
 
                     //Due to the multiplications it is possible that l becomes greater than 1
                     if (l > 1.0f) l = 1.0f;
 
                     //This part calculates the right rgb values, d and e are temporary values.
-                    float d, e;
+                    float r, g, b, d, e;
+                    
                     if (l < 0.5f)
                     {
                         d = l * (1f + s);
