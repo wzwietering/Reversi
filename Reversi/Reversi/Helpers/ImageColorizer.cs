@@ -11,7 +11,7 @@ namespace Reversi.Helpers
         /// Changes the color of the image
         /// </summary>
         /// <param name="image">The image to color</param>
-        /// <param name="h">The desired hue</param>
+        /// <param name="color">The desired color</param>
         /// <returns></returns>
         public unsafe Bitmap ColorImage(Image image, Color color)
         {
@@ -39,7 +39,10 @@ namespace Reversi.Helpers
                     float l = currentC.GetBrightness() * color.GetBrightness() * 2.1f;
                     float r, g, b;
 
-                    //This part calculates the right rgb values
+                    //Due to the multiplications it is possible that l becomes greater than 1
+                    if (l > 1.0f) l = 1.0f;
+
+                    //This part calculates the right rgb values, d and e are temporary values.
                     float d, e;
                     if (l < 0.5f)
                     {
@@ -54,7 +57,7 @@ namespace Reversi.Helpers
                     g = HueToRGB(e, d, h);
                     b = HueToRGB(e, d, (h - 1f / 3f));
 
-                    //The new RGB values are written to the memory here. The alpha doesn't change, so we don't need to modify the memory.
+                    //The new RGB values are written to the memory here. The alpha doesn't change, so we don't need to modify that value.
                     data[x] = (byte)Math.Round(b * 255);
                     data[x + 1] = (byte)Math.Round(g * 255);
                     data[x + 2] = (byte)Math.Round(r * 255);

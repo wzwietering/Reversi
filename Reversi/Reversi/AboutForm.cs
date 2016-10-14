@@ -104,5 +104,10 @@ namespace Reversi
         {
             System.Diagnostics.Process.Start("https://github.com/wzwietering/Reversi");
         }
+
+        private void AboutOk(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
