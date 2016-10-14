@@ -85,5 +85,11 @@ namespace Reversi
             currentGame.ShowHelp = ((CheckBox)sender).Checked;
             currentGame.DoShowHelp();
         }
+
+        private void aboutMenu(object sender, EventArgs e)
+        {
+            AboutBox1 ab = new AboutBox1();
+            ab.Show();
+        }
     }
 }
