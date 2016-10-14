@@ -18,13 +18,16 @@ namespace Reversi
             InitializeComponent();
         }
 
-        private void saveSettings(object sender, EventArgs e)
+        private void SaveSettings(object sender, EventArgs e)
         {
             Settings.BoardWidth = (int)widthNUD.Value;
             Settings.BoardHeight = (int)heightNUD.Value;
         }
 
-        private void chooseColor(object sender, EventArgs e)
+        /// <summary>
+        /// Show dialog to choose color, update color of tiles when changed
+        /// </summary>
+        private void ChooseColor(object sender, EventArgs e)
         {
             ColorDialog colorDialog = new ColorDialog();
             DialogResult result = colorDialog.ShowDialog();
