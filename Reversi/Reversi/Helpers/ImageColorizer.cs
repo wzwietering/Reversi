@@ -13,6 +13,7 @@ namespace Reversi.Helpers
         /// <param name="image">The image to color</param>
         /// <param name="color">The desired color</param>
         /// <returns></returns>
+        //The RGB to HSL conversion is based on this code: https://gist.github.com/mjackson/5311256. We thank the author for his work.
         public unsafe Bitmap ColorImage(Image image, Color color)
         {
             //The hue is given in a [0,360] range, it is converted to a [0,1] range
