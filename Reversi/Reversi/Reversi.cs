@@ -36,12 +36,12 @@ namespace Reversi
         {
             if (((MessageEventArgs)e).DisplayMessage)
             {
-                this.MessageBox.Text = ((MessageEventArgs)e).Message;
-                this.MessageBox.ForeColor = ((MessageEventArgs)e).IsError ? Color.DarkRed : Color.Black;
-                this.MessageBox.Location = new Point(this.Width / 2 - MessageBox.Width / 2, 90 );
-                this.MessageBox.Visible = true;
+                this.AlertMessage.Text = ((MessageEventArgs)e).Message;
+                this.AlertMessage.ForeColor = ((MessageEventArgs)e).IsError ? Color.DarkRed : Color.Black;
+                this.AlertMessage.Location = new Point(this.Width / 2 - AlertMessage.Width / 2, 90 );
+                this.AlertMessage.Visible = true;
             }
-            else { this.MessageBox.Visible = false; }
+            else { this.AlertMessage.Visible = false; }
         }
 
         private void StartGame()
@@ -112,6 +112,17 @@ namespace Reversi
         {
             currentGame.currentPlayer.setPlayerLabel();
             currentGame.EndTurn();
+        }
+
+        private void help_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(@"Use your mouse to place colored stones on the board. 
+You may place a disk anywhere on the board, as long as it surrounds a group of your opponent's disks on opposite sides. 
+You can surround disks horizontally, vertically, or diagonally. 
+After you place your disk, any disks that you surrounded will flip over to your color. 
+
+If you need help, you can check the 'show possible moves' box to see which moves are available to you.
+Try to end the game with as many disks of your color as possible!");
         }
     }
 }
