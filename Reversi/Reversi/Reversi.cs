@@ -34,12 +34,14 @@ namespace Reversi
 
         private void ShowMessage(object sender, EventArgs e)
         {
-            this.MessageBox.Visible = ((MessageEventArgs)e).DisplayMessage;
-            if (this.MessageBox.Visible)
+            if (((MessageEventArgs)e).DisplayMessage)
             {
                 this.MessageBox.Text = ((MessageEventArgs)e).Message;
                 this.MessageBox.ForeColor = ((MessageEventArgs)e).IsError ? Color.DarkRed : Color.Black;
+                this.MessageBox.Location = new Point(this.Width / 2 - MessageBox.Width / 2, 90 );
+                this.MessageBox.Visible = true;
             }
+            else { this.MessageBox.Visible = false; }
         }
 
         private void StartGame()
@@ -97,7 +99,7 @@ namespace Reversi
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             currentGame.ShowHelp = ((CheckBox)sender).Checked;
-            currentGame.DisplayHelp();
+            currentGame.DisplayHelp(true);
         }
 
         private void aboutMenu(object sender, EventArgs e)

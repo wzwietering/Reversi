@@ -1,5 +1,4 @@
 ﻿using Reversi.Helpers;
-using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -7,6 +6,8 @@ namespace Reversi.Components
 {
     public class Tile : UserControl
     {
+        private int PaintEventSubscribers;
+
         public bool IsOccupied { get; private set; }
 
         public Player Occupier { get; private set; }
@@ -60,13 +61,19 @@ namespace Reversi.Components
             if (showHelp)
             {
                 this.Paint += DrawBorder;
+                PaintEventSubscribers++;
+                this.BorderStyle = BorderStyle.FixedSingle;
                 Rectangle srcRect = new Rectangle(0, 0, Settings.TileSize, Settings.TileSize);
                 Bitmap cropped = ((Bitmap)Properties.Resources.GreenMarble).Clone(srcRect, Properties.Resources.GreenMarble.PixelFormat);
                 this.BackgroundImage = cropped;
             }
             else
             {
-                this.Paint -= DrawBorder;
+                for (int i = 0; i < PaintEventSubscribers; i++)
+                {
+                    this.Paint -= DrawBorder;
+                }
+
                 this.BorderStyle = System.Windows.Forms.BorderStyle.None;
                 this.BackgroundImage = this.originalBackground;
                 Invalidate();
@@ -75,7 +82,7 @@ namespace Reversi.Components
 
         private void DrawBorder(object sender, PaintEventArgs e)
         {
-            ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, 
+            ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle,
                 Color.MediumSeaGreen, 2, ButtonBorderStyle.Solid,
                 Color.MediumSeaGreen, 2, ButtonBorderStyle.Solid,
                 Color.MediumSeaGreen, 2, ButtonBorderStyle.Solid,

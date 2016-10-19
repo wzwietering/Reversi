@@ -14,7 +14,7 @@ namespace Reversi
         {
             players = list;
             tiles = array;
-            ColorOptions();
+            PlayerOptions();
             InitializeComponent();
         }
 
@@ -41,6 +41,13 @@ namespace Reversi
                 }
                 players[name].PlayerLabel.ForeColor = colorDialog.Color;
             }
+        }
+
+
+        private void ChangePlayerName(object sender, EventArgs e)
+        {
+            int index = Int32.Parse(((TextBox)sender).Name);
+            players[index].PlayerName = ((TextBox)sender).Text;
         }
 
         private void okButton_Click(object sender, EventArgs e)

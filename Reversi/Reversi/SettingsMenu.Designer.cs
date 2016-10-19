@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace Reversi
 {
@@ -108,7 +109,7 @@ namespace Reversi
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(315, 241);
+            this.okButton.Location = new System.Drawing.Point(315, 198);
             this.okButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(53, 26);
@@ -130,7 +131,7 @@ namespace Reversi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 288);
+            this.ClientSize = new System.Drawing.Size(379, 233);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.heightNUD);
             this.Controls.Add(this.widthNUD);
@@ -148,18 +149,19 @@ namespace Reversi
 
         }
 
-        private void ColorOptions()
+        private void PlayerOptions()
         {
             for(int i = 0; i < players.Count; i++)
             {
-                Label playerName = new Label();
-                playerName.Text = "Player " + (i + 1) + " color";
-                playerName.Location = new System.Drawing.Point(12, i * 24 + 100);
-                playerName.Name = "player" + i + "Label";
+                TextBox playerName = new TextBox();
+                playerName.Text = players[i].PlayerName;
+                playerName.Location = new System.Drawing.Point(12, i * 30 + 100);
+                playerName.Name = i.ToString();
+                playerName.TextChanged += new System.EventHandler(ChangePlayerName);
 
                 Button colorChoice = new Button();
-                colorChoice.Text = "Choose";
-                colorChoice.Location = new System.Drawing.Point(122, i * 24 + 95);
+                colorChoice.Text = "Choose color";
+                colorChoice.Location = new System.Drawing.Point(122, i * 30 + 100);
                 colorChoice.Name = i.ToString();
                 colorChoice.Click += new System.EventHandler(ChooseColor);
 
@@ -167,6 +169,7 @@ namespace Reversi
                 this.Controls.Add(colorChoice);
             }
         }
+
 
         #endregion
 

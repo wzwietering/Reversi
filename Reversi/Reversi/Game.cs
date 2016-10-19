@@ -60,8 +60,9 @@ namespace Reversi
         {
             if (!GameHasEnded())
             {
+                currentPlayer.PlayerLabel.BackColor = System.Drawing.Color.Gainsboro;
                 currentPlayer = players.Next(players.IndexOf(currentPlayer));
-                currentPlayer.PlayerLabel.Text = '\u2022' + " " + currentPlayer.PlayerLabel.Text;
+                currentPlayer.PlayerLabel.BackColor = System.Drawing.Color.White;
 
                 // Since the board has changed, we need to recalculate the help for the player who's turn it is now.
                 DisplayHelp();
@@ -132,26 +133,29 @@ namespace Reversi
         /// <summary>
         /// Show which moves can be made.
         /// </summary>
-        public void DisplayHelp()
+        public void DisplayHelp(bool checkBoxChanged = false)
         {
-            var moveHandler = new MoveHandler(this.tiles, this.currentPlayer);
-            bool validMoves = false;
-            foreach (var tile in this.tiles)
-            {                
-                if (!tile.IsOccupied && ShowHelp && moveHandler.HandleMove(tile, false))
-                {
-                    validMoves = true;
-                    tile.ToggleHelp(true);
-                }
-                else
-                {
-                    tile.ToggleHelp(false);
-                }
-            }
-
-            if (validMoves == false && ShowHelp)
+            if (checkBoxChanged || ShowHelp)
             {
-                ShowNoMovesClickMessage(true);
+                var moveHandler = new MoveHandler(this.tiles, this.currentPlayer);
+                bool validMoves = false;
+                foreach (var tile in this.tiles)
+                {
+                    if (!tile.IsOccupied && ShowHelp && moveHandler.HandleMove(tile, false))
+                    {
+                        validMoves = true;
+                        tile.ToggleHelp(true);
+                    }
+                    else
+                    {
+                        tile.ToggleHelp(false);
+                    }
+                }
+
+                if (validMoves == false && ShowHelp)
+                {
+                    ShowNoMovesClickMessage(true);
+                }
             }
         }
 
