@@ -122,7 +122,7 @@ namespace Reversi
             this.hint.Name = "hint";
             this.hint.Size = new System.Drawing.Size(100, 28);
             this.hint.TabIndex = 1;
-            this.hint.Text = "hint";
+            this.hint.Text = "Hint";
             this.hint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.hint.UseVisualStyleBackColor = true;
             this.hint.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);

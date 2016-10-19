@@ -38,7 +38,7 @@ namespace Reversi
             {
                 this.AlertMessage.Text = ((MessageEventArgs)e).Message;
                 this.AlertMessage.ForeColor = ((MessageEventArgs)e).IsError ? Color.DarkRed : Color.Black;
-                this.AlertMessage.Location = new Point(this.Width / 2 - AlertMessage.Width / 2, 90 );
+                this.AlertMessage.Location = new Point(this.Width / 2 - AlertMessage.Width / 2, 80 );
                 this.AlertMessage.Visible = true;
             }
             else { this.AlertMessage.Visible = false; }
@@ -121,7 +121,7 @@ You may place a disk anywhere on the board, as long as it surrounds a group of y
 You can surround disks horizontally, vertically, or diagonally. 
 After you place your disk, any disks that you surrounded will flip over to your color. 
 
-If you need help, you can check the 'show possible moves' box to see which moves are available to you.
+If you need help, you can click the 'hint' button to see which moves are available to you.
 Try to end the game with as many disks of your color as possible!");
         }
     }
