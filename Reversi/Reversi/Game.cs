@@ -36,8 +36,6 @@ namespace Reversi
         /// <summary>
         /// A user clicked a tile. 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         public void HandleTileClick(object sender, EventArgs e)
         {
             var moveHandler = new MoveHandler(this.tiles, this.currentPlayer);
