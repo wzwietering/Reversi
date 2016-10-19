@@ -18,12 +18,6 @@ namespace Reversi
             InitializeComponent();
         }
 
-        private void SaveSettings(object sender, EventArgs e)
-        {
-            Settings.BoardWidth = (int)widthNUD.Value;
-            Settings.BoardHeight = (int)heightNUD.Value;
-        }
-
         /// <summary>
         /// Show dialog to choose color, update color of tiles when changed
         /// </summary>
@@ -51,6 +45,13 @@ namespace Reversi
 
         private void okButton_Click(object sender, EventArgs e)
         {
+            if (Settings.BoardHeight != (int)heightNUD.Value || Settings.BoardWidth != (int)widthNUD.Value)
+            {
+                Settings.BoardWidth = (int)widthNUD.Value;
+                Settings.BoardHeight = (int)heightNUD.Value;
+                MessageBox.Show("Changes to the board size will be applied when starting a new game.");
+            }
+
             this.Close();
         }
     }

@@ -60,7 +60,7 @@ namespace Reversi.Components
             if (showHelp)
             {
                 this.Paint += DrawBorder;
-                Rectangle srcRect = new Rectangle(300, 300, Settings.TileSize, Settings.TileSize);
+                Rectangle srcRect = new Rectangle(0, 0, Settings.TileSize, Settings.TileSize);
                 Bitmap cropped = ((Bitmap)Properties.Resources.GreenMarble).Clone(srcRect, Properties.Resources.GreenMarble.PixelFormat);
                 this.BackgroundImage = cropped;
             }
@@ -69,6 +69,7 @@ namespace Reversi.Components
                 this.Paint -= DrawBorder;
                 this.BorderStyle = System.Windows.Forms.BorderStyle.None;
                 this.BackgroundImage = this.originalBackground;
+                Invalidate();
             }
         }
 
