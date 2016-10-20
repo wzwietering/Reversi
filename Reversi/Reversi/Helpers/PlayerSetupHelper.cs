@@ -15,7 +15,7 @@ namespace Reversi.Helpers
             int humansAdded = 0;
             for (int i = 1; i <= Settings.NumberOfPlayers; i++)
             {
-                if(game.humanPlayers > humansAdded)
+                if(game.humanPlayers > humansAdded && game.humanPlayers != 0)
                 {
                     var player = new Player();
                     player.PlayerName = "Player " + i;

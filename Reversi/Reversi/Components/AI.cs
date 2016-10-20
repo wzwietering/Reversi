@@ -89,14 +89,14 @@ namespace Reversi.Components
             //This code checks the occupation of corners and edges
             if (nodeX == 0 || nodeX == width)
             {
-                if (nodeY == 0 || nodeY == height) return 2;
+                if (nodeY == 0 || nodeY == height) return 4;
                 else if (nodeY == 1 || nodeY == height - 1) return -2;
-                else return 1;
+                else return 2;
             }
             else if (nodeX == 1 || nodeX == width - 1)
             {
                 if (nodeY == 0 || nodeY == height) return -2;
-                else return 1;
+                else return 2;
             }
             else return 0;
         }
