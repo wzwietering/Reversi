@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="Helpers\MoveHandler.cs" />
     <Compile Include="Helpers\ImageColorizer.cs" />
+    <Compile Include="Helpers\Node.cs" />
     <Compile Include="Helpers\PlayerSetupHelper.cs" />
     <Compile Include="Helpers\TileSetupHelper.cs" />
     <Compile Include="Reversi.cs">

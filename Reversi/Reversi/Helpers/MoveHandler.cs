@@ -6,7 +6,7 @@ namespace Reversi.Helpers
 {
     public class MoveHandler
     {
-        private readonly Tile[,] tiles;
+        public readonly Tile[,] tiles;
         private readonly Player currentPlayer;
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Reversi.Helpers
         /// </summary>
         /// <param name="tile"></param>
         /// <returns></returns>
-        private List<Tile> GetTilesToFlip(Tile tile)
+        public List<Tile> GetTilesToFlip(Tile tile)
         {
             // Check to see if we can use IndexOf() to eliminate public coordinates in the tile
             // (and have them set to private only for use in the draw() method)
