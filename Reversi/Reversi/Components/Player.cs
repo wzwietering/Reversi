@@ -16,8 +16,9 @@ namespace Reversi.Components
 
         public Label PlayerLabel = new Label()
         {
-            Size = new Size(200, 25),
-            BackColor = Color.Transparent
+            Size = new Size(140, 25),
+            BackColor = Color.Gainsboro,
+            BorderStyle = BorderStyle.FixedSingle
         };
 
         public Color Color;

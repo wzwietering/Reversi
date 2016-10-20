@@ -1,7 +1,7 @@
 ﻿using Reversi.Components;
 using Reversi.Helpers;
 using System;
-using System.Drawing;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Reversi
@@ -58,54 +58,104 @@ namespace Reversi
         /// </summary>
         public void EndTurn()
         {
-            currentPlayer = players.Next(players.IndexOf(currentPlayer));
-            currentPlayer.PlayerLabel.Text = '\u2022' + " " + currentPlayer.PlayerLabel.Text;
-
-            bool gameEnd = true;
-            foreach(Tile tile in tiles)
+            if (!GameHasEnded())
             {
-                if(tile.IsOccupied == false)
-                {
-                    gameEnd = false;
-                }
-            }
+                currentPlayer.PlayerLabel.BackColor = System.Drawing.Color.Gainsboro;
+                currentPlayer = players.Next(players.IndexOf(currentPlayer));
+                currentPlayer.PlayerLabel.BackColor = System.Drawing.Color.White;
 
-            if (gameEnd)
-            {
-                if(players.First().Points > currentPlayer.Points)
-                {
-                    System.Windows.Forms.MessageBox.Show(players.First().PlayerName + " wins!!!");
-                }
-                else
-                {
-                    System.Windows.Forms.MessageBox.Show(currentPlayer.PlayerName + " wins!!!");
-                }
+                // Since the board has changed, we need to recalculate the help for the player who's turn it is now.
+                DisplayHelp();
             }
-
-            // Since the board has changed, we need to recalculate the help for the player who's turn it is now.
-            DisplayHelp();
         }
 
-        public void DisplayHelp()
+        /// <summary>
+        /// Check if the game has ended.
+        /// </summary>
+        /// <returns>True if the game has ended.</returns>
+        private bool GameHasEnded()
         {
-            var moveHandler = new MoveHandler(this.tiles, this.currentPlayer);
-            bool validMoves = false;
-            foreach (var tile in this.tiles)
-            {                
-                if (!tile.IsOccupied && ShowHelp && moveHandler.HandleMove(tile, false))
+            bool gameEnd = false;
+            // If a player has 0 points that means he has 0 tiles, and cannot do a move anymore.
+            if (players.Any(x => x.Points == 0))
+            {
+                gameEnd = true;
+            }
+            else
+            {
+                // If every tile is occupied, the game has also finished.
+                foreach (Tile tile in tiles)
                 {
-                    validMoves = true;
-                    tile.ToggleHelp(true);
-                }
-                else
-                {
-                    tile.ToggleHelp(false);
+                    if (tile.IsOccupied == false)
+                    {
+                        gameEnd = false;
+                    }
                 }
             }
-
-            if (validMoves == false && ShowHelp)
+            if (gameEnd)
             {
-                ShowNoMovesClickMessage(true);
+                // Hypothetically this could end in a draw so we need a list of winners.
+                List<Player> winningPlayers = new List<Player>();
+                foreach(var player in players)
+                {
+                    if(winningPlayers.Count == 0 || player.Points > winningPlayers.First().Points)
+                    {
+                        winningPlayers.Clear();
+                        winningPlayers.Add(player);
+                    }
+                    else if(winningPlayers.Count == 0 || player.Points == winningPlayers.First().Points)
+                    {
+                        winningPlayers.Add(player);
+                    }
+                }
+                // We have one winner
+                if (winningPlayers.Count == 1)
+                {
+                    System.Windows.Forms.MessageBox.Show(winningPlayers.First().PlayerName + " wins!");
+                }
+                // It's a draw!
+                else
+                {
+                    var message = "Its a draw between";
+                    var and = "";
+                    foreach (var player in winningPlayers)
+                    {
+                        message += and + " " + player.PlayerName ;
+                        and = " and";
+                    }
+                    message += "!";
+                    System.Windows.Forms.MessageBox.Show(message);
+                }
+            }
+            return gameEnd;
+        }
+
+        /// <summary>
+        /// Show which moves can be made.
+        /// </summary>
+        public void DisplayHelp(bool checkBoxChanged = false)
+        {
+            if (checkBoxChanged || ShowHelp)
+            {
+                var moveHandler = new MoveHandler(this.tiles, this.currentPlayer);
+                bool validMoves = false;
+                foreach (var tile in this.tiles)
+                {
+                    if (!tile.IsOccupied && ShowHelp && moveHandler.HandleMove(tile, false))
+                    {
+                        validMoves = true;
+                        tile.ToggleHelp(true);
+                    }
+                    else
+                    {
+                        tile.ToggleHelp(false);
+                    }
+                }
+
+                if (validMoves == false && ShowHelp)
+                {
+                    ShowNoMovesClickMessage(true);
+                }
             }
         }
 

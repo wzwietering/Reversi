@@ -14,14 +14,8 @@ namespace Reversi
         {
             players = list;
             tiles = array;
-            ColorOptions();
+            PlayerOptions();
             InitializeComponent();
-        }
-
-        private void SaveSettings(object sender, EventArgs e)
-        {
-            Settings.BoardWidth = (int)widthNUD.Value;
-            Settings.BoardHeight = (int)heightNUD.Value;
         }
 
         /// <summary>
@@ -49,8 +43,22 @@ namespace Reversi
             }
         }
 
+
+        private void ChangePlayerName(object sender, EventArgs e)
+        {
+            int index = Int32.Parse(((TextBox)sender).Name);
+            players[index].PlayerName = ((TextBox)sender).Text;
+        }
+
         private void okButton_Click(object sender, EventArgs e)
         {
+            if (Settings.BoardHeight != (int)heightNUD.Value || Settings.BoardWidth != (int)widthNUD.Value)
+            {
+                Settings.BoardWidth = (int)widthNUD.Value;
+                Settings.BoardHeight = (int)heightNUD.Value;
+                MessageBox.Show("Changes to the board size will be applied when starting a new game.");
+            }
+
             this.Close();
         }
     }
