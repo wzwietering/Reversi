@@ -53,5 +53,10 @@ namespace Reversi.Components
         {
             PlayerLabel.Text = playerName + ": " + points + " points";
         }
+
+        public virtual void DoMove(Tile[,] tiles, CircularList<Player> players, Player currentPlayer, Game game)
+        {
+            //Only used in the AI, humans use a mouse to move, so this is empty
+        }
     }
 }

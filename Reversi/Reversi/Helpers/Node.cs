@@ -14,7 +14,7 @@ namespace Reversi.Helpers
     class Node
     {
         public Node parent;
-        List<Node> children;
+        List<Node> children = new List<Node>();
         public Tile[,] tiles;
         public int score = 0;
         public Point position;

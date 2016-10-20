@@ -18,6 +18,8 @@ namespace Reversi
 
         public event EventHandler ShowMessage;
 
+        public int humanPlayers = 1;
+
         public Game()
         {
             tiles = new Tile[Settings.BoardWidth, Settings.BoardHeight];
@@ -63,6 +65,7 @@ namespace Reversi
                 currentPlayer.PlayerLabel.BackColor = System.Drawing.Color.Gainsboro;
                 currentPlayer = players.Next(players.IndexOf(currentPlayer));
                 currentPlayer.PlayerLabel.BackColor = System.Drawing.Color.White;
+                if (currentPlayer.GetType() == typeof(AI)) currentPlayer.DoMove(tiles, players, currentPlayer, this);
 
                 // Since the board has changed, we need to recalculate the help for the player who's turn it is now.
                 DisplayHelp();

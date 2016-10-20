@@ -16,7 +16,7 @@ namespace Reversi.Components
         /// <param name="tiles">Using tiles</param>
         /// <param name="players">A list of players</param>
         /// <param name="currentPlayer">And the current player</param>
-        public void DoMove(Tile[,] tiles, CircularList<Player> players, Player currentPlayer, Game game)
+        public override void DoMove(Tile[,] tiles, CircularList<Player> players, Player currentPlayer, Game game)
         {
             //Mainnode is the node which contains the gamestate before the AI starts.
             MoveHandler mh = new MoveHandler(tiles, this);
@@ -42,20 +42,15 @@ namespace Reversi.Components
 
                         //When the child is created, the scores are calculated.
                         Node baby = mainNode.GetLastChild();
-                        baby.score += GetWeight(baby);
 
                         //Over here you can find a simulation of the future
-                        tilesCopy[i,j].Occupy(currentPlayer);
                         MoveHandler mh2 = new MoveHandler(tilesCopy, currentPlayer);
-                        List<Tile> flippables = mh.GetTilesToFlip(tilesCopy[i, j]);
+                        List<Tile> flippables = mh2.GetTilesToFlip(tilesCopy[i, j]);
                         baby.score += flippables.Count;
 
-                        foreach(Tile tile in flippables)
-                        {
-                            mh2.HandleMove(tilesCopy[i, j]);
-                        }
                         //The baby gets the simulated game state to play with.
                         baby.tiles = mh2.tiles;
+                        baby.score += GetWeight(baby);
                     }
                 }
             }
@@ -68,8 +63,15 @@ namespace Reversi.Components
                 if (n.score > highest.score) highest = n;
             }
 
-            mh.HandleMove(highest.tiles[highest.position.X, highest.position.Y]);
-            game.EndTurn();
+            if(highest.score == -999)
+            {
+                game.EndTurn();
+            }
+            else
+            {
+                mh.HandleMove(highest.tiles[highest.position.X, highest.position.Y]);
+                game.EndTurn();
+            }
         }
 
         /// <summary>
