@@ -1,15 +1,12 @@
 ﻿using Reversi.Helpers;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Reversi.Components
 {
     class AI : Player
     {
+
         /// <summary>
         /// Calculates the best move
         /// </summary>
@@ -57,13 +54,30 @@ namespace Reversi.Components
 
             //Determine which move is the best, and execute it.
             Node highest = new Node();
-            highest.score = -999;
-            foreach(Node n in mainNode.GetChildren())
-            {
-                if (n.score > highest.score) highest = n;
-            }
+            int currentScore = currentPlayer.Points;
+            int boardsize = tiles.Length;
 
-            if(highest.score == -999)
+            //Using a different strategy at the beginning of the game gives better results later on
+            if(currentScore < boardsize / 12)
+            {
+                highest.score = 999;
+                foreach(Node n in mainNode.GetChildren())
+                {
+                    if (n.score < highest.score) highest = n;
+                }
+            }
+            else
+            {
+                highest.score = -999;
+                foreach (Node n in mainNode.GetChildren())
+                {
+                    if (n.score > highest.score) highest = n;
+                }
+            }
+            
+
+            //No move possible means pass
+            if(mainNode.GetChildren().Count == 0)
             {
                 game.EndTurn();
             }
@@ -85,18 +99,21 @@ namespace Reversi.Components
             int height = node.tiles.GetLength(1);
             int nodeX = node.position.X;
             int nodeY = node.position.Y;
+            int weight = 3;
+            int antiweight = -3;
 
             //This code checks the occupation of corners and edges
             if (nodeX == 0 || nodeX == width)
             {
-                if (nodeY == 0 || nodeY == height) return 4;
-                else if (nodeY == 1 || nodeY == height - 1) return -2;
-                else return 2;
+                if (nodeY == 0 || nodeY == height) return (weight * 3);
+                else if (nodeY == 1 || nodeY == height - 1) return (weight * antiweight);
+                else return weight;
             }
             else if (nodeX == 1 || nodeX == width - 1)
             {
-                if (nodeY == 0 || nodeY == height) return -2;
-                else return 2;
+                if (nodeY == 0 || nodeY == height) return (weight * antiweight);
+                else if (nodeY == 1 || nodeY == height - 1) return (weight * antiweight);
+                else return weight;
             }
             else return 0;
         }
