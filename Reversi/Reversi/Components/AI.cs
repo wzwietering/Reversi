@@ -63,6 +63,7 @@ namespace Reversi.Components
                 if (n.score > highest.score) highest = n;
             }
 
+            //If there is no move possible, the AI will pass.
             if(highest.score == -999)
             {
                 game.EndTurn();
@@ -85,18 +86,21 @@ namespace Reversi.Components
             int height = node.tiles.GetLength(1);
             int nodeX = node.position.X;
             int nodeY = node.position.Y;
+            int weight = 3;
+            int antiweight = -3;
 
             //This code checks the occupation of corners and edges
             if (nodeX == 0 || nodeX == width)
             {
-                if (nodeY == 0 || nodeY == height) return 4;
-                else if (nodeY == 1 || nodeY == height - 1) return -2;
-                else return 2;
+                if (nodeY == 0 || nodeY == height) return weight * 3;
+                else if (nodeY == 1 || nodeY == height - 1) return weight * antiweight;
+                else return weight;
             }
             else if (nodeX == 1 || nodeX == width - 1)
             {
-                if (nodeY == 0 || nodeY == height) return -2;
-                else return 2;
+                if (nodeY == 0 || nodeY == height) return weight * antiweight;
+                else if (nodeY == 1 || nodeY == height - 1) return weight * antiweight;
+                else return weight;
             }
             else return 0;
         }
