@@ -19,20 +19,24 @@ namespace Reversi.Components
             Node mainNode = new Node();
             Player currentPlayer = this;
             mainNode.tiles = tiles;
-            int turnsToSimulate = 5;
+            int turnsToSimulate = 3;
 
             //Create the initial set of children, of which one will be the move.
             MakeChildren(mainNode, currentPlayer);
 
             //Create children for the children
             Node currentNode = mainNode.GetChildren()[0];
-            currentPlayer = players[Array.IndexOf(players, currentPlayer) == 0 ? 1 : 0];
-            for (int a = 0; a < currentNode.parent.GetChildren().Count; a++)
+
+            for (int a = 0; a < turnsToSimulate; a++)
             {
-                currentNode = currentNode.parent.GetChildren()[a];
-                MakeChildren(currentNode, currentPlayer);
+                currentPlayer = players[Array.IndexOf(players, currentPlayer) == 0 ? 1 : 0];
+                for (int b = 0; b < currentNode.parent.GetChildren().Count; b++)
+                {
+                    currentNode = currentNode.parent.GetChildren()[b];
+                    MakeChildren(currentNode, currentPlayer);
+                }
+                currentNode = currentNode.GetChildren()[0];
             }
-            
 
             //Determine which move is the best, and execute it.
             Node best = new Node();
