@@ -72,7 +72,6 @@ namespace Reversi
 
             // Calculate offset for the tiles (we want them nicely in the center
             int offSetX = (this.Width - Settings.TileSize * Settings.BoardWidth) / 2;
-            int offSetY = currentGame.players.Count * 30 + 30;
 
             // Now draw all the tiles!
             for (int x = 0; x < currentGame.tiles.GetLength(0); x++)
@@ -80,7 +79,7 @@ namespace Reversi
                 for (int y = 0; y < currentGame.tiles.GetLength(1); y++)
                 {
                     var tile = currentGame.tiles[x, y];
-                    tile.Location = new Point(x * Settings.TileSize + offSetX, y * Settings.TileSize + offSetY);
+                    tile.Location = new Point(x * Settings.TileSize + offSetX, y * Settings.TileSize + 90);
 
                     this.currentGameContainer.Controls.Add(tile);
                 }

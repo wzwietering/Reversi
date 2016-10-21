@@ -151,7 +151,7 @@ namespace Reversi
 
         private void PlayerOptions()
         {
-            for(int i = 0; i < players.Count; i++)
+            for(int i = 0; i < players.Length; i++)
             {
                 TextBox playerName = new TextBox();
                 playerName.Text = players[i].PlayerName;

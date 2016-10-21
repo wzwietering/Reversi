@@ -1,6 +1,7 @@
 ﻿using Reversi.Components;
 using System.Drawing;
 using System.Linq;
+using System;
 
 namespace Reversi.Helpers
 {
@@ -12,27 +13,42 @@ namespace Reversi.Helpers
         /// <param name="game">The game to add the player to</param>
         public static void SetupPlayers(Game game)
         {
-            int humansAdded = 0;
-            for (int i = 1; i <= Settings.NumberOfPlayers; i++)
+            switch (game.mode)
             {
-                if(game.humanPlayers > humansAdded && game.humanPlayers != 0)
-                {
-                    var player = new Player();
-                    player.PlayerName = "Player " + i;
-                    Initialize(player, game, i);
-                    humansAdded++;
-                }
-                else
-                {
-                    var player = new AI();
-                    player.PlayerName = "AI Player " + i;
-                    Initialize(player, game, i);
-                }
+                case GameMode.PlayervPlayer:
+                    AddHumanPlayer(game, 0);
+                    AddHumanPlayer(game, 1);
+                    break;
+                case GameMode.PlayervAI:
+                    AddHumanPlayer(game, 0);
+                    AddAIPlayer(game, 1);
+                    break;
+                case GameMode.AIvAI:
+                    AddAIPlayer(game, 0);
+                    AddAIPlayer(game, 1);
+                    break;
+                default:
+                    break;
             }
 
             game.currentPlayer = game.players.First();
             game.currentPlayer.PlayerLabel.BackColor = Color.White;
         }
+
+        private static void AddAIPlayer(Game game, int i)
+        {
+            var player = new AI();
+            player.PlayerName = "Player " + i;
+            Initialize(player, game, i);
+        }
+
+        private static void AddHumanPlayer(Game game, int i)
+        {
+            var player = new Player();
+            player.PlayerName = "Player " + i;
+            Initialize(player, game, i);
+        }
+
 
         /// <summary>
         /// Initialzes the settings
@@ -43,10 +59,10 @@ namespace Reversi.Helpers
         public static void Initialize(Player player, Game game, int i)
         {
             player.Points = 2;
-            player.Color = i == 1 ? Color.Blue : Color.Red;
+            player.Color = i == 0 ? Color.Blue : Color.Red;
             player.PlayerLabel.ForeColor = player.Color;
-            player.PlayerLabel.Location = new Point(50 + 160 * (i - 1), 20);
-            game.players.Add(player);
+            player.PlayerLabel.Location = new Point(50 + 160 * i, 20);
+            game.players[i] = (player);
         }
     }
 }

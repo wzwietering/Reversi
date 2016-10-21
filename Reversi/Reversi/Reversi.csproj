@@ -54,11 +54,11 @@
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\AI.cs" />
-    <Compile Include="Components\CircularList.cs" />
     <Compile Include="Components\MessageEventArgs.cs" />
     <Compile Include="Components\Stone.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="GameMode.cs" />
     <Compile Include="Helpers\MoveHandler.cs" />
     <Compile Include="Helpers\ImageColorizer.cs" />
     <Compile Include="Helpers\Node.cs" />
