@@ -93,8 +93,8 @@ namespace Reversi.Components
         /// <returns></returns>
         private int GetWeight(Node node)
         {
-            int width = node.tiles.GetLength(0);
-            int height = node.tiles.GetLength(1);
+            int width = node.tiles.GetLength(0) - 1;
+            int height = node.tiles.GetLength(1) - 1;
             int nodeX = node.position.X;
             int nodeY = node.position.Y;
             int weight = 3;
