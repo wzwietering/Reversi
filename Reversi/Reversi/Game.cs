@@ -72,7 +72,7 @@ namespace Reversi
                 currentPlayer = players[Array.IndexOf(players, currentPlayer) == 0 ? 1 : 0];
                 currentPlayer.PlayerLabel.BackColor = System.Drawing.Color.White;
 
-                if (currentPlayer.GetType() == typeof(AI)) ((AI)currentPlayer).DoMove(tiles, players, currentPlayer, this);
+                if (currentPlayer.GetType() == typeof(AI)) ((AI)currentPlayer).DoMove(tiles, players, this);
                 turns++;
 
                 // Since the board has changed, we need to recalculate the help for the player who's turn it is now.
