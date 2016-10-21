@@ -1,4 +1,5 @@
 ﻿using Reversi.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -12,25 +13,32 @@ namespace Reversi.Components
         /// <param name="tiles">Using tiles</param>
         /// <param name="players">A list of players</param>
         /// <param name="currentPlayer">And the current player</param>
-        public void DoMove(Game game)
+        public void DoMove(Tile[,] tiles, Player[] players, Game game)
         {
             //Mainnode is the node which contains the gamestate before the AI starts.
-            MoveHandler mh = new MoveHandler(game.tiles, this);
             Node mainNode = new Node();
-            mainNode.tiles = game.tiles;
+            Player currentPlayer = this;
+            mainNode.tiles = tiles;
+            int turnsToSimulate = 5;
 
-            MakeChildren(game.tiles, mh, mainNode, game.currentPlayer);
-            
-            foreach(Node n in mainNode.GetChildren())
+            //Create the initial set of children, of which one will be the move.
+            MakeChildren(mainNode, currentPlayer);
+
+            //Create children for the children
+            Node currentNode = mainNode.GetChildren()[0];
+            currentPlayer = players[Array.IndexOf(players, currentPlayer) == 0 ? 1 : 0];
+            for (int a = 0; a < currentNode.parent.GetChildren().Count; a++)
             {
-                
+                currentNode = currentNode.parent.GetChildren()[a];
+                MakeChildren(currentNode, currentPlayer);
             }
+            
 
             //Determine which move is the best, and execute it.
             Node best = new Node();
             int boardsize = game.tiles.Length;
 
-            //Using a different strategy at the beginning of the game gives better results later on
+            //Using a different strategy at the beginning of the game gives better results later on, this is a CPU friendly way to differ in stategies.
             if(game.turns < boardsize / 10)
             {
                 best.score = 999;
@@ -64,28 +72,27 @@ namespace Reversi.Components
         /// <summary>
         /// The bedroom of the AI
         /// </summary>
-        /// <param name="tiles">Tiles are used to check availability</param>
-        /// <param name="mh">The movehandler checks the availability</param>
-        /// <param name="currentNode">The node to give children to</param>
+        /// <param name="n">The node to give children to</param>
         /// <param name="currentPlayer">The player is used to check availability</param>
-        private void MakeChildren(Tile[,] tiles, MoveHandler mh, Node currentNode, Player currentPlayer)
+        private void MakeChildren(Node n, Player currentPlayer)
         {
-            for (int i = 0; i < tiles.GetLength(0); i++)
+            MoveHandler mh = new MoveHandler(n.tiles, currentPlayer);
+            for (int i = 0; i < n.tiles.GetLength(0); i++)
             {
-                for (int j = 0; j < tiles.GetLength(1); j++)
+                for (int j = 0; j < n.tiles.GetLength(1); j++)
                 {
-                    bool possible = mh.HandleMove(tiles[i, j], false);
+                    bool possible = mh.HandleMove(n.tiles[i, j], false);
                     if (possible)
                     {
                         //The copy is used to simulate a move, without modifying the old game state
-                        Tile[,] tilesCopy = tiles;
+                        Tile[,] tilesCopy = n.tiles;
                         Point move = new Point(i, j);
 
                         //A child is created to save data about the simulation
-                        currentNode.AddChild(move);
+                        n.AddChild(move);
 
                         //When the child is created, the scores are calculated.
-                        Node baby = currentNode.GetLastChild();
+                        Node baby = n.GetLastChild();
 
                         //Over here you can find a simulation of the future
                         MoveHandler mh2 = new MoveHandler(tilesCopy, currentPlayer);
