@@ -12,15 +12,15 @@ namespace Reversi
         public Reversi()
         {
             InitializeComponent();
-            StartGame();
+            NewGame();
         }
 
         /// <summary>
-        /// Starts a new game
+        /// Handles user click on new game and starts a new game.
         /// </summary>
-        private void NewGame(object sender, EventArgs e)
+        private void NewGame_Clicked(object sender, EventArgs e)
         {
-            StartGame();
+            NewGame();
         }
 
         /// <summary>
@@ -31,7 +31,11 @@ namespace Reversi
             this.Close();
         }
 
-
+        /// <summary>
+        /// This subscribes to the ShowMessage event. It displays a message to the user.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ShowMessage(object sender, EventArgs e)
         {
             if (((MessageEventArgs)e).DisplayMessage)
@@ -44,25 +48,34 @@ namespace Reversi
             else { this.AlertMessage.Visible = false; }
         }
 
-        private void StartGame()
+        /// <summary>
+        /// Start a new game!
+        /// </summary>
+        private void NewGame()
         {
             // First set visible to false, otherwise you see all controls slowly dissapearing
             this.currentGameContainer.Visible = false;
             this.currentGameContainer.Controls.Clear();
 
+            // Create a new game.
             currentGame = new Game();
             currentGame.ShowMessage += ShowMessage;
 
+            // Let the user choose the game mode first.
             var gameModeForm = new GameModeForm(currentGame);
             gameModeForm.ShowDialog();
 
+            // Now we have the game mode, we can setup all components.
             currentGame.Setup();
             DrawBoard();
 
             this.currentGameContainer.Visible = true;
+
+            // If the first player is an AI player (when game mode is AI v AI) we need to get the ball rolling
+            // by letting the first player do a move.
             if(currentGame.currentPlayer.GetType() == typeof(AI))
             {
-        //        ((AI)currentGame.currentPlayer).DoMove();
+                ((AI)currentGame.currentPlayer).DoMove(currentGame);
             }
         }
 
@@ -102,10 +115,11 @@ namespace Reversi
             settingsGameMenu.Show();
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        // the user wants a hint...
+        private void hintButton_CheckedChanged(object sender, EventArgs e)
         {
-            currentGame.ShowHelp = ((CheckBox)sender).Checked;
-            currentGame.DisplayHelp(true);
+            currentGame.ShowHint = ((CheckBox)sender).Checked;
+            currentGame.DisplayHints(true);
         }
 
         private void aboutMenu(object sender, EventArgs e)
@@ -116,7 +130,6 @@ namespace Reversi
 
         private void PassTurn(object sender, EventArgs e)
         {
-            currentGame.currentPlayer.setPlayerLabel();
             currentGame.EndTurn();
         }
 

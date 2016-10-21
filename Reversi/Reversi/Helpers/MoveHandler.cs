@@ -148,12 +148,12 @@ namespace Reversi.Helpers
         {
             if (tile.IsOccupied)
             {
-                tile.Occupier.Points--;
+                tile.Occupier.AddPoints(-1);
             }
 
             tile.Occupy(currentPlayer);
 
-            currentPlayer.Points++;
+            currentPlayer.AddPoints(1);
         }
 
         /// <summary>

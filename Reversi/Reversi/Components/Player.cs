@@ -3,16 +3,19 @@ using System.Windows.Forms;
 
 namespace Reversi.Components
 {
+    /// <summary>
+    /// Create a new player
+    /// </summary>
     public class Player
     {
-        public Player()
-        {
-            setPlayerLabel();
-            PlayerLabel.Font = new Font("Calibri", 12);
-        }
+        // The color of the player's stones
+        public Color Color { get; private set; }
 
-        private string playerName;
-        private int points;
+        // Name of the player
+        public string PlayerName { get; private set; }
+
+        // The points the player has accumulated.
+        public int Points { get; private set; }
 
         public Label PlayerLabel = new Label()
         {
@@ -21,39 +24,35 @@ namespace Reversi.Components
             BorderStyle = BorderStyle.FixedSingle
         };
 
-        public Color Color;
-
-        public string PlayerName
+        // Instantiate a new player.
+        public Player()
         {
-            get
-            {
-                return playerName;
-            }
-            set
-            {
-                playerName = value;
-                setPlayerLabel();
-            }
+            setPlayerLabelText();
+            PlayerLabel.Font = new Font("Calibri", 12);
         }
 
-        public int Points
+        // The following methods change the players' variables, and also update the player label accordingly.
+        public void SetPlayerName(string name)
         {
-            get
-            {
-                return points;
-            }
-            set
-            {
-                points = value;
-                setPlayerLabel();
-            }
+            PlayerName = name;
+            setPlayerLabelText();
         }
 
-        public void setPlayerLabel()
+        public void AddPoints(int amount)
         {
-            PlayerLabel.Text = playerName + ": " + points + " points";
+            Points += amount;
+            setPlayerLabelText();
         }
 
-   
+        public void SetColor(Color color)
+        {
+            this.Color = color;
+            PlayerLabel.ForeColor = color;
+        }
+
+        public void setPlayerLabelText()
+        {
+            PlayerLabel.Text = PlayerName + ": " + Points + " points";
+        }   
     }
 }

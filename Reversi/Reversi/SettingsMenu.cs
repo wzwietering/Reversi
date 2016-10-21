@@ -5,6 +5,10 @@ using System.Windows.Forms;
 
 namespace Reversi
 {
+    /// <summary>
+    /// This is the settings form. A user can change the player names, colors and the board size.
+    /// Changes to the board size will be applied when user starts a new game, not immediately.
+    /// </summary>
     public partial class SettingsMenu : Form
     {
         public Player[] players;
@@ -28,7 +32,7 @@ namespace Reversi
             int name = Int32.Parse(((Button)sender).Name);
             if(result == DialogResult.OK)
             {
-                players[name].Color = colorDialog.Color;
+                players[name].SetColor(colorDialog.Color);
                 for(int i = 0; i < tiles.GetLength(0); i++)
                 {
                     for(int j = 0; j < tiles.GetLength(1); j++)
@@ -39,17 +43,26 @@ namespace Reversi
                         }
                     }
                 }
-                players[name].PlayerLabel.ForeColor = colorDialog.Color;
             }
         }
 
-
+        /// <summary>
+        /// Change the name of a player. This handler is subscribed to the textchanged event of the player name textboxes.
+        /// </summary>
+        /// <param name="sender">The textbox in which the text was changed </param>
+        /// <param name="e"></param>
         private void ChangePlayerName(object sender, EventArgs e)
         {
             int index = Int32.Parse(((TextBox)sender).Name);
-            players[index].PlayerName = ((TextBox)sender).Text;
+            players[index].SetPlayerName(((TextBox)sender).Text);
         }
 
+        /// <summary>
+        /// User clicked the ok button. We won't apply board size settings immediately, because it will start a new game
+        /// and the user might not want that to happen. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void okButton_Click(object sender, EventArgs e)
         {
             if (Settings.BoardHeight != (int)heightNUD.Value || Settings.BoardWidth != (int)widthNUD.Value)

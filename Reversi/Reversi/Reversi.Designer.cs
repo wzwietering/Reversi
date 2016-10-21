@@ -74,7 +74,7 @@ namespace Reversi
             this.newGame.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.newGame.Size = new System.Drawing.Size(167, 26);
             this.newGame.Text = "New";
-            this.newGame.Click += new System.EventHandler(this.NewGame);
+            this.newGame.Click += new System.EventHandler(this.NewGame_Clicked);
             // 
             // settingsToolStripMenuItem
             // 
@@ -125,7 +125,7 @@ namespace Reversi
             this.hint.Text = "Hint";
             this.hint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.hint.UseVisualStyleBackColor = true;
-            this.hint.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.hint.CheckedChanged += new System.EventHandler(this.hintButton_CheckedChanged);
             // 
             // AlertMessage
             // 
