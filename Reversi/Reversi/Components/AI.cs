@@ -23,12 +23,13 @@ namespace Reversi.Components
 
             //Create the initial set of children, of which one will be the move.
             MakeChildren(mainNode, currentPlayer);
-            Node currentNode = mainNode;
 
+            //Create children for the children
+            Node currentNode = mainNode.GetChildren()[0];
             currentPlayer = players[Array.IndexOf(players, currentPlayer) == 0 ? 1 : 0];
-            for (int a = 0; a < currentNode.GetChildren().Count; a++)
+            for (int a = 0; a < currentNode.parent.GetChildren().Count; a++)
             {
-                currentNode = currentNode.GetChildren()[a];
+                currentNode = currentNode.parent.GetChildren()[a];
                 MakeChildren(currentNode, currentPlayer);
             }
             
@@ -37,7 +38,7 @@ namespace Reversi.Components
             Node best = new Node();
             int boardsize = tiles.Length;
 
-            //Using a different strategy at the beginning of the game gives better results later on
+            //Using a different strategy at the beginning of the game gives better results later on, this is a CPU friendly way to differ in stategies.
             if(game.turns < boardsize / 10)
             {
                 best.score = 999;
