@@ -13,12 +13,12 @@ namespace Reversi.Components
         /// <param name="tiles">Using tiles</param>
         /// <param name="players">A list of players</param>
         /// <param name="currentPlayer">And the current player</param>
-        public void DoMove(Tile[,] tiles, Player[] players, Game game)
+        public void DoMove(Game game)
         {
             //Mainnode is the node which contains the gamestate before the AI starts.
             Node mainNode = new Node();
             Player currentPlayer = this;
-            mainNode.tiles = tiles;
+            mainNode.tiles = game.tiles;
             int turnsToSimulate = 5;
 
             //Create the initial set of children, of which one will be the move.
@@ -26,7 +26,7 @@ namespace Reversi.Components
 
             //Create children for the children
             Node currentNode = mainNode.GetChildren()[0];
-            currentPlayer = players[Array.IndexOf(players, currentPlayer) == 0 ? 1 : 0];
+            currentPlayer = game.players[Array.IndexOf(game.players, currentPlayer) == 0 ? 1 : 0];
             for (int a = 0; a < currentNode.parent.GetChildren().Count; a++)
             {
                 currentNode = currentNode.parent.GetChildren()[a];
