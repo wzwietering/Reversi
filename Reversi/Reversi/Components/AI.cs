@@ -25,22 +25,25 @@ namespace Reversi.Components
             MakeChildren(mainNode, currentPlayer);
 
             //Create children for the children
-            Node currentNode = mainNode.GetChildren()[0];
-
-            for (int a = 0; a < turnsToSimulate; a++)
+            if(mainNode.GetChildren().Count != 0)
             {
-                currentPlayer = players[Array.IndexOf(players, currentPlayer) == 0 ? 1 : 0];
-                for (int b = 0; b < currentNode.parent.GetChildren().Count; b++)
+                Node currentNode = mainNode.GetChildren()[0];
+
+                for (int a = 0; a < turnsToSimulate; a++)
                 {
-                    currentNode = currentNode.parent.GetChildren()[b];
-                    MakeChildren(currentNode, currentPlayer);
+                    currentPlayer = game.players[Array.IndexOf(game.players, currentPlayer) == 0 ? 1 : 0];
+                    for (int b = 0; b < currentNode.parent.GetChildren().Count; b++)
+                    {
+                        currentNode = currentNode.parent.GetChildren()[b];
+                        MakeChildren(currentNode, currentPlayer);
+                    }
+                    if (currentNode.GetChildren().Count != 0) currentNode = currentNode.GetChildren()[0];
                 }
-                currentNode = currentNode.GetChildren()[0];
             }
 
             //Determine which move is the best, and execute it.
             Node best = new Node();
-            int boardsize = game.tiles.Length;
+            int boardsize = game.tiles.Length - 4;
 
             //Using a different strategy at the beginning of the game gives better results later on, this is a CPU friendly way to differ in stategies.
             if(game.turns < boardsize / 10)
