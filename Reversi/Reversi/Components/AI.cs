@@ -12,7 +12,7 @@ namespace Reversi.Components
         /// <param name="tiles">Using tiles</param>
         /// <param name="players">A list of players</param>
         /// <param name="currentPlayer">And the current player</param>
-        public override void DoMove(Tile[,] tiles, CircularList<Player> players, Player currentPlayer, Game game)
+        public void DoMove(Tile[,] tiles, CircularList<Player> players, Player currentPlayer, Game game)
         {
             //Mainnode is the node which contains the gamestate before the AI starts.
             MoveHandler mh = new MoveHandler(tiles, this);
@@ -81,8 +81,8 @@ namespace Reversi.Components
             }
             else
             {
-                mh.HandleMove(best.tiles[best.position.X, best.position.Y]);
-                game.EndTurn();
+                // Click the tile!
+                best.tiles[best.position.X, best.position.Y].ProgrammaticClick();
             }
         }
 

@@ -68,7 +68,7 @@ namespace Reversi
                 currentPlayer.PlayerLabel.BackColor = System.Drawing.Color.Gainsboro;
                 currentPlayer = players.Next(players.IndexOf(currentPlayer));
                 currentPlayer.PlayerLabel.BackColor = System.Drawing.Color.White;
-                if (currentPlayer.GetType() == typeof(AI)) currentPlayer.DoMove(tiles, players, currentPlayer, this);
+                if (currentPlayer.GetType() == typeof(AI)) ((AI)currentPlayer).DoMove(tiles, players, currentPlayer, this);
                 turns++;
 
                 // Since the board has changed, we need to recalculate the help for the player who's turn it is now.
@@ -82,35 +82,35 @@ namespace Reversi
         /// <returns>True if the game has ended.</returns>
         private bool GameHasEnded()
         {
-            bool gameEnd = false;
+            bool gameEnd = true;
+
+            // If every tile is occupied, the game has finished.
+            foreach (Tile tile in tiles)
+            {
+                if (tile.IsOccupied == false)
+                {
+                    gameEnd = false;
+                }
+            }
+
             // If a player has 0 points that means he has 0 tiles, and cannot do a move anymore.
             if (players.Any(x => x.Points == 0))
             {
                 gameEnd = true;
             }
-            else
-            {
-                // If every tile is occupied, the game has also finished.
-                foreach (Tile tile in tiles)
-                {
-                    if (tile.IsOccupied == false)
-                    {
-                        gameEnd = false;
-                    }
-                }
-            }
+
             if (gameEnd)
             {
                 // Hypothetically this could end in a draw so we need a list of winners.
                 List<Player> winningPlayers = new List<Player>();
-                foreach(var player in players)
+                foreach (var player in players)
                 {
-                    if(winningPlayers.Count == 0 || player.Points > winningPlayers.First().Points)
+                    if (winningPlayers.Count == 0 || player.Points > winningPlayers.First().Points)
                     {
                         winningPlayers.Clear();
                         winningPlayers.Add(player);
                     }
-                    else if(winningPlayers.Count == 0 || player.Points == winningPlayers.First().Points)
+                    else if (winningPlayers.Count == 0 || player.Points == winningPlayers.First().Points)
                     {
                         winningPlayers.Add(player);
                     }
@@ -127,7 +127,7 @@ namespace Reversi
                     var and = "";
                     foreach (var player in winningPlayers)
                     {
-                        message += and + " " + player.PlayerName ;
+                        message += and + " " + player.PlayerName;
                         and = " and";
                     }
                     message += "!";

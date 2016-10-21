@@ -88,5 +88,10 @@ namespace Reversi.Components
                 Color.MediumSeaGreen, 2, ButtonBorderStyle.Solid,
                 Color.MediumSeaGreen, 2, ButtonBorderStyle.Solid);
         }
+
+        public void ProgrammaticClick()
+        {
+            base.OnClick(new System.EventArgs());
+        }
     }
 }
