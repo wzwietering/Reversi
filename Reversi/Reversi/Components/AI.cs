@@ -18,37 +18,12 @@ namespace Reversi.Components
             MoveHandler mh = new MoveHandler(tiles, this);
             Node mainNode = new Node();
             mainNode.tiles = tiles;
-            mainNode.parent = null;
-            int moves = 0;
 
-            for(int i = 0; i < tiles.GetLength(0); i++)
+            MakeChildren(tiles, mh, mainNode, currentPlayer);
+            
+            foreach(Node n in mainNode.GetChildren())
             {
-                for(int j = 0; j < tiles.GetLength(1); j++)
-                {
-                    bool possible = mh.HandleMove(tiles[i, j], false);
-                    if (possible)
-                    {
-                        //The copy is used to simulate a move, without modifying the old game state
-                        Tile[,] tilesCopy = tiles;
-                        Point move = new Point(i, j);
-                        moves++;
-
-                        //A child is created to save data about the simulation
-                        mainNode.AddChild(move);
-
-                        //When the child is created, the scores are calculated.
-                        Node baby = mainNode.GetLastChild();
-
-                        //Over here you can find a simulation of the future
-                        MoveHandler mh2 = new MoveHandler(tilesCopy, currentPlayer);
-                        List<Tile> flippables = mh2.GetTilesToFlip(tilesCopy[i, j]);
-                        baby.score += flippables.Count;
-
-                        //The baby gets the simulated game state to play with.
-                        baby.tiles = mh2.tiles;
-                        baby.score += GetWeight(baby);
-                    }
-                }
+                
             }
 
             //Determine which move is the best, and execute it.
@@ -83,6 +58,45 @@ namespace Reversi.Components
             {
                 // Click the tile!
                 best.tiles[best.position.X, best.position.Y].ProgrammaticClick();
+            }
+        }
+
+        /// <summary>
+        /// The bedroom of the AI
+        /// </summary>
+        /// <param name="tiles">Tiles are used to check availability</param>
+        /// <param name="mh">The movehandler checks the availability</param>
+        /// <param name="currentNode">The node to give children to</param>
+        /// <param name="currentPlayer">The player is used to check availability</param>
+        private void MakeChildren(Tile[,] tiles, MoveHandler mh, Node currentNode, Player currentPlayer)
+        {
+            for (int i = 0; i < tiles.GetLength(0); i++)
+            {
+                for (int j = 0; j < tiles.GetLength(1); j++)
+                {
+                    bool possible = mh.HandleMove(tiles[i, j], false);
+                    if (possible)
+                    {
+                        //The copy is used to simulate a move, without modifying the old game state
+                        Tile[,] tilesCopy = tiles;
+                        Point move = new Point(i, j);
+
+                        //A child is created to save data about the simulation
+                        currentNode.AddChild(move);
+
+                        //When the child is created, the scores are calculated.
+                        Node baby = currentNode.GetLastChild();
+
+                        //Over here you can find a simulation of the future
+                        MoveHandler mh2 = new MoveHandler(tilesCopy, currentPlayer);
+                        List<Tile> flippables = mh2.GetTilesToFlip(tilesCopy[i, j]);
+                        baby.score += flippables.Count;
+
+                        //The baby gets the simulated game state to play with.
+                        baby.tiles = mh2.tiles;
+                        baby.score += GetWeight(baby);
+                    }
+                }
             }
         }
 
