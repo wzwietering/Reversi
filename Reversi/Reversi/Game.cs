@@ -10,7 +10,7 @@ namespace Reversi
     {
         public Tile[,] tiles;
 
-        public CircularList<Player> players { get; set; }
+        public Player[] players = new Player[2];
 
         public Player currentPlayer { get; set; }
 
@@ -20,12 +20,13 @@ namespace Reversi
 
         public int humanPlayers = 1;
 
+        public GameMode mode = GameMode.PlayervAI;
+
         public int turns = 0;
 
         public Game()
         {
             tiles = new Tile[Settings.BoardWidth, Settings.BoardHeight];
-            players = new CircularList<Player>();
         }
 
         /// <summary>
@@ -66,8 +67,11 @@ namespace Reversi
             if (!GameHasEnded())
             {
                 currentPlayer.PlayerLabel.BackColor = System.Drawing.Color.Gainsboro;
-                currentPlayer = players.Next(players.IndexOf(currentPlayer));
+
+                // Set new current player according to the index(if 0; then 1; if 1; then 0)
+                currentPlayer = players[Array.IndexOf(players, currentPlayer) == 0 ? 1 : 0];
                 currentPlayer.PlayerLabel.BackColor = System.Drawing.Color.White;
+
                 if (currentPlayer.GetType() == typeof(AI)) ((AI)currentPlayer).DoMove(tiles, players, currentPlayer, this);
                 turns++;
 
@@ -101,37 +105,17 @@ namespace Reversi
 
             if (gameEnd)
             {
-                // Hypothetically this could end in a draw so we need a list of winners.
-                List<Player> winningPlayers = new List<Player>();
-                foreach (var player in players)
+                if (players[0].Points == players[1].Points)
                 {
-                    if (winningPlayers.Count == 0 || player.Points > winningPlayers.First().Points)
-                    {
-                        winningPlayers.Clear();
-                        winningPlayers.Add(player);
-                    }
-                    else if (winningPlayers.Count == 0 || player.Points == winningPlayers.First().Points)
-                    {
-                        winningPlayers.Add(player);
-                    }
+                    System.Windows.Forms.MessageBox.Show("It's a draw!");
                 }
-                // We have one winner
-                if (winningPlayers.Count == 1)
+                else if (players[0].Points > players[1].Points)
                 {
-                    System.Windows.Forms.MessageBox.Show(winningPlayers.First().PlayerName + " wins!");
+                    System.Windows.Forms.MessageBox.Show(players[0].PlayerName + " wins!");
                 }
-                // It's a draw!
                 else
                 {
-                    var message = "Its a draw between";
-                    var and = "";
-                    foreach (var player in winningPlayers)
-                    {
-                        message += and + " " + player.PlayerName;
-                        and = " and";
-                    }
-                    message += "!";
-                    System.Windows.Forms.MessageBox.Show(message);
+                    System.Windows.Forms.MessageBox.Show(players[1].PlayerName + " wins!");
                 }
             }
             return gameEnd;

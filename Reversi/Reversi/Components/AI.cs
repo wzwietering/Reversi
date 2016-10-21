@@ -12,7 +12,7 @@ namespace Reversi.Components
         /// <param name="tiles">Using tiles</param>
         /// <param name="players">A list of players</param>
         /// <param name="currentPlayer">And the current player</param>
-        public void DoMove(Tile[,] tiles, CircularList<Player> players, Player currentPlayer, Game game)
+        public void DoMove(Tile[,] tiles, Player[] players, Player currentPlayer, Game game)
         {
             //Mainnode is the node which contains the gamestate before the AI starts.
             MoveHandler mh = new MoveHandler(tiles, this);

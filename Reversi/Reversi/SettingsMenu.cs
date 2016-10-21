@@ -7,13 +7,13 @@ namespace Reversi
 {
     public partial class SettingsMenu : Form
     {
-        public List<Player> players;
+        public Player[] players;
         public Tile[,] tiles;
 
-        public SettingsMenu(List<Player> list, Tile[,] array)
+        public SettingsMenu(Player[] _players, Tile[,] _tiles)
         {
-            players = list;
-            tiles = array;
+            players = _players;
+            tiles = _tiles;
             PlayerOptions();
             InitializeComponent();
         }
