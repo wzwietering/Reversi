@@ -20,6 +20,8 @@ namespace Reversi
 
         public int humanPlayers = 1;
 
+        public int turns = 0;
+
         public Game()
         {
             tiles = new Tile[Settings.BoardWidth, Settings.BoardHeight];
@@ -31,6 +33,7 @@ namespace Reversi
         /// </summary>
         internal void Setup()
         {
+            turns = 0;
             PlayerSetupHelper.SetupPlayers(this);
             TileSetupHelper.SetupTiles(this);
         }
@@ -66,6 +69,7 @@ namespace Reversi
                 currentPlayer = players.Next(players.IndexOf(currentPlayer));
                 currentPlayer.PlayerLabel.BackColor = System.Drawing.Color.White;
                 if (currentPlayer.GetType() == typeof(AI)) currentPlayer.DoMove(tiles, players, currentPlayer, this);
+                turns++;
 
                 // Since the board has changed, we need to recalculate the help for the player who's turn it is now.
                 DisplayHelp();

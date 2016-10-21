@@ -6,7 +6,6 @@ namespace Reversi.Components
 {
     class AI : Player
     {
-
         /// <summary>
         /// Calculates the best move
         /// </summary>
@@ -53,25 +52,24 @@ namespace Reversi.Components
             }
 
             //Determine which move is the best, and execute it.
-            Node highest = new Node();
-            int currentScore = currentPlayer.Points;
+            Node best = new Node();
             int boardsize = tiles.Length;
 
             //Using a different strategy at the beginning of the game gives better results later on
-            if(currentScore < boardsize / 12)
+            if(game.turns < boardsize / 10)
             {
-                highest.score = 999;
+                best.score = 999;
                 foreach(Node n in mainNode.GetChildren())
                 {
-                    if (n.score < highest.score) highest = n;
+                    if (n.score < best.score) best = n;
                 }
             }
             else
             {
-                highest.score = -999;
+                best.score = -999;
                 foreach (Node n in mainNode.GetChildren())
                 {
-                    if (n.score > highest.score) highest = n;
+                    if (n.score > best.score) best = n;
                 }
             }
             
@@ -83,7 +81,7 @@ namespace Reversi.Components
             }
             else
             {
-                mh.HandleMove(highest.tiles[highest.position.X, highest.position.Y]);
+                mh.HandleMove(best.tiles[best.position.X, best.position.Y]);
                 game.EndTurn();
             }
         }
