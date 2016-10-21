@@ -12,14 +12,14 @@ namespace Reversi.Components
         /// <param name="tiles">Using tiles</param>
         /// <param name="players">A list of players</param>
         /// <param name="currentPlayer">And the current player</param>
-        public void DoMove(Tile[,] tiles, Player[] players, Player currentPlayer, Game game)
+        public void DoMove(Game game)
         {
             //Mainnode is the node which contains the gamestate before the AI starts.
-            MoveHandler mh = new MoveHandler(tiles, this);
+            MoveHandler mh = new MoveHandler(game.tiles, this);
             Node mainNode = new Node();
-            mainNode.tiles = tiles;
+            mainNode.tiles = game.tiles;
 
-            MakeChildren(tiles, mh, mainNode, currentPlayer);
+            MakeChildren(game.tiles, mh, mainNode, game.currentPlayer);
             
             foreach(Node n in mainNode.GetChildren())
             {
@@ -28,7 +28,7 @@ namespace Reversi.Components
 
             //Determine which move is the best, and execute it.
             Node best = new Node();
-            int boardsize = tiles.Length;
+            int boardsize = game.tiles.Length;
 
             //Using a different strategy at the beginning of the game gives better results later on
             if(game.turns < boardsize / 10)
