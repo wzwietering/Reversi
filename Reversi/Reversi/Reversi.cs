@@ -51,12 +51,19 @@ namespace Reversi
             this.currentGameContainer.Controls.Clear();
 
             currentGame = new Game();
+            currentGame.ShowMessage += ShowMessage;
+
+            var gameModeForm = new GameModeForm(currentGame);
+            gameModeForm.ShowDialog();
+
             currentGame.Setup();
             DrawBoard();
 
             this.currentGameContainer.Visible = true;
-
-            currentGame.ShowMessage += ShowMessage;
+            if(currentGame.currentPlayer.GetType() == typeof(AI))
+            {
+        //        ((AI)currentGame.currentPlayer).DoMove();
+            }
         }
 
         /// <summary>

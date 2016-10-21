@@ -59,6 +59,12 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GameMode.cs" />
+    <Compile Include="GameModeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameModeForm.Designer.cs">
+      <DependentUpon>GameModeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\MoveHandler.cs" />
     <Compile Include="Helpers\ImageColorizer.cs" />
     <Compile Include="Helpers\Node.cs" />
@@ -86,6 +92,9 @@
     </Compile>
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GameModeForm.resx">
+      <DependentUpon>GameModeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reversi.resx">
       <DependentUpon>Reversi.cs</DependentUpon>
