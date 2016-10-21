@@ -24,17 +24,12 @@ namespace Reversi.Components
             //Create the initial set of children, of which one will be the move.
             MakeChildren(mainNode, currentPlayer);
             Node currentNode = mainNode;
-            int currentKid = 0;
 
+            currentPlayer = players[Array.IndexOf(players, currentPlayer) == 0 ? 1 : 0];
             for (int a = 0; a < currentNode.GetChildren().Count; a++)
             {
-                currentNode = currentNode.GetChildren()[currentKid];
-                currentPlayer = players[Array.IndexOf(players, currentPlayer) == 0 ? 1 : 0];
-                foreach (Node n in currentNode.GetChildren())
-                {
-                    MakeChildren(n, currentPlayer);
-                }
-                currentKid++;
+                currentNode = currentNode.GetChildren()[a];
+                MakeChildren(currentNode, currentPlayer);
             }
             
 
