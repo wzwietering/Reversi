@@ -19,7 +19,8 @@ namespace Reversi.Components
             Node mainNode = new Node();
             Player currentPlayer = this;
             mainNode.tiles = game.tiles;
-            int turnsToSimulate = 5;
+            mainNode.depth = 0;
+            int turnsToSimulate = 3;
 
             //Create the initial set of children, of which one will be the move.
             MakeChildren(mainNode, currentPlayer);
@@ -29,15 +30,28 @@ namespace Reversi.Components
             {
                 Node currentNode = mainNode.GetChildren()[0];
 
-                for (int a = 0; a < turnsToSimulate; a++)
+                for(int a = 0; a < turnsToSimulate; a++)
                 {
                     currentPlayer = game.players[Array.IndexOf(game.players, currentPlayer) == 0 ? 1 : 0];
+
+                    //Give siblings children
                     for (int b = 0; b < currentNode.parent.GetChildren().Count; b++)
                     {
-                        currentNode = currentNode.parent.GetChildren()[b];
-                        MakeChildren(currentNode, currentPlayer);
+                        MakeChildren(currentNode.parent.GetChildren()[b], currentPlayer);
                     }
                     if (currentNode.GetChildren().Count != 0) currentNode = currentNode.GetChildren()[0];
+                    else continue;  
+                }
+                try
+                {
+                    currentNode = currentNode.parent.parent.GetChildren()[currentNode.parent.GetChildren().IndexOf(currentNode) + 1];
+                }
+                catch(ArgumentOutOfRangeException e)
+                {
+                    if (currentNode.parent.parent != null)
+                    {
+                        currentNode = currentNode.parent.parent;
+                    }
                 }
             }
 
@@ -108,6 +122,7 @@ namespace Reversi.Components
 
                         //The baby gets the simulated game state to play with.
                         baby.tiles = mh2.tiles;
+                        baby.player = currentPlayer;
                         baby.score += GetWeight(baby);
                     }
                 }

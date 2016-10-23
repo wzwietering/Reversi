@@ -83,6 +83,16 @@ namespace Reversi.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Reversi4Mini2 {
+            get {
+                object obj = ResourceManager.GetObject("Reversi4Mini2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap reversiStoneLQ {
             get {
                 object obj = ResourceManager.GetObject("reversiStoneLQ", resourceCulture);

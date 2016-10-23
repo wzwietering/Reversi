@@ -30,6 +30,7 @@ namespace Reversi
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Reversi));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newGame = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,8 +54,8 @@ namespace Reversi
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 0, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(645, 26);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 0, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(484, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -65,28 +66,28 @@ namespace Reversi
             this.settingsToolStripMenuItem,
             this.exitGame});
             this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
-            this.gameToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
+            this.gameToolStripMenuItem.Size = new System.Drawing.Size(50, 22);
             this.gameToolStripMenuItem.Text = "Game";
             // 
             // newGame
             // 
             this.newGame.Name = "newGame";
             this.newGame.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newGame.Size = new System.Drawing.Size(167, 26);
+            this.newGame.Size = new System.Drawing.Size(141, 22);
             this.newGame.Text = "New";
             this.newGame.Click += new System.EventHandler(this.NewGame_Clicked);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsMenu);
             // 
             // exitGame
             // 
             this.exitGame.Name = "exitGame";
-            this.exitGame.Size = new System.Drawing.Size(167, 26);
+            this.exitGame.Size = new System.Drawing.Size(141, 22);
             this.exitGame.Text = "Exit";
             this.exitGame.Click += new System.EventHandler(this.ExitGame);
             // 
@@ -96,31 +97,30 @@ namespace Reversi
             this.help,
             this.about});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // help
             // 
             this.help.Name = "help";
             this.help.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
-            this.help.Size = new System.Drawing.Size(169, 26);
+            this.help.Size = new System.Drawing.Size(142, 22);
             this.help.Text = "Help";
             this.help.Click += new System.EventHandler(this.help_Click);
             // 
             // about
             // 
             this.about.Name = "about";
-            this.about.Size = new System.Drawing.Size(169, 26);
+            this.about.Size = new System.Drawing.Size(142, 22);
             this.about.Text = "About";
             this.about.Click += new System.EventHandler(this.aboutMenu);
             // 
             // hint
             // 
             this.hint.Appearance = System.Windows.Forms.Appearance.Button;
-            this.hint.Location = new System.Drawing.Point(532, 44);
-            this.hint.Margin = new System.Windows.Forms.Padding(4);
+            this.hint.Location = new System.Drawing.Point(399, 36);
             this.hint.Name = "hint";
-            this.hint.Size = new System.Drawing.Size(100, 28);
+            this.hint.Size = new System.Drawing.Size(75, 23);
             this.hint.TabIndex = 1;
             this.hint.Text = "Hint";
             this.hint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -133,10 +133,11 @@ namespace Reversi
             this.AlertMessage.BackColor = System.Drawing.Color.Transparent;
             this.AlertMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.AlertMessage.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AlertMessage.Location = new System.Drawing.Point(200, 90);
+            this.AlertMessage.Location = new System.Drawing.Point(150, 73);
+            this.AlertMessage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.AlertMessage.Name = "AlertMessage";
-            this.AlertMessage.Padding = new System.Windows.Forms.Padding(4);
-            this.AlertMessage.Size = new System.Drawing.Size(187, 31);
+            this.AlertMessage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.AlertMessage.Size = new System.Drawing.Size(148, 25);
             this.AlertMessage.TabIndex = 3;
             this.AlertMessage.Text = "This is not a valid move.";
             this.AlertMessage.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -144,10 +145,9 @@ namespace Reversi
             // 
             // pass
             // 
-            this.pass.Location = new System.Drawing.Point(532, 77);
-            this.pass.Margin = new System.Windows.Forms.Padding(4);
+            this.pass.Location = new System.Drawing.Point(399, 63);
             this.pass.Name = "pass";
-            this.pass.Size = new System.Drawing.Size(100, 28);
+            this.pass.Size = new System.Drawing.Size(75, 23);
             this.pass.TabIndex = 4;
             this.pass.Text = "Pass";
             this.pass.UseVisualStyleBackColor = true;
@@ -158,27 +158,26 @@ namespace Reversi
             this.currentGameContainer.AutoSize = true;
             this.currentGameContainer.BackgroundImage = global::Reversi.Properties.Resources.WhiteMarble;
             this.currentGameContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.currentGameContainer.Location = new System.Drawing.Point(0, 26);
-            this.currentGameContainer.Margin = new System.Windows.Forms.Padding(4);
+            this.currentGameContainer.Location = new System.Drawing.Point(0, 24);
             this.currentGameContainer.Name = "currentGameContainer";
-            this.currentGameContainer.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
+            this.currentGameContainer.Padding = new System.Windows.Forms.Padding(0, 0, 0, 16);
             this.currentGameContainer.Size = this.Size;
             this.currentGameContainer.TabIndex = 0;
             // 
             // Reversi
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(645, 567);
+            this.ClientSize = new System.Drawing.Size(484, 461);
             this.Controls.Add(this.hint);
             this.Controls.Add(this.pass);
             this.Controls.Add(this.AlertMessage);
             this.Controls.Add(this.currentGameContainer);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Reversi";
             this.Text = "Reversi";
             this.menuStrip1.ResumeLayout(false);

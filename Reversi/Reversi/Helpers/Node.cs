@@ -18,6 +18,8 @@ namespace Reversi.Helpers
         public Tile[,] tiles;
         public int score = 0;
         public Point position;
+        public Player player;
+        public int depth;
 
         /// <summary>
         /// Adds a child to the node
@@ -27,6 +29,7 @@ namespace Reversi.Helpers
             children.Add(new Node());
             children.Last().parent = this;
             children.Last().position = p;
+            children.Last().depth = depth + 1;
         }
 
         /// <summary>
