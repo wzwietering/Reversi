@@ -136,12 +136,12 @@ namespace Reversi
         private void help_Click(object sender, EventArgs e)
         {
             MessageBox.Show(@"Use your mouse to place colored stones on the board. 
-You may place a disk anywhere on the board, as long as it surrounds a group of your opponent's disks on opposite sides. 
-You can surround disks horizontally, vertically, or diagonally. 
-After you place your disk, any disks that you surrounded will flip over to your color. 
+You may place a stone anywhere on the board, as long as it surrounds a group of your opponent's stones on opposite sides. 
+You can surround stones horizontally, vertically, or diagonally. 
+After you place your stone, any stones that you surrounded will flip over to your color. 
 
 If you need help, you can click the 'hint' button to see which moves are available to you.
-Try to end the game with as many disks of your color as possible!");
+Try to end the game with as many stones of your color as possible!");
         }
     }
 }

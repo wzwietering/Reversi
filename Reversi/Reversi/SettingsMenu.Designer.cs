@@ -64,12 +64,12 @@ namespace Reversi
             // 
             this.widthNUD.Location = new System.Drawing.Point(122, 28);
             this.widthNUD.Maximum = new decimal(new int[] {
-            10,
+            12,
             0,
             0,
             0});
             this.widthNUD.Minimum = new decimal(new int[] {
-            3,
+            4,
             0,
             0,
             0});
@@ -77,7 +77,7 @@ namespace Reversi
             this.widthNUD.Size = new System.Drawing.Size(75, 20);
             this.widthNUD.TabIndex = 2;
             this.widthNUD.Value = new decimal(new int[] {
-            10,
+            8,
             0,
             0,
             0});
@@ -86,12 +86,12 @@ namespace Reversi
             // 
             this.heightNUD.Location = new System.Drawing.Point(122, 53);
             this.heightNUD.Maximum = new decimal(new int[] {
-            10,
+            12,
             0,
             0,
             0});
             this.heightNUD.Minimum = new decimal(new int[] {
-            3,
+            4,
             0,
             0,
             0});
@@ -99,7 +99,7 @@ namespace Reversi
             this.heightNUD.Size = new System.Drawing.Size(75, 20);
             this.heightNUD.TabIndex = 3;
             this.heightNUD.Value = new decimal(new int[] {
-            10,
+            8,
             0,
             0,
             0});
@@ -107,7 +107,7 @@ namespace Reversi
             // okButton
             // 
             this.okButton.Location = new System.Drawing.Point(236, 161);
-            this.okButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.okButton.Margin = new System.Windows.Forms.Padding(2);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(40, 21);
             this.okButton.TabIndex = 4;
@@ -158,7 +158,7 @@ namespace Reversi
                 playerName.TextChanged += new System.EventHandler(ChangePlayerName);
 
                 Button colorChoice = new Button();
-                colorChoice.Text = "Choose color";
+                colorChoice.Text = "Color";
                 colorChoice.Location = new System.Drawing.Point(122, i * 30 + 100);
                 colorChoice.Name = i.ToString();
                 colorChoice.Click += new System.EventHandler(ChooseColor);

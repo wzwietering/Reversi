@@ -91,7 +91,7 @@ namespace Reversi.Components
         }
 
         /// <summary>
-        /// The bedroom of the AI
+        /// The bedroom of the AI. It makes nodes, who have a possible game state.
         /// </summary>
         /// <param name="n">The node to give children to</param>
         /// <param name="currentPlayer">The player is used to check availability</param>
