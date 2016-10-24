@@ -38,7 +38,7 @@
             // pvp
             // 
             this.pvp.Location = new System.Drawing.Point(41, 77);
-            this.pvp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pvp.Margin = new System.Windows.Forms.Padding(2);
             this.pvp.Name = "pvp";
             this.pvp.Size = new System.Drawing.Size(150, 34);
             this.pvp.TabIndex = 0;
@@ -49,7 +49,7 @@
             // pvc
             // 
             this.pvc.Location = new System.Drawing.Point(41, 116);
-            this.pvc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pvc.Margin = new System.Windows.Forms.Padding(2);
             this.pvc.Name = "pvc";
             this.pvc.Size = new System.Drawing.Size(150, 34);
             this.pvc.TabIndex = 1;
@@ -60,7 +60,7 @@
             // cvc
             // 
             this.cvc.Location = new System.Drawing.Point(41, 154);
-            this.cvc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cvc.Margin = new System.Windows.Forms.Padding(2);
             this.cvc.Name = "cvc";
             this.cvc.Size = new System.Drawing.Size(150, 34);
             this.cvc.TabIndex = 2;
@@ -88,7 +88,7 @@
             this.Controls.Add(this.pvc);
             this.Controls.Add(this.pvp);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GameModeForm";
             this.Text = "GameModeForm";
             this.ResumeLayout(false);

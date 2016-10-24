@@ -136,7 +136,7 @@ namespace Reversi
             this.AlertMessage.Location = new System.Drawing.Point(150, 73);
             this.AlertMessage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.AlertMessage.Name = "AlertMessage";
-            this.AlertMessage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.AlertMessage.Padding = new System.Windows.Forms.Padding(3);
             this.AlertMessage.Size = new System.Drawing.Size(148, 25);
             this.AlertMessage.TabIndex = 3;
             this.AlertMessage.Text = "This is not a valid move.";
