@@ -51,7 +51,7 @@ namespace Reversi.Helpers
                 {
                     // Move is valid!
 
-                    // Flip all the flippable tiles (only if this parameter was set).
+                    // Flip all the flippable tiles (only if flipTilesIfValid was set to true).
                     if (flipTilesIfValid)
                     {
                         foreach (Tile tile in TilesToFlip)
@@ -75,17 +75,17 @@ namespace Reversi.Helpers
         /// <returns></returns>
         public List<Tile> GetTilesToFlip(Tile tile)
         {
-            // Check to see if we can use IndexOf() to eliminate public coordinates in the tile
-            // (and have them set to private only for use in the draw() method)
-
             List<Tile> flippableTiles = new List<Tile>();
 
             Point coordinates = GetTwoDimensionalIndex(tile);
 
+            // we want to check all around the tile so we need to add a difference to
+            // the coordinates ranging from -1 to 1.
             for (int dX = -1; dX <= 1; dX++)
             {
                 for (int dY = -1; dY <= 1; dY++)
                 {
+                    // Difference of (0,0) is the same coordinates so we skip that.
                     if (!(dX == 0 && dY == 0))
                     {
                         flippableTiles.AddRange(GetTileRowToFlip(coordinates.X, coordinates.Y, dX, dY));
@@ -107,7 +107,8 @@ namespace Reversi.Helpers
         {
             var tileList = new List<Tile>();
 
-            while (true)
+            // while(true) is very risky. Haven't rewritten this for lack of time. Should be a for loop using the dimensions of the board
+            while (true) 
             {
                 x = x + dX;
                 y = y + dY;
@@ -174,7 +175,7 @@ namespace Reversi.Helpers
         /// Check the coordinates of a tile in the twodimensional array
         /// </summary>
         /// <param name="tile"></param>
-        /// <returns></returns>
+        /// <returns>The coordinates of the tile.</returns>
         private Point GetTwoDimensionalIndex(Tile tile)
         {
             for (int x = 0; x < tiles.GetLength(0); ++x)

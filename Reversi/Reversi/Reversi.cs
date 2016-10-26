@@ -5,11 +5,14 @@ using System.Windows.Forms;
 
 namespace Reversi
 {
-    public partial class Reversi : Form
+    /// <summary>
+    /// The reversi window. Handles all the controls and user settings and starting of a new game.
+    /// </summary>
+    public partial class ReversiWindow : Form
     {
         Game currentGame;
 
-        public Reversi()
+        public ReversiWindow()
         {
             InitializeComponent();
             NewGame();
@@ -118,7 +121,7 @@ namespace Reversi
         // the user wants a hint...
         private void hintButton_CheckedChanged(object sender, EventArgs e)
         {
-            currentGame.ShowHint = ((CheckBox)sender).Checked;
+            currentGame.ShowHints = ((CheckBox)sender).Checked;
             currentGame.DisplayHints(true);
         }
 

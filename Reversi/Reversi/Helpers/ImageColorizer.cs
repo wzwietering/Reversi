@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Reversi.Helpers
 {
-    class ImageColorizer
+    static class ImageColorizer
     {
         /// <summary>
         /// Changes the color of the image
@@ -14,7 +14,7 @@ namespace Reversi.Helpers
         /// <param name="color">The desired color</param>
         /// <returns></returns>
         //The RGB to HSL conversion is based on this code: https://gist.github.com/mjackson/5311256. We thank the author for his work.
-        public unsafe Bitmap ColorImage(Image image, Color color)
+        public static unsafe Bitmap ColorImage(Image image, Color color)
         {
             //The hue is given in a [0,360] range, it is converted to a [0,1] range
             float h = color.GetHue() / 360f;
@@ -83,7 +83,7 @@ namespace Reversi.Helpers
         /// Calculates the RGB from the hue.
         /// </summary>
         /// <returns></returns>
-        public float HueToRGB(float a, float b, float c)
+        public static float HueToRGB(float a, float b, float c)
         {
             if (c < 0) c++;
             if (c > 1f) c--;
