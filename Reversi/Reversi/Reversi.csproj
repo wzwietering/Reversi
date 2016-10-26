@@ -58,7 +58,7 @@
     <Compile Include="Components\Stone.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GameMode.cs" />
+    <Compile Include="Components\GameMode.cs" />
     <Compile Include="GameModeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,7 +67,7 @@
     </Compile>
     <Compile Include="Helpers\MoveHandler.cs" />
     <Compile Include="Helpers\ImageColorizer.cs" />
-    <Compile Include="Helpers\Node.cs" />
+    <Compile Include="Components\Node.cs" />
     <Compile Include="Helpers\PlayerSetupHelper.cs" />
     <Compile Include="Helpers\TileSetupHelper.cs" />
     <Compile Include="Reversi.cs">
@@ -86,7 +86,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs" />
+    <Compile Include="Components\Settings.cs" />
     <Compile Include="Components\Tile.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -6,6 +6,9 @@ using System.Windows.Forms;
 
 namespace Reversi
 {
+    /// <summary>
+    /// The game. A game object controls the current game logic (players, tiles, who wins, etc.).
+    /// </summary>
     public class Game
     {
         /// <summary>
@@ -26,7 +29,7 @@ namespace Reversi
         /// <summary>
         /// Set's whether the user wants hints to be displayed. If true; hints will be shown after each turn.
         /// </summary>
-        public bool ShowHint { get; set; }
+        public bool ShowHints { get; set; }
 
         public event EventHandler ShowMessage;
 
@@ -85,10 +88,11 @@ namespace Reversi
                 currentPlayer = players[Array.IndexOf(players, currentPlayer) == 0 ? 1 : 0];
                 currentPlayer.PlayerLabel.BackColor = System.Drawing.Color.White;
 
+                // If new current player is AI player, let him do a a move.
                 if (currentPlayer.GetType() == typeof(AI)) ((AI)currentPlayer).DoMove(this);
 
                 // Since the board has changed, we need to recalculate the help for the player who's turn it is now.
-                DisplayHints();
+                else DisplayHints();
             }
         }
 
@@ -134,17 +138,18 @@ namespace Reversi
         }
 
         /// <summary>
-        /// Show which moves can be made.
+        /// Show which moves can be made. Will be executed after each turn, or when user checks
+        /// or unchecks the hints checkbox (which looks like a button).
         /// </summary>
         public void DisplayHints(bool checkBoxChanged = false)
         {
-            if (checkBoxChanged || ShowHint)
+            if (checkBoxChanged || this.ShowHints)
             {
                 var moveHandler = new MoveHandler(this.tiles, this.currentPlayer);
                 bool validMoves = false;
                 foreach (var tile in this.tiles)
                 {
-                    if (!tile.IsOccupied && ShowHint && moveHandler.HandleMove(tile, false))
+                    if (!tile.IsOccupied && ShowHints && moveHandler.HandleMove(tile, false))
                     {
                         validMoves = true;
                         tile.ToggleHelp(true);
@@ -155,13 +160,12 @@ namespace Reversi
                     }
                 }
 
-                if (validMoves == false && ShowHint)
+                if (validMoves == false && ShowHints)
                 {
                     ShowNoMovesClickMessage(true);
                 }
             }
         }
-
 
         private void HideInvalidClickMessage()
         {

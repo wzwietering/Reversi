@@ -3,6 +3,10 @@ using System.Drawing;
 
 namespace Reversi.Helpers
 {
+    /// <summary>
+    /// This class sets up the tiles. It gives them all a nice texture and a size and position
+    /// so they will be nicely rendered onto the board.
+    /// </summary>
     public static class TileSetupHelper
     {
         public static void SetupTiles(Game game)
