@@ -108,10 +108,13 @@ namespace Reversi
         {
             bool gameEnd = true;
 
-            // If every tile is occupied, the game has finished.
+            // If neither player can do another move, the game is over.
+            var moveHandler1 = new MoveHandler(this.tiles, players[0]);
+            var moveHandler2 = new MoveHandler(this.tiles, players[1]);
+
             foreach (Tile tile in tiles)
             {
-                if (tile.IsOccupied == false)
+                if (moveHandler1.HandleMove(tile, false) || moveHandler2.HandleMove(tile, false))
                 {
                     gameEnd = false;
                 }
