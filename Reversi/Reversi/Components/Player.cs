@@ -25,9 +25,9 @@ namespace Reversi.Components
         };
 
         // Instantiate a new player.
-        public Player()
+        public Player(string name)
         {
-            setPlayerLabelText();
+            SetPlayerName(name);
             PlayerLabel.Font = new Font("Calibri", 12);
         }
 

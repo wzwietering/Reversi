@@ -5,9 +5,9 @@
     /// </summary>
     public static class Settings
     {
-        public static int BoardWidth = 8;
+        public static int BoardWidth = 6;
 
-        public static int BoardHeight = 8;
+        public static int BoardHeight = 6;
 
         public static int TileSize = 40;
     }

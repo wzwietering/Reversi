@@ -7,6 +7,8 @@ namespace Reversi.Components
 {
     class AI : Player
     {
+        public AI(string name) : base(name) { } 
+         
         /// <summary>
         /// Calculates the best move
         /// </summary>
