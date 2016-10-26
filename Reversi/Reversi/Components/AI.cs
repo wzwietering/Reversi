@@ -24,38 +24,8 @@ namespace Reversi.Components
             mainNode.depth = 0;
             int turnsToSimulate = 3;
 
-            //Create the initial set of children, of which one will be the move.
+            //Create children of the mainnode, the contain possible moves.
             MakeChildren(mainNode, currentPlayer);
-
-            //Create children for the children
-            if(mainNode.GetChildren().Count != 0)
-            {
-                Node currentNode = mainNode.GetChildren()[0];
-
-                for(int a = 0; a < turnsToSimulate; a++)
-                {
-                    currentPlayer = game.players[Array.IndexOf(game.players, currentPlayer) == 0 ? 1 : 0];
-
-                    //Give siblings children
-                    for (int b = 0; b < currentNode.parent.GetChildren().Count; b++)
-                    {
-                        MakeChildren(currentNode.parent.GetChildren()[b], currentPlayer);
-                    }
-                    if (currentNode.GetChildren().Count != 0) currentNode = currentNode.GetChildren()[0];
-                    else continue;  
-                }
-                try
-                {
-                    currentNode = currentNode.parent.parent.GetChildren()[currentNode.parent.GetChildren().IndexOf(currentNode) + 1];
-                }
-                catch(ArgumentOutOfRangeException e)
-                {
-                    if (currentNode.parent.parent != null)
-                    {
-                        currentNode = currentNode.parent.parent;
-                    }
-                }
-            }
 
             //Determine which move is the best, and execute it.
             Node best = new Node();
@@ -124,7 +94,6 @@ namespace Reversi.Components
 
                         //The baby gets the simulated game state to play with.
                         baby.tiles = mh2.tiles;
-                        baby.player = currentPlayer;
                         baby.score += GetWeight(baby);
                     }
                 }
