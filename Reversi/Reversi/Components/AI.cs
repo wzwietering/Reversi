@@ -10,19 +10,15 @@ namespace Reversi.Components
         public AI(string name) : base(name) { } 
          
         /// <summary>
-        /// Calculates the best move
+        /// Calculates and executes the best move
         /// </summary>
-        /// <param name="tiles">Using tiles</param>
-        /// <param name="players">A list of players</param>
-        /// <param name="currentPlayer">And the current player</param>
+        /// <param name="game">Contains all useful information for the AI</param>
         public void DoMove(Game game)
         {
             //Mainnode is the node which contains the gamestate before the AI starts.
             Node mainNode = new Node();
             Player currentPlayer = this;
             mainNode.tiles = game.tiles;
-            mainNode.depth = 0;
-            int turnsToSimulate = 3;
 
             //Create children of the mainnode, the contain possible moves.
             MakeChildren(mainNode, currentPlayer);
@@ -37,7 +33,8 @@ namespace Reversi.Components
                 best.score = 999;
                 foreach(Node n in mainNode.GetChildren())
                 {
-                    if (n.score < best.score) best = n;
+                    //Only the absolute score matters, the weight is still important for strategy
+                    if (n.score + GetWeight(n) < best.score) best = n;
                 }
             }
             else
@@ -57,13 +54,13 @@ namespace Reversi.Components
             }
             else
             {
-                // Click the tile!
+                // Click the best tile!
                 best.tiles[best.position.X, best.position.Y].ProgrammaticClick();
             }
         }
 
         /// <summary>
-        /// The bedroom of the AI. It makes nodes, who have a possible game state.
+        /// The bedroom of the AI. It makes nodes, which have a possible game state.
         /// </summary>
         /// <param name="n">The node to give children to</param>
         /// <param name="currentPlayer">The player is used to check availability</param>
@@ -111,7 +108,7 @@ namespace Reversi.Components
             int height = node.tiles.GetLength(1) - 1;
             int nodeX = node.position.X;
             int nodeY = node.position.Y;
-            int weight = 3;
+            int weight = 4;
             int antiweight = -3;
 
             //This code checks the occupation of corners and edges

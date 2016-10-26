@@ -92,18 +92,12 @@ namespace Reversi
                 // If new current player is AI player, let him do a a move.
                 if (currentPlayer.GetType() == typeof(AI))
                 {
-                    Thread t = new Thread(DoAIMove);   
+                    ((AI)currentPlayer).DoMove(this);  
                 }
 
                 // Since the board has changed, we need to recalculate the help for the player who's turn it is now.
                 else DisplayHints();
             }
-        }
-
-        private void DoAIMove()
-        {
-            Thread.Sleep(1000);
-            ((AI)currentPlayer).DoMove(this);
         }
 
         /// <summary>
