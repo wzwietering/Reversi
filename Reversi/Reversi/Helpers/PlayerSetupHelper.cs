@@ -56,7 +56,7 @@ namespace Reversi.Helpers
             // A player starts with two stones; thus two points.
             player.AddPoints(2);
 
-            player.SetColor(i == 0 ? Color.Blue : Color.Red);
+            player.SetColor(i == 0 ? Settings.player1Color : Settings.player2Color);
 
             player.PlayerLabel.Location = new Point(50 + 160 * i, 20);
             game.players[i] = (player);

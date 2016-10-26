@@ -28,10 +28,14 @@ namespace Reversi
         {
             ColorDialog colorDialog = new ColorDialog();
             DialogResult result = colorDialog.ShowDialog();
-            int name = Int32.Parse(((Button)sender).Name);
+            int index = Int32.Parse(((Button)sender).Name);
             if(result == DialogResult.OK)
             {
-                players[name].SetColor(colorDialog.Color);
+                players[index].SetColor(colorDialog.Color);
+
+                if (index == 0) Settings.player1Color = colorDialog.Color;
+                else Settings.player2Color = colorDialog.Color;
+
                 for(int i = 0; i < tiles.GetLength(0); i++)
                 {
                     for(int j = 0; j < tiles.GetLength(1); j++)
