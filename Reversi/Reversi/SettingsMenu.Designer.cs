@@ -77,7 +77,7 @@ namespace Reversi
             this.widthNUD.Size = new System.Drawing.Size(75, 20);
             this.widthNUD.TabIndex = 2;
             this.widthNUD.Value = new decimal(new int[] {
-            8,
+            Settings.BoardWidth,
             0,
             0,
             0});
@@ -99,7 +99,7 @@ namespace Reversi
             this.heightNUD.Size = new System.Drawing.Size(75, 20);
             this.heightNUD.TabIndex = 3;
             this.heightNUD.Value = new decimal(new int[] {
-            8,
+            Settings.BoardHeight,
             0,
             0,
             0});
