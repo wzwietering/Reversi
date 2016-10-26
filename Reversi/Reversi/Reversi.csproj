@@ -70,11 +70,11 @@
     <Compile Include="Components\Node.cs" />
     <Compile Include="Helpers\PlayerSetupHelper.cs" />
     <Compile Include="Helpers\TileSetupHelper.cs" />
-    <Compile Include="Reversi.cs">
+    <Compile Include="ReversiWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reversi.Designer.cs">
-      <DependentUpon>Reversi.cs</DependentUpon>
+    <Compile Include="ReversiWindow.Designer.cs">
+      <DependentUpon>ReversiWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Game.cs" />
     <Compile Include="Components\Player.cs" />
@@ -96,8 +96,8 @@
     <EmbeddedResource Include="GameModeForm.resx">
       <DependentUpon>GameModeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reversi.resx">
-      <DependentUpon>Reversi.cs</DependentUpon>
+    <EmbeddedResource Include="ReversiWindow.resx">
+      <DependentUpon>ReversiWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsMenu.resx">
       <DependentUpon>SettingsMenu.cs</DependentUpon>
