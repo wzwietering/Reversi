@@ -3,6 +3,7 @@ using Reversi.Helpers;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Reversi
 {
@@ -89,11 +90,20 @@ namespace Reversi
                 currentPlayer.PlayerLabel.BackColor = System.Drawing.Color.White;
 
                 // If new current player is AI player, let him do a a move.
-                if (currentPlayer.GetType() == typeof(AI)) ((AI)currentPlayer).DoMove(this);
+                if (currentPlayer.GetType() == typeof(AI))
+                {
+                    Thread t = new Thread(DoAIMove);   
+                }
 
                 // Since the board has changed, we need to recalculate the help for the player who's turn it is now.
                 else DisplayHints();
             }
+        }
+
+        private void DoAIMove()
+        {
+            Thread.Sleep(1000);
+            ((AI)currentPlayer).DoMove(this);
         }
 
         /// <summary>
