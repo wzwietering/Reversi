@@ -35,15 +35,13 @@ namespace Reversi.Helpers
 
         private static void AddAIPlayer(Game game, int i)
         {
-            var player = new AI();
-            player.SetPlayerName("Player " + (i + 1));
+            var player = new AI("Computer " + (i + 1));
             Initialize(player, game, i);
         }
 
         private static void AddHumanPlayer(Game game, int i)
         {
-            var player = new Player();
-            player.SetPlayerName("Player " + (i + 1));
+            var player = new Player("Player " + (i + 1));
             Initialize(player, game, i);
         }
 
